@@ -1492,9 +1492,12 @@ nodes:
         unit: °C
         description: Temperature of the MCU.
       # Errors
-      mcu_over_temperature:
+      error_mcu_over_temperature:
         type: error_flag
         description: Error flag for over temperature of the mcu.
+      warn_mcu_over_temperature:
+        type: error_flag
+        description: Warning, indicating high mcu temperature.
     tx_streams:
       # Channel Currents
       channel_currents_1:
@@ -1544,7 +1547,8 @@ nodes:
           - hp_channel3_status
           - hp_channel4_status
           - sdc_status
-          - mcu_over_temperature
+          - error_mcu_over_temperature
+          - warn_mcu_over_temperature
     rx_streams:
       master:
         pdu24_control:
@@ -1741,9 +1745,12 @@ nodes:
         unit: °C
         description: Temperature of the MCU.
       # Errors
-      mcu_over_temperature:
+      error_mcu_over_temperature:
         type: error_flag
         description: Error flag for over temperature of the mcu.
+      warn_mcu_over_temperature:
+        type: error_flag
+        description: Warning, indicating high mcu temperature
     tx_streams:
       state:
         description: Current state of the pdu
@@ -1798,7 +1805,8 @@ nodes:
           - lp_channel13_status
           - lp_channel14_status
           - sdc_status
-          - mcu_over_temperature
+          - error_mcu_over_temperature
+          - warn_mcu_over_temperature
     rx_streams:
       master:
         pdu12_control:
@@ -2247,7 +2255,8 @@ nodes:
           lp_channel13_status: pdu12_lp_channel13_status
           lp_channel14_status : pdu12_lp_channel14_status
           sdc_status: pdu12_sdc_status
-          mcu_over_temperature: error_pdu12_mcu_over_temperature
+          error_mcu_over_temperature: error_pdu12_mcu_over_temperature
+          warn_mcu_over_temperature: warn_pdu12_mcu_over_temperature
         power_estimation:
           power_estimation: pdu12_power_estimation
       pdu24:
@@ -2269,7 +2278,8 @@ nodes:
           hp_channel3_status: pdu24_hp_channel3_status
           hp_channel4_status: pdu24_hp_channel4_status
           sdc_status: pdu24_sdc_status
-          mcu_over_temperature: error_pdu24_mcu_over_temperature
+          error_mcu_over_temperature: error_pdu24_mcu_over_temperature
+          warn_mcu_over_temperature: warn_pdu24_mcu_over_temperature
         power_estimation:
           power_estimation: pdu24_power_estimation
       # Receive from Motor Driver
