@@ -1845,6 +1845,37 @@ nodes:
         type : d16<-5...5>
         unit: m/s²
         description: estimated acceleration of the pod
+      track_length:
+        type: d32<0..50>
+        unit : m
+        description: length of the track!
+      # Voltage / Current measurements
+      bat24_voltage:
+        type: d32<0..50>
+        unit: V
+        description: Voltage of the 24V Battery
+      bat24_current:
+        type: d32<-30..30>
+        unit: A
+        description: Current through the 24V Battery
+      link24_voltage:
+        type: d32<0..50>
+        unit: V
+        description: Voltage of the 24V link
+      link24_current:
+        type: d32<-30..30>
+        unit: A
+        description: Current through the 24V link.
+      link45_voltage:
+        type: d32<0..1000>
+        unit: V
+        description: Voltage of the 45V link
+      link45_current:
+        type: d32<-1000..1000>
+        unit: A
+        description: Current through the 45V link.
+
+
       # SDC Status
       sdc_status: 
         type: sdc_status
@@ -1858,14 +1889,26 @@ nodes:
         type: d8<-1..150>
         unit: °C
         description: Temperature of the cooling cycle
-      battery_24V_temperature:
+      bat24_temperature:
         type: d8<-1..150>
         unit: °C
         description: Temperature of the 24V-Battery
+      supercap_temperature:
+        type: d8<-1..150>
+        unit: °C
+        description: Temperature of the super caps.
+      buck_temperature:
+        type: d8<-1..150>
+        unit: °C
+        description: Temperature of the 12V buck converter.
       ebox_temperature:
         type: d8<-1..150>
         unit: °C
         description: Temperature inside of the ebox.
+      ambient_temperature:
+        type: d8<-1..150>
+        unit: °C
+        description: Ambient temperature.
       # Pressure
       cooling_cycle_pressure:
         type: d8<-1..9>
@@ -1876,36 +1919,173 @@ nodes:
       fiducial_count2:
         type: i16
       # Errors
-      error_invalid_position_estimation:
-        type: error_flag
-        description: Error flag for invalid position estimation. 
       error_invalid_position:
         type: error_flag
         description: Error flag that indicates a invalid position of the pod.
       error_invalid_velocity_profile:
         type: error_flag
         description: Error flag that indicates that the velocity is out of range given the velocity profile.
-      error_invalid_acceleration_profile:
+      error_invalid_acceleration:
         type: error_flag
         description: Error flag that indicates that the acceleration is out of range given the acceleration profile.
-      error_battery_over_temperature:
+
+      error_bat24_over_volt:
+        type: error_flag
+        description: Error flag that indicates a 24V-battery over voltage.
+      error_bat24_over_volt_thresh:
+        type: d32<0..50>
+        unit: V
+        description: Threshold voltage for bat24 over voltage errors.
+
+      error_bat24_under_volt:
+        type: error_flag
+        description: Error flag that indicates a 24V-battery under voltage.
+      error_bat24_under_volt_thresh:
+        type: d32<0..50>
+        unit: V
+        description: Threshold voltage for bat24 under voltage errors.
+
+      error_bat24_over_current:
+        type: error_flag
+        description: Error flag that indicates a 24V-battery over current.
+      error_bat24_over_current_thresh:
+        type: d32<0..100>
+        unit: A
+        description: Threshold current for bat24 over current errors.
+          
+
+      error_bat24_over_temperature:
         type: error_flag
         description: Error flag for Battery over temperature.
+      error_bat24_over_temperature_thresh:
+        type: d8<-1..150>
+        unit: °C
+        description: Threshold temperature for battery over temperature errors.
+      error_bat24_over_temperature_timeout:
+        type: d32<0..60>
+        unit: s
+        description: Timeout for battery over temperature errors.
+
+      error_supercap_over_temperature:
+        type: error_flag
+        description: Error flag for supercap over temperature
+      error_supercap_over_temperature_thresh:
+        type: d8<-1..150>
+        unit: °C
+        description: Threshold temperature for the supercap over temperature error.
+      error_supercap_over_temperature_timeout:
+        type: d32<0..60>
+        unit: s
+        description: Timeout for supercap over temperature errors.
+
+      error_buck_over_temperature:
+        type: error_flag
+        description: Error flag for 12V-buck converter over temperature.
+      error_buck_over_temperature_thresh:
+        type: d8<-1..150>
+        unit: °C
+        description: Threshold temperature for buck over temperature errors.
+      error_buck_over_temperature_timeout:
+        type: d32<0..60>
+        unit: s
+        description: Timeout of buck over temperature errors.
+
+      error_ambient_over_temperature:
+        type: error_flag
+        description: Error flag for over temperature of the ambient temperature.
+      error_ambient_over_temperature_thresh:
+        type: d8<-1..150>
+        unit: °C
+        description: Threshold temperature for ambient over temperature errors.
+      error_ambient_over_temperature_timeout:
+        type: d32<0..60>
+        unit: s
+        description: Timeout for ambient over temperature errors.
+
       error_cooling_cycle_over_pressure:
         type: error_flag
         description: Error flag for over pressure within the cooling cycle.
+      error_cooling_cycle_over_pressure_thresh:
+        type: d32<-10..20>
+        unit: bar
+        description: Threshold pressure (in bar) for cooling cycle over pressure errors.
+      error_cooling_cycle_over_pressure_timeout:
+        type: d32<0..60>
+        unit: s
+        description: Timeout of cooling cycle over pressure errors.
+
       error_cooling_cycle_low_pressure:
         type: error_flag
         description: Error flag for low pressure within the cooling cycle.
+      error_cooling_cycle_low_pressure_thresh:
+        type: d32<-10..20>
+        unit: bar
+        description: Threshold pressure (in bar) for cooling cycle low pressure errors.
+      error_cooling_cycle_low_pressure_timeout:
+        type: d32<0..60>
+        unit: s
+        description: Timeout of cooling cycle low pressure errors.
+
       error_mcu_over_temperature:
         type: error_flag
         description: Error flag for over temperature of the mcu.
+      error_mcu_over_temperature_thresh:
+        type: d8<-1..150>
+        unit: °C
+        description: Threshold temperature for mcu over temperatures errors
+      error_mcu_over_temperature_timeout:
+        type: d32<0..60>
+        unit: s
+        description: Timeout for mcu over temperatures errors
+
       error_ebox_over_temperature:
         type: error_flag
         description: Error flag for over temperature within the ebox.
+      error_ebox_over_temperature_thresh:
+        type: d8<-1..150>
+        unit: °C
+        description: Threshold temperature for ebox over temperature errors
+      error_ebox_over_temperature_timeout:
+        type: d32<0..60>
+        unit: s
+        description: Timeout for ebox over temperature errors.
+
       error_cooling_cycle_over_temperature:
         type: error_flag
         description: Error flag for over temperature within the cooling cycle.
+      error_cooling_cycle_over_temperature_thresh:
+        type: d8<-1..150>
+        unit: °C
+        description: Threshold temperature for cooling cycle over temperature errors.
+      error_cooling_cycle_over_temperature_timeout:
+        type: d32<0..60>
+        unit: °C
+        description: Timeout for cooling cycle over temperature errors.
+
+      warn_bat24_over_volt:
+        type: error_flag
+        description: Warning that indicates a high 24V-battery voltage.
+      warn_bat24_over_volt_thresh:
+        type: d32<0..50>
+        unit: V
+        description: Threshold voltage for bat24 over voltage warnings.
+
+      warn_bat24_under_volt:
+        type: error_flag
+        description: Warning that indicates a low 24V-battery voltage.
+      warn_bat24_under_volt_thresh:
+        type: d32<0..50>
+        unit: V
+        description: Threshold voltage for bat24 under voltage warnings.
+
+      warn_bat24_over_current:
+        type: error_flag
+        description: Warning that indicates a high24V-battery current.
+      warn_bat24_over_current_thresh:
+        type: d32<0..100>
+        unit: A
+        description: Threshold current for bat24 over current warnings.
+
       warn_invalid_position_estimation:
         type: error_flag
         description: Warning, which indicates a invalid position estimation
@@ -1918,24 +2098,157 @@ nodes:
       warn_invalid_acceleration_profile:
         type: error_flag
         description: Warning, which indicates a invalid acceleration profile.
-      warn_battery_over_temperature:
+
+      warn_bat24_over_temperature:
         type: error_flag
         description: Warning, which indicates a a high battery temperature.
+      warn_bat24_over_temperature_thresh:
+        type: d8<-1..150>
+        unit: °C
+        description: Threshold temperature of bat24 over temperature warnings.
+      warn_bat24_over_temperature_timeout:
+        type: d32<0..60>
+        unit: s
+        description: Timeout for bat24 over temperature warnings.
+
       warn_cooling_cycle_over_pressure:
         type: error_flag
         description: Warning, which indicates a high pressure in the cooling cycle.
+      warn_cooling_cycle_over_pressure_thresh:
+        type: d32<-10..20>
+        unit: bar
+        description: Threshold pressure (in bar) for cooling cycle over pressure warnings.
+      warn_cooling_cycle_over_pressure_timeout:
+        type: d32<0..60>
+        unit: s
+        description: Timeout of cooling cycle over pressure warnings.
+
       warn_cooling_cycle_low_pressure:
         type: error_flag
         description: Warning which indicates a low pressure in the cooling cycle.
+      warn_cooling_cycle_low_pressure_thresh:
+        type: d32<-10..20>
+        unit: bar
+        description: Threshold pressure (in bar) for cooling cycle low pressure warnings.
+      warn_cooling_cycle_low_pressure_timeout:
+        type: d32<0..60>
+        unit: s
+        description: Timeout of cooling cycle low pressure warnings.
+
       warn_mcu_over_temperature:
         type: error_flag
         description: Warning which indicates a high mcu temperature.
+      warn_mcu_over_temperature_thresh:
+        type: d8<-1..150>
+        description: Threshold temperature for mcu over temperatures warnings
+      warn_mcu_over_temperature_timeout:
+        type: d32<0..60>
+        unit : s
+        description: Timeout temperature for mcu over temperatures warnings
+
       warn_ebox_over_temperature:
         type: error_flag
         description: Warning, which indicates a high temperature in the ebox.
+      warn_ebox_over_temperature_thresh:
+        type: d8<-1..150>
+        description : Threshold temperature for ebox over temperature warnings.
+      warn_ebox_over_temperature_timeout:
+        type: d32<0..60>
+        description: Timeout for ebox over temperature warnings.
+
+      warn_supercap_over_temperature:
+        type: error_flag
+        description: Warning, which indicates a high temperature of the supercaps.
+      warn_supercap_over_temperature_thresh:
+        type: d8<-1..150>
+        unit: °C
+        description: Threshold temperature for supercap over temperature warnings.
+      warn_supercap_over_temperature_timeout:
+        type: d32<0..60>
+        unit: s
+      error_bat24_over_volt:
+        type: error_flag
+        description: Error flag that indicates a 24V-battery over voltage.
+      error_bat24_over_volt_thresh:
+        type: d32<0..50>
+        unit: V
+        description: Threshold voltage for bat24 over voltage errors.
+
+      error_bat24_under_volt:
+        type: error_flag
+        description: Error flag that indicates a 24V-battery under voltage.
+      error_bat24_under_volt_thresh:
+        type: d32<0..50>
+        unit: V
+        description: Threshold voltage for bat24 under voltage errors.
+
+      error_bat24_over_current:
+        type: error_flag
+        description: Error flag that indicates a 24V-battery over current.
+      error_bat24_over_current_thresh:
+        type: d32<0..100>
+        unit: A
+        description: Threshold current for bat24 over current errors.
+        description: Timeout for supercap over temperatures.
+
+      warn_buck_over_temperature:
+        type: error_flag
+        description: Warning, which indicates a high temperature of the 12V buck converter.
+      warn_buck_over_temperature_thresh:
+        type: d8<-1..150>
+        unit: °C
+        description: Threshold temperature for buck over temperature warnings.
+      warn_buck_over_temperature_timeout:
+        type: d32<0..60>
+        unit: s
+      error_bat24_over_volt:
+        type: error_flag
+        description: Error flag that indicates a 24V-battery over voltage.
+      error_bat24_over_volt_thresh:
+        type: d32<0..50>
+        unit: V
+        description: Threshold voltage for bat24 over voltage errors.
+
+      error_bat24_under_volt:
+        type: error_flag
+        description: Error flag that indicates a 24V-battery under voltage.
+      error_bat24_under_volt_thresh:
+        type: d32<0..50>
+        unit: V
+        description: Threshold voltage for bat24 under voltage errors.
+
+      error_bat24_over_current:
+        type: error_flag
+        description: Error flag that indicates a 24V-battery over current.
+      error_bat24_over_current_thresh:
+        type: d32<0..100>
+        unit: A
+        description: Threshold current for bat24 over current errors.
+        description: Timeout of buck over temperature warnings.
+
+      warn_ambient_over_temperature:
+        type: error_flag
+        description: Warning, which indicates a high ambient temperature.
+      warn_ambient_over_temperature_thresh:
+        type: d8<-1..150>
+        unit: °C
+        description: Threshold temperature for ambient over temperature warnings.
+      warn_ambient_over_temperature_timeout:
+        type: d32<0..60>
+        unit: s
+        description: Timeout for ambient over temperature warnings.
+
       warn_cooling_cycle_over_temperature:
         type: error_flag
         description: Warning, which indicates a high temperature in the cooling cycle.
+      warn_cooling_cycle_over_temperature_thresh:
+        type : d8<-1..150>
+        unit: °C
+        description: Threshold temperature for cooling cycle over temperature warnings.
+      warn_cooling_cycle_over_temperature_timeout:
+        type: d32<0..60>
+        description: Timeout for cooling cycle over temperature warnings.
+
     tx_streams:
       state_estimation:
         description : Current estimation of the pods position, velocity and acceleration
@@ -1963,10 +2276,9 @@ nodes:
         interval: 0ms-1000ms
         mapping:
           - error_mcu_over_temperature
-          - error_invalid_position_estimation
           - error_invalid_position
           - error_invalid_velocity_profile
-          - error_invalid_acceleration_profile
+          - error_invalid_acceleration
           - error_battery_over_temperature
           - error_cooling_cycle_over_pressure
           - error_cooling_cycle_low_pressure
@@ -2214,10 +2526,9 @@ nodes:
           acceleration_estimation: acceleration
         errors:
           error_mcu_over_temperature: error_input_board_mcu_over_temperature
-          error_invalid_position_estimation : error_invalid_position_estimation
           error_invalid_position :  error_invalid_position
           error_invalid_velocity_profile : error_invalid_velocity_profile
-          error_invalid_acceleration_profile : error_invalid_acceleration_profile
+          error_invalid_acceleration : error_invalid_acceleration
           error_battery_over_temperature : error_battery_over_voltage
           error_cooling_cycle_over_pressure : error_cooling_cycle_over_pressure
           error_cooling_cycle_low_pressure : error_cooling_cycle_low_pressure
