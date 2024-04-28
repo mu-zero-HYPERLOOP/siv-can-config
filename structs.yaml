@@ -1,0 +1,18 @@
+
+error_level_config:
+  ignore_info: bool_t
+  info_thresh : d32<-10000..10000>
+  info_timeout: d32<0..60>
+  ignore_warning: bool_t
+  warning_thresh: d32<-10000..10000>
+  warning_timeout: d32<0..60>
+  ignore_error: bool_t
+  error_thresh: d32<-10000..10000>
+  error_timeout: d32<0..60>
+  
+complex_polar:
+  rho : d32<0..1>
+  phi : d32<0..7>
+complex:
+  a : d32<-1..1>
+  b : d32<-1..1>

@@ -1,0 +1,157 @@
+description: Motor board
+object_dictionary:
+
+  state:
+    type: motor_state
+    description: State of the motor state machine.
+    access: readonly
+
+  command:
+    type: motor_command
+    description: Command used by the motor state machine.
+    access: extern
+  
+  sdc_status:
+    type: sdc_status
+    description: State of the motor driver SDC.
+    access: readonly
+  
+  acceleration:
+    type: d16<-10..10>
+    unit: m/s²
+    description: Local estimation of the acceleration.
+    access: readonly
+  
+  voltage45:
+    type: d16<-100..100>
+    unit: V
+    description: Voltage of the 45V plane.
+    access: readonly
+  error_level_over_voltage45:
+    type: error_level
+    description: Status of over voltage45.
+    access: readonly
+  error_level_config_over_voltage45:
+    type: error_level_config
+    description: Status configuration of over voltage45.
+    access: extern
+  error_level_under_voltage45:
+    type: error_level
+    description: Status of under voltage45.
+    access: readonly
+  error_level_config_under_voltage45:
+    type: error_level_config
+    description: Status configuration of under voltage45.
+    access: extern
+
+  mosfet_v1_temperature:
+    type: d8<-1..150>
+    unit: °C
+    description: Temperature of the v1 mosfet.
+    access: readonly
+  mosfet_v2_temperature:
+    type: d8<-1..150>
+    unit: °C
+    description: Temperature of the v2 mosfet.
+    access: readonly
+  link45_connector_temperature:
+    type: d8<-1..150>
+    unit: °C
+    description: Temperature of the vdc connector.
+    access: readonly
+  error_level_mosfet_temperature:
+    type: error_level
+    description: Status of the v1 mosfet temperature.
+    access: readonly
+  error_level_config_mosfet_temperature:
+    type: error_level_config
+    description: Status configuration of the v1 mosfet temperature.
+    access: extern
+
+  motor_temperature1:
+    type: d8<-1..150>
+    unit: °C
+    description: First reading of the motor temperature.
+    access: readonly
+  motor_temperature2:
+    type: d8<-1..150>
+    unit: °C
+    description: Second reading of the motor temperature.
+    access: readonly
+  motor_temperature3:
+    type: d8<-1..150>
+    unit: °C
+    description: Second reading of the motor temperature.
+    access: readonly
+  motor_temperature4:
+    type: d8<-1..150>
+    unit: °C
+    description: Second reading of the motor temperature.
+    access: readonly
+  error_level_motor_temperature:
+    type: error_level
+    description: Status of the motor temperature
+    access: readonly
+  error_level_config_motor_temperature:
+    type: error_level_config
+    description: Status of the motor temperature
+    access: extern
+
+  mcu_temperature:
+    type: d8<-1..150>
+    unit: °C
+    description: Temperature of the input board
+    access: readonly
+  error_level_mcu_temperature:
+    type: error_level
+    description: Status of the mcu temperature.
+    access: readonly
+  error_level_config_mcu_temperature:
+    type: error_level_config
+    description: Status configuration of the mcu temperature.
+    access: extern
+
+  assertion_fault:
+    type: error_flag
+    description: Error flag for cassert faults.
+
+tx_streams:
+  state:
+    description: State of the motor
+    interval: 0ms-500ms
+    mapping:
+      - state
+      - sdc_status
+  temperatures:
+    description: Temperature readings
+    interval: 500ms
+    mapping:
+      - motor_temperature1
+      - motor_temperature2
+      - motor_temperature3
+      - motor_temperature4
+      - mosfet_v1_temperature
+      - mosfet_v2_temperature
+      - link45_connector_temperature
+      - mcu_temperature
+    errors:
+      description: All error flags from the motor.
+      interval: 0ms-1000ms
+      mapping:
+        - error_level_over_voltage45
+        - error_level_under_voltage45
+        - error_level_mosfet_temperature
+        - error_level_motor_temperature
+        - error_level_mcu_temperature
+        - assertion_fault
+
+
+
+
+
+      
+
+
+
+
+

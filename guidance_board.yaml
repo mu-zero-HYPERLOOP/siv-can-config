@@ -1,0 +1,130 @@
+description: Guidance board
+
+object_dictionary:
+  state: 
+    type: guidance_state
+    description: State of the guidance board state machine.
+    access : readonly
+
+  command:
+    type: guidance_command
+    description: Command for the guidance board state machine.
+    access : external
+
+  sdc_status: 
+    type: sdc_status
+    description: State of the guidance board SDC.
+    access : readonly
+
+  airgap_left:
+    type: d32<0..20>
+    unit: mm
+    description: Left airgap to the track.
+    access : readonly
+
+  airgap_right:
+    type: d32<0..20>
+    unit: mm
+    description: Right airgap to the track.
+    access: readonly
+
+  magnet_temperature_left:
+    type: d8<-1..150>
+    aunit: °C
+    description: Temperature of the left magnet
+    access: readonly
+  error_level_magnet_temperature_left:
+    type: error_level
+    description: Status of the left magnet temperature.
+    access: readonly
+  error_level_config_temperature_left:
+    type: error_level_config
+    description: Status configuration of the left magnet temperature.
+    access: extern
+
+  magnet_temperature_right:
+    type: d8<-1..150>
+    unit: °C
+    description: Temperature of the right magnet
+    access: readonly
+  error_level_magnet_temperature_right:
+    type: error_level
+    description: Status of the left magnet temperature.
+    access: readonly
+  error_level_config_temperature_right:
+    type: error_level_config
+    description: Status configuration of the left magnet temperature.
+    access: extern
+
+  mcu_temperature:
+    type: d8<-1..150>
+    unit: °C
+    description: Temperature of the input board
+    access: readonly
+  error_level_mcu_temperature:
+    type: error_level
+    description: Status of the mcu temperature.
+    access: readonly
+  error_level_config_mcu_temperature:
+    type: error_level_config
+    description: Status configuration of the mcu temperature.
+    access: extern
+  
+  mosfet_temperature:
+    type: d8<-1..150>
+    description: mosfet temperature
+    access: readonly
+  error_level_mosfet_temperature:
+    type: error_level
+    description: Status of the mosfet temperature.
+    access: readonly
+  error_level_config_mosfet_temperature:
+    type: error_level_config
+    description: Status configuration of the mosfet temperature.
+    access: extern
+
+  assertion_fault:
+    type: error_flag
+    description: Error flag for cassert faults.
+    access: readonly
+
+
+tx_streams:
+  state:
+    description: State of the guidance.
+    interval: 0ms-500ms
+    mapping:
+      - state
+      - sdc_status
+  airgaps:
+    description: Airgaps to the track
+    interval: 50ms
+    mapping:
+      - airgap_left
+      - airgap_right
+  temperatures:
+    description: Measured temperatures
+    interval: 500ms
+    mapping:
+      - magnet_temperature_left
+      - magnet_temperature_right
+      - mcu_temperature
+      - mosfet_temperature
+  errors:
+    description: All error flags of the guidance board
+    interval: 0ms-1000ms
+    mapping:
+      - error_level_magnet_temperature_left
+      - error_level_magnet_temperature_right
+      - error_level_mcu_temperature
+      - error_level_mosfet_temperature
+
+
+
+
+
+
+    
+    
+
+

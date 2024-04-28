@@ -1,0 +1,358 @@
+description: input board (teensy 4.1)
+object_dictionary:
+  state:
+    type : input_board_state
+    description: Current state of the input board
+    access: readonly
+
+  # SDC Status
+  sdc_status: 
+    type: sdc_status
+    description: Status of the SDC-Switch
+    access: readonly
+
+  # State estimation
+  position:
+    type: d16<-0..50>
+    unit: m
+    description: Estimated position of the pod.
+    access: readonly
+  velocity:
+    type : d16<-10..10>
+    description: Estimated velocity of the pod.
+    unit: m/s
+    access: readonly
+  acceleration:
+    type : d16<-5...5>
+    unit: m/s²
+    description: Estimated acceleration of the pod.
+    access: readonly
+  linear_encoder_count:
+    type: u16
+    description: Counted stripes by the linear encoder.
+    access: readonly
+
+  track_length:
+    type: d32<0..50>
+    unit : m
+    description: length of the track!
+    access: const
+
+  # Voltage / Current measurements
+  bat24_voltage:
+    type: d32<0..50>
+    unit: V
+    description: Voltage of the 24V Battery.
+    access: readonly
+  error_level_bat24_under_voltage:
+    type: error_level
+    description: Status of the  bat24 under voltage.
+    access: readonly
+  error_level_config_bat24_under_voltage:
+    type: error_level_config
+    description: Status configuration of the bat24 under voltage.
+    access: extern
+  error_level_bat24_over_voltage:
+    type: error_level
+    description: Status of the bat24 over voltage.
+    access: readonly
+  error_level_config_bat24_over_voltage:
+    type: error_level_config
+    description: Status configuration of the bat24 over voltage.
+    access: extern
+
+  bat24_current:
+    type: d32<-30..30>
+    unit: A
+    description: Current through the 24V Battery
+    access: readonly
+  error_level_bat24_over_current:
+    type: error_level
+    description: Status of the bat24 over current.
+    access: readonly
+  error_level_config_bat24_over_current:
+    type: error_level_config
+    description: Status configuration of the bat24 over current.
+    access: extern
+
+
+  link24_voltage:
+    type: d32<0..50>
+    unit: V
+    description: Voltage of the 24V link
+    access: readonly
+  error_level_link24_under_voltage:
+    type: error_level
+    description: Status of the link24 under voltage.
+    access: readonly
+  error_level_config_link24_under_voltage:
+    type: error_level_config
+    description: Status configuration of the link24 under voltage.
+    access: extern
+  error_level_link24_over_voltage:
+    type: error_level
+    description: Status of the link24 over voltage.
+    access: readonly
+  error_level_config_link24_over_voltage:
+    type: error_level_config
+    description: Status configuration of the link24 over voltage.
+    access: extern
+
+  link24_current:
+    type: d32<-30..30>
+    unit: A
+    description: Current through the 24V link.
+    access: readonly
+  error_level_link24_over_current:
+    type: error_level
+    description: Status of the link24 over current.
+    access: readonly
+  error_level_config_link24_over_current:
+    type: error_level_config
+    description: Status configuration of the link24 over current.
+    access: extern
+
+  link45_voltage:
+    type: d32<0..1000>
+    unit: V
+    description: Voltage of the 24V link
+    access: readonly
+  link45_expect_online:
+    type: bool_t
+    description: Expects that the link45 is online
+    access: extern
+  error_level_link45_under_voltage:
+    type: error_level
+    description: Status of the link45 under voltage.
+    access: readonly
+  error_level_config_link45_under_voltage:
+    type: error_level_config
+    description: Status configuration of the link45 under voltage.
+    access: extern
+  error_level_link45_over_voltage:
+    type: error_level
+    description: Status of the link45 over voltage.
+    access: readonly
+  error_level_config_link45_over_voltage:
+    type: error_level_config
+    description: Status configuration of the link45 over voltage.
+    access: extern
+
+  link45_current:
+    type: d32<-1000..1000>
+    unit: A
+    description: Current through the 24V link.
+    access: readonly
+  error_level_link45_over_current:
+    type: error_level
+    description: Status of the link45 over current.
+    access: readonly
+  error_level_config_link45_over_current:
+    type: error_level_config
+    description: Status configuration of the link45 over current.
+    access: extern
+
+  # Pressure
+  cooling_cycle_pressure:
+    type: d8<-1..9>
+    unit: bar
+    description: Pressure of the cooling cycle.
+    access: readonly
+  error_level_cooling_cycle_under_pressure:
+    type: error_level
+    description: Status of the cooling cycle under pressure.
+    access: readonly
+  error_level_config_cooling_cycle_under_pressure:
+    type: error_level_config
+    description: Status configuration of the cooling cycle under pressure.
+    access: extern
+  error_level_cooling_cycle_over_pressure:
+    type: error_level
+    description: Status of the cooling cycle over pressure.
+    access: readonly
+  error_level_config_cooling_cycle_over_pressure:
+    type: error_level_config
+    description: Status configuration of the cooling cycle over pressure.
+    access: extern
+
+  # Temperatures
+  mcu_temperature:
+    type: d8<-1..150>
+    unit: °C
+    description: Temperature of the input board
+    access: readonly
+  error_level_mcu_temperature:
+    type: error_level
+    description: Status of the mcu temperature.
+    access: readonly
+  error_level_config_mcu_temperature:
+    type: error_level_config
+    description: Status configuration of the mcu temperature.
+    access: extern
+
+
+  cooling_cycle_temperature:
+    type: d8<-1..150>
+    unit: °C
+    description: Temperature of the cooling cycle
+    access: readonly
+  error_level_cooling_cycle_temperature:
+    type: error_level
+    description: Status of the cooling cycle temperature.
+    access: readonly
+  error_level_config_cooling_temperature:
+    type: error_level_config
+    description: Status configuration of the cooling cycle temperature.
+    access: extern
+    
+
+  bat24_temperature:
+    type: d8<-1..150>
+    unit: °C
+    description: Temperature of the 24V-Battery
+    access: readonly
+  error_level_bat24_temperature:
+    type: error_level
+    description: Status of the bat24 temperature.
+    access: readonly
+  error_level_config_bat24_temperature:
+    type: error_level_config
+    description: Status configuration of the bat24 temperature.
+    access: extern
+
+  supercap_temperature:
+    type: d8<-1..150>
+    unit: °C
+    description: Temperature of the super caps.
+    access: readonly
+  error_level_supercap_temperature:
+    type: error_level
+    description: Status of the supercap temperature.
+    access: readonly
+  error_level_config_supercap_temperature:
+    type: error_level_config
+    description: Status configuration of the supercap temperature.
+    access: extern
+
+  buck_temperature:
+    type: d8<-1..150>
+    unit: °C
+    description: Temperature of the 12V buck converter.
+    access: readonly
+  error_level_buck_temperature:
+    type: error_level
+    description: Status of the buck temperature.
+    access: readonly
+  error_level_config_buck_temperature:
+    type: error_level_config
+    description: Status configuration of the buck temperature.
+    access: extern
+
+  ebox_temperature:
+    type: d8<-1..150>
+    unit: °C
+    description: Temperature inside of the ebox.
+    access: readonly
+  error_level_ebox_temperature:
+    type: error_level
+    description: Status of the ebox temperature.
+    access: readonly
+  error_level_config_ebox_temperature:
+    type: error_level_config
+    description: Status configuration of the ebox temperature.
+    access: extern
+
+  ambient_temperature:
+    type: d8<-1..150>
+    unit: °C
+    description: Ambient temperature.
+    access: readonly
+  error_level_ambient_temperature:
+    type: error_level
+    description: Status of the ambient temperature.
+    access: readonly
+  error_level_config_ambient_temperature:
+    type: error_level_config
+    description: Status configuration of the ambient temperature.
+    access: extern
+
+  assertion_fault:
+    type: error_flag
+    description: Error flag for cassert faults.
+    access: readonly
+
+
+tx_streams:
+  state:
+    description: State of the input board.
+    interval: 0ms-500ms
+    mapping: 
+      - state
+      - sdc_status
+  position_estimation:
+    description: All data related to the position estimation.
+    interval: 50ms
+    mapping:
+      - position
+      - velocity
+      - acceleration
+      - linear_encoder_count
+  bat24:
+    description: Current and voltage of the 24V battery.
+    interval: 100ms
+    mapping:
+      - bat24_voltage
+      - bat24_current
+  link24:
+    description: Current and voltage of the link24.
+    interval: 100ms
+    mapping:
+      - link24_voltage
+      - link24_current
+  link45:
+    description: Current and voltage of the link45.
+    interval: 100ms
+    mapping:
+      - link45_voltage
+      - link45_current
+  cooling:
+    description: Cooling measurements
+    interval: 500ms
+    mapping:
+      - cooling_cycle_pressure
+      - cooling_cycle_temperature
+  temperatures:
+    description: Collection of measured temperatures.
+    interval: 500ms
+    mapping:
+      - mcu_temperature
+      - bat24_temperature
+      - supercap_temperature
+      - buck_temperature
+      - ebox_temperature
+      - ambient_temperature
+  errors:
+    description: All error flags from the input_board
+    interval: 0ms-1000ms
+    mapping:
+      - error_level_bat24_under_voltage
+      - error_level_bat24_over_voltage
+      - error_level_bat24_over_current
+      - error_level_link24_under_voltage
+      - error_level_link24_over_voltage
+      - error_level_link24_over_current
+      - error_level_link45_under_voltage
+      - error_level_link45_over_voltage
+      - error_level_link45_over_current
+      - error_level_cooling_cycle_under_pressure
+      - error_level_cooling_cycle_over_pressure
+      - error_level_mcu_temperature
+      - error_level_cooling_cycle_temperature
+      - error_level_bat24_temperature
+      - error_level_supercap_temperature
+      - error_level_buck_temperature
+      - error_level_ebox_temperature
+      - error_level_ambient_temperature
+      - assertion_fault
+
+

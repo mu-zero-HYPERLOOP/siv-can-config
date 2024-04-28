@@ -1,0 +1,157 @@
+# General types:
+bool_t:
+  FALSE: 0
+  TRUE: 1
+
+# Used for error flags
+error_flag:
+  OK : 0
+  ERROR : 1
+
+error_level:
+  OK : 0
+  INFO : 1
+  WARNING: 2
+  ERROR: 3
+
+# SDC status type
+sdc_status:
+  OPEN: 0
+  CLOSED: 1
+
+# PDU 12 or 24V
+pdu_channel_control:
+  OFF : 0
+  ON : 1
+
+pdu_channel_status:
+  OFF : 0
+  ON : 1
+  SHORT_CIRCUIT : 3
+
+# Global State Machine
+global_state:
+  INIT: ~
+  IDLE: ~
+  DISCONNECTING : ~
+  PRECHARGE : ~
+  READY: ~
+  START_LEVITATION : ~
+  LEVITATION_STABLE: ~
+  START_GUIDANCE : ~
+  GUIDANCE_STABLE : ~
+  ACCELERATION : ~
+  CRUISING : ~
+  DECELERATION : ~
+  STOP_LEVITATION: ~
+
+global_command:
+  NONE: ~
+  PRECHARGE: ~
+  DISCONNECT: ~
+  START_LEVITATION: ~
+  START_PROPULSION: ~
+  STOP_PROPULSION: ~
+  STOP_LEVITATION: ~
+  ABORT: ~
+  MANUAL_CONTROL: ~
+  EMERGENCY: ~
+
+# MLU State Machine types
+levitation_state:
+  INIT: ~
+  IDLE: ~
+  PRECHARGE: ~
+  READY: ~
+  START : ~
+  CONTROL : ~
+  STOP : ~
+
+levitation_command:
+  NONE: ~
+  PRECHARGE: ~
+  START: ~
+  STOP: ~
+  ABORT: ~
+  DISCONNECT: ~
+
+# MGU State Machine types
+guidance_state:
+  INIT: ~
+  IDLE: ~
+  PRECHARGE: ~
+  READY: ~
+  START : ~
+  CONTROL : ~
+  STOP : ~
+
+guidance_command:
+  NONE: ~
+  PRECHARGE: ~
+  START: ~
+  STOP: ~
+  DISCONNECT: ~
+
+# Motor State Machine types
+motor_state:
+  INIT: ~
+  IDLE: ~
+  PRECHARGE: ~
+  READY: ~
+  START : ~
+  CONTROL : ~
+  STOP : ~
+  MANUAL : ~
+  ERROR: ~
+
+motor_command:
+  NONE: ~
+  PRECHARGE: ~
+  ACCELERATE: ~
+  DECELERATE: ~
+  STOP: ~
+  DISCONNECT: ~
+  MANUAL_CONTROL: ~
+
+input_board_state:
+  INIT: ~
+  RUNNING : ~
+
+pdu_state:
+  INIT: ~
+  RUNNING : ~
+
+perf_pattern:
+  LINEAR: ~
+  RANDOM: ~
+  COLD: ~
+
+perf_func:
+  CMATH: ~
+  STD_POLAR: ~
+  LOOKUP256: ~
+  LOOKUP256_LINT: ~
+  LOOKUP512: ~
+  LOOKUP512_LINT: ~
+  LOOKUP1024: ~
+  LOOKUP1024_LINT: ~
+  LOOKUP2048: ~
+  LOOKUP2048_LINT: ~
+  LOOKUP4096: ~
+  LOOKUP4096_LINT: ~
+  TAYLOR3: ~
+  TAYLOR4: ~
+  TAYLOR5: ~
+  TAYLOR6: ~
+  TAYLOR7: ~
+  TAYLOR8: ~
+  TAYLOR9: ~
+  TAYLOR10: ~
+  CORDIC3: ~
+  CORDIC4: ~
+  CORDIC5: ~
+  CORDIC6: ~
+  CORDIC7: ~
+  CORDIC8: ~
+  CORDIC9: ~
+  CORDIC10: ~
