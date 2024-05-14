@@ -115,7 +115,12 @@ motor_command:
 
 input_board_state:
   INIT: ~
+  CALIBRATION: ~
   RUNNING : ~
+
+input_board_command:
+  NONE: ~
+  CALIBRATE: ~
 
 pdu_state:
   INIT: ~

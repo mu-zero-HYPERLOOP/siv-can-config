@@ -134,16 +134,21 @@ tx_streams:
       - mosfet_v2_temperature
       - link45_connector_temperature
       - mcu_temperature
-    errors:
-      description: All error flags from the motor.
-      interval: 0ms-1000ms
-      mapping:
-        - error_level_over_voltage45
-        - error_level_under_voltage45
-        - error_level_mosfet_temperature
-        - error_level_motor_temperature
-        - error_level_mcu_temperature
-        - assertion_fault
+  errors:
+    description: All error flags from the motor.
+    interval: 0ms-1000ms
+    mapping:
+      - error_level_over_voltage45
+      - error_level_under_voltage45
+      - error_level_mosfet_temperature
+      - error_level_motor_temperature
+      - error_level_mcu_temperature
+      - assertion_fault
+
+rx_streams:
+  mother_board:
+    motor_command:
+      motor_driver_command : command
 
 
 

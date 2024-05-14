@@ -1,0 +1,218 @@
+description: Motherboard (Raspberry pi)
+
+object_dictionary:
+  state:
+    type: global_state
+    description: State of the global FSM.
+    access : readonly
+  command:
+    type: global_command
+    description: Command send to the global FSM.
+    access: extern
+
+
+  track_length:
+    type: d32<0..50>
+    unit: m
+    access: readwrite
+
+  brake_margin:
+    type: d32<0..50>
+    unit: m
+    access: readwrite
+  emergency_brake_margin:
+    type: d32<0..50>
+    unit: m
+    access: readwrite
+  target_acceleration:
+    type: d32<0..5>
+    unit: m/s²
+    access: readwrite
+  target_velocity:
+    type: d32<0..10>
+    unit: m/s
+    access: readwrite
+
+
+
+  position:
+    type: d16<-0..50>
+    unit: m
+    description: Estimated positin of the pod.
+    access: extern
+  velocity:
+    type: d16<-10..10>
+    unit: m/s
+    description: Estimated velocity of the pod.
+    access: readonly
+  acceleration: 
+    type: d16<-50..50>
+    unit: m/s²
+    description: Estimated acceleration of the pod.
+    access: readonly
+
+  motor_driver_state:
+    type: motor_state
+    description: Current state of the motor
+    access: extern
+  motor_driver_command:
+    type: motor_command
+    description: Command send to the motor
+    access: readonly
+  motor_driver_sdc_status:
+    type: sdc_status
+    access: extern
+
+
+  guidance_command:
+    type: guidance_command
+    description: Command send to the guidance
+    access: readonly
+
+  guidance_board_front_state:
+    type: guidance_state
+    access: extern
+  guidance_board_front_sdc_status:
+    type: sdc_status
+    access: extern
+
+  guidance_board_back_state:
+    type: guidance_state
+    access: extern
+  guidance_board_back_sdc_status:
+    type: sdc_status
+    access: extern
+
+
+  levitation_command:
+    type: levitation_command
+    description: Command send to the levitation
+    access: readonly
+
+  levitation_board_front_state:
+    type: levitation_state
+    access: extern
+  levitation_board_front_sdc_status:
+    type: sdc_status
+    access: extern
+
+  levitation_board_middle_state:
+    type: levitation_state
+    access: extern
+  levitation_board_middle_sdc_status:
+    type: sdc_status
+    access: extern
+
+  levitation_board_back_state: 
+    type: levitation_state
+    access: extern
+  levitation_board_back_sdc_status:
+    type: sdc_status
+    access: extern
+
+  input_board_state:
+    type: input_board_state
+    description: State of the input board
+    access : extern
+  input_board_sdc_status:
+    type: sdc_status
+    access: extern
+
+  power_board12_state:
+    type: pdu_state
+    access: extern
+  power_board12_sdc_status:
+    type: sdc_status
+    access: extern
+
+  power_board24_state:
+    type: pdu_state
+    access: extern
+  power_board24_sdc_status:
+    type: sdc_status
+    access: extern
+
+  
+
+tx_streams:
+  state:
+    description: State of the global FSM.
+    interval: 0ms-500ms
+    mapping:
+      - state
+  motor_command:
+    description: Commands the motor driver
+    interval: 0ms-500ms
+    mapping:
+      - motor_driver_command
+
+  guidance_command:
+    description: Commands the guidance system
+    interval: 0ms-500ms
+    mapping:
+      - guidance_command
+
+  levitation_command:
+    description: Commands the levitation system
+    interval: 0ms-500ms
+    mapping:
+      - levitation_command
+
+    
+  
+rx_streams:
+  motor_driver:
+    state:
+      state : motor_driver_state
+      sdc_status: motor_driver_sdc_status
+
+  guidance_board_front:
+    state:
+      state: guidance_board_front_state
+      sdc_status: guidance_board_front_sdc_status
+
+  guidance_board_back:
+    state:
+      state: guidance_board_back_state
+      sdc_status: guidance_board_back_sdc_status
+
+  levitation_board_front:
+    state:
+      state: levitation_board_front_state
+      sdc_status: levitation_board_front_sdc_status
+
+  levitation_board_middle:
+    state:
+      state: levitation_board_middle_state
+      sdc_status: levitation_board_middle_sdc_status
+
+  levitation_board_back:
+    state:
+      state: levitation_board_back_state
+      sdc_status: levitation_board_back_sdc_status
+
+  input_board:
+    state:
+      state: input_board_state
+      sdc_status: input_board_sdc_status
+    position_estimation:
+      position: position
+      velocity: velocity
+      acceleration: acceleration
+
+
+  power_board12:
+    state:
+      state: power_board12_state
+      sdc_status: power_board12_sdc_status
+
+  power_board24:
+    state:
+      state: power_board24_state
+      sdc_status: power_board24_sdc_status
+
+  
+
+
+
+      

@@ -1,0 +1,16 @@
+description: Power distribution unit 24V. (PDU24)
+
+object_dictionary:
+  state:
+    type: pdu_state
+    description: State of the pdu24.
+    access: readonly
+
+tx_streams:
+  state:
+    description: State information about the pdu12.
+    interval: 0ms-500ms
+    mapping:
+      - state
+
+

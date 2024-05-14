@@ -4,6 +4,10 @@ object_dictionary:
     type : input_board_state
     description: Current state of the input board
     access: readonly
+  command: 
+    type: input_board_command
+    description: Manual commands to the input_board
+    access: readwrite 
 
   # SDC Status
   sdc_status: 
@@ -23,7 +27,7 @@ object_dictionary:
     unit: m/s
     access: readonly
   acceleration:
-    type : d16<-5...5>
+    type : d16<-50..50>
     unit: m/s²
     description: Estimated acceleration of the pod.
     access: readonly
@@ -31,6 +35,7 @@ object_dictionary:
     type: u16
     description: Counted stripes by the linear encoder.
     access: readonly
+
 
   track_length:
     type: d32<0..50>

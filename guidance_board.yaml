@@ -1,5 +1,4 @@
 description: Guidance board
-
 object_dictionary:
   state: 
     type: guidance_state
