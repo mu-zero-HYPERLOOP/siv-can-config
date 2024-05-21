@@ -89,26 +89,48 @@ object_dictionary:
     description: Command send to the levitation
     access: readonly
 
-  levitation_board_front_state:
+  levitation_board1_state:
     type: levitation_state
     access: extern
-  levitation_board_front_sdc_status:
+  levitation_board1_sdc_status:
     type: sdc_status
     access: extern
 
-  levitation_board_middle_state:
+  levitation_board2_state:
     type: levitation_state
     access: extern
-  levitation_board_middle_sdc_status:
+  levitation_board2_sdc_status:
     type: sdc_status
     access: extern
 
-  levitation_board_back_state: 
+  levitation_board3_state:
     type: levitation_state
     access: extern
-  levitation_board_back_sdc_status:
+  levitation_board3_sdc_status:
     type: sdc_status
     access: extern
+
+  levitation_board4_state:
+    type: levitation_state
+    access: extern
+  levitation_board4_sdc_status:
+    type: sdc_status
+    access: extern
+
+  levitation_board5_state:
+    type: levitation_state
+    access: extern
+  levitation_board5_sdc_status:
+    type: sdc_status
+    access: extern
+
+  levitation_board6_state:
+    type: levitation_state
+    access: extern
+  levitation_board6_sdc_status:
+    type: sdc_status
+    access: extern
+
 
   input_board_state:
     type: input_board_state
@@ -176,20 +198,35 @@ rx_streams:
       state: guidance_board_back_state
       sdc_status: guidance_board_back_sdc_status
 
-  levitation_board_front:
+  levitation_board1:
     state:
-      state: levitation_board_front_state
-      sdc_status: levitation_board_front_sdc_status
+      state: levitation_board1_state
+      sdc_status: levitation_board1_sdc_status
 
-  levitation_board_middle:
+  levitation_board2:
     state:
-      state: levitation_board_middle_state
-      sdc_status: levitation_board_middle_sdc_status
+      state: levitation_board2_state
+      sdc_status: levitation_board2_sdc_status
 
-  levitation_board_back:
+  levitation_board3:
     state:
-      state: levitation_board_back_state
-      sdc_status: levitation_board_back_sdc_status
+      state: levitation_board3_state
+      sdc_status: levitation_board3_sdc_status
+
+  levitation_board4:
+    state:
+      state: levitation_board4_state
+      sdc_status: levitation_board4_sdc_status
+
+  levitation_board5:
+    state:
+      state: levitation_board5_state
+      sdc_status: levitation_board5_sdc_status
+
+  levitation_board6:
+    state:
+      state: levitation_board6_state
+      sdc_status: levitation_board6_sdc_status
 
   input_board:
     state:

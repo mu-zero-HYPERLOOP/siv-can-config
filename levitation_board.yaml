@@ -16,42 +16,22 @@ object_dictionary:
     description: State of the levitation board SDC.
     access : readonly
 
-  airgap_left:
-    type: d16<0..20>
-    unit: mm
-    description: Left airgap to the track.
-    access : readonly
-
-  airgap_right:
+  airgap:
     type: d16<0..20>
     unit: mm
     description: Right airgap to the track.
     access: readonly
 
-  magnet_temperature_left:
-    type: d8<-1..150>
-    aunit: °C
-    description: Temperature of the left magnet
-    access: readonly
-  error_level_magnet_temperature_left:
-    type: error_level
-    description: Status of the left magnet temperature.
-    access: readonly
-  error_level_config_temperature_left:
-    type: error_level_config
-    description: Status configuration of the left magnet temperature.
-    access: extern
-
-  magnet_temperature_right:
+  magnet_temperature:
     type: d8<-1..150>
     unit: °C
     description: Temperature of the right magnet
     access: readonly
-  error_level_magnet_temperature_right:
+  error_level_magnet_temperature:
     type: error_level
     description: Status of the left magnet temperature.
     access: readonly
-  error_level_config_temperature_right:
+  error_level_config_temperature:
     type: error_level_config
     description: Status configuration of the left magnet temperature.
     access: extern
@@ -99,22 +79,19 @@ tx_streams:
     description: Airgaps to the track
     interval: 50ms
     mapping:
-      - airgap_left
-      - airgap_right
+      - airgap
   temperatures:
     description: Measured temperatures
     interval: 500ms
     mapping:
-      - magnet_temperature_left
-      - magnet_temperature_right
+      - magnet_temperature
       - mcu_temperature
       - mosfet_temperature
   errors:
     description: All error flags of the guidance board
     interval: 0ms-1000ms
     mapping:
-      - error_level_magnet_temperature_left
-      - error_level_magnet_temperature_right
+      - error_level_magnet_temperature
       - error_level_mcu_temperature
       - error_level_mosfet_temperature
 

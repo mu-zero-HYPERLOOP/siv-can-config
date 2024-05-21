@@ -21,6 +21,24 @@ object_dictionary:
     unit: m/s²
     description: Local estimation of the acceleration.
     access: readonly
+
+
+  external_acceleration:
+    type: d16<-10..10>
+    unit: m/s²
+    description: Exterenal estimation of the acceleration
+    access: extern
+  external_velocity:
+    type: d16<-10..10>
+    unit: m/s
+    description: External estimation of the velocity of the pod.
+    access: readonly
+  external_position:
+    type: d16<-0..50>
+    unit: m
+    description: External estimation of the positin of the pod.
+    access: extern
+
   
   voltage45:
     type: d16<-100..100>

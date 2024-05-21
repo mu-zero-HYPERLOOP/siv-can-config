@@ -7,10 +7,12 @@ nodes:
   input_board: input_board.yaml
   guidance_board_front: guidance_board.yaml
   guidance_board_back : guidance_board.yaml
-  levitation_board_front: levitation_board.yaml
-  levitation_board_middle: levitation_board.yaml
-  levitation_board_back: levitation_board.yaml
+  levitation_board1: levitation_board.yaml
+  levitation_board2: levitation_board.yaml
+  levitation_board3: levitation_board.yaml
+  levitation_board4: levitation_board.yaml
+  levitation_board5: levitation_board.yaml
+  levitation_board6: levitation_board.yaml
   power_board12: power_board12.yaml
   power_board24: power_board24.yaml
-  test_node : test.yaml
 

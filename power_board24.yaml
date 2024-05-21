@@ -6,11 +6,132 @@ object_dictionary:
     description: State of the pdu24.
     access: readonly
 
+  sdc_status:
+    type: sdc_status
+    description: State of the sdc switch
+    access: readonly
+
+  assertion_fault:
+    type: error_flag
+    description: Error flag, which i set if a assertion fails.
+    access: readonly
+
+  loop_frequency:
+    type: d64<0..1000000000>
+    description: Frequency of the main loop
+    unit: Hz
+    access: readonly
+  
+  cooling_pump_channel_ctrl:
+    type: pdu_channel_control
+    description: Channel control for the cooling pump power channel.
+    access: extern
+  cooling_pump_channel_current:
+    type: d16<0..10>
+    description: Current of the cooling pump channel.
+    unit: A
+    access: extern
+  cooling_pump_channel_status:
+    type: pdu_channel_status
+    description: Channel status of the cooling pump power channel.
+    unit: A
+    access: readonl
+
+  sdc_power_channel_ctrl:
+    type: pdu_channel_control
+    description: Channel control of the sdc power channel.
+    unit: A
+    access: extern
+  sdc_power_channel_current:
+    type: d16<0..10>
+    description: Current of the sdc power channel.
+    unit: A
+    access: extern
+  sdc_power_channel_status:
+    type: pdu_channel_status
+    description: Channel status of the sdc power channel.
+    access: readonly
+
+  sdc_signal_channel_ctrl:
+    type: pdu_channel_control
+    description: Channel control of the sdc signal channel.
+    access: extern
+  sdc_signal_channel_current:
+    type: d16<0..5>
+    description: Current sdc signal 
+    unit: A
+    access: readonly
+  sdc_signal_channel_status:
+    type: pdu_channel_status
+    description: Channel status of the sdc signal channel.
+    access: readonly
+
+  fan_channel_ctrl:
+    type: pdu_channel_control
+    description: Channel control of the fan channel.
+    access: extern
+  fan_channel_current:
+    type: d16<0..5>
+    description: Current of the fan channel.
+    unit: A
+    access: readonly
+  fan_channel_status:
+    type: pdu_channel_status
+    description: Channel status of the fan channel.
+    access: readonly
+
+  mcu_temperature:
+    type: d8<-1..150>
+    unit: °C
+    description: Temperature of the input board
+    access: readonly
+  error_level_mcu_temperature:
+    type: error_level
+    description: Status of the mcu temperature.
+    access: readonly
+  error_level_config_mcu_temperature:
+    type: error_level_config
+    description: Status configuration of the mcu temperature.
+    access: extern
+
+
 tx_streams:
   state:
     description: State information about the pdu12.
     interval: 0ms-500ms
     mapping:
       - state
+      - sdc_status
+  temperature:
+    description: Temperature of the board.
+    interval: 500ms
+    mapping:
+      - mcu_temperature
+  
+  errors:
+    description: Errors comming from the board
+    interval: 0ms-1000ms
+    mapping:
+      - assertion_fault
+      - error_level_mcu_temperature
+
+  channel_status:
+    description: State of the high and low power channel
+    interval: 0ms-500ms
+    mapping:
+      - cooling_pump_channel_status
+      - sdc_power_channel_status
+      - sdc_signal_channel_status
+      - fan_channel_status
+
+  channel_currents:
+    description: Currents of the high and low power channels
+    interval: 100ms
+    mapping:
+      - cooling_pump_channel_current
+      - sdc_power_channel_current
+      - sdc_signal_channel_current
+      - fan_channel_current
+
 
 

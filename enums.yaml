@@ -98,9 +98,9 @@ motor_state:
   IDLE: ~
   PRECHARGE: ~
   READY: ~
-  START : ~
+  ACCELERATE : ~
   CONTROL : ~
-  STOP : ~
+  DECELERATE : ~
   MANUAL : ~
   ERROR: ~
 
@@ -109,7 +109,6 @@ motor_command:
   PRECHARGE: ~
   ACCELERATE: ~
   DECELERATE: ~
-  STOP: ~
   DISCONNECT: ~
   MANUAL_CONTROL: ~
 
@@ -121,6 +120,11 @@ input_board_state:
 input_board_command:
   NONE: ~
   CALIBRATE: ~
+
+calibration_mode:
+  USE_OFFSET: ~
+  USE_TARGET: ~
+  DISABLE: ~
 
 pdu_state:
   INIT: ~

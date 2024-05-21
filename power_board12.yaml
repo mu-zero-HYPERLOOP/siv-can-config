@@ -6,10 +6,189 @@ object_dictionary:
     description: State of the pdu12.
     access: readonly
 
+  sdc_status:
+    type: sdc_status
+    description: Sdc switch state of the pdu12
+    access: readonly
+
+  assertion_fault:
+    type: error_flag
+    description: Error flag, which is set when a assertion fails.
+    access: readonly
+
+  loop_frequency:
+    type: d64<0..1000000000>
+    description: Frequency of the main loop
+    unit: Hz
+    access: readonly
+
+  levitation_boards_power_channel_ctrl:
+    type: pdu_channel_control
+    description: Control of the power channel for all 6 levitation boards.
+    access: extern
+  levitation_boards_power_channel_current:
+    type: d16<0..5>
+    description: Current of the power channel for all 6 levitation boards.
+    unit: A
+    access: readonly
+  levitation_boards_power_channel_status:
+    type: pdu_channel_status
+    description: State of the power channel for all 6 levitation boards.
+    access: readonly
+
+  guidance_boards_power_channel_ctrl:
+    type: pdu_channel_control
+    description: Control of the power channel for both levitation boards.
+    access: extern
+  guidance_boards_power_channel_current:
+    type: d16<0..5>
+    description: Current of the power channel for both levitation boards.
+    unit: A
+    access: readonly
+  guidance_boards_power_channel_status:
+    type: pdu_channel_status
+    description: Status of the power channel for both levitation boards..
+    access: readonly
+
+  motor_driver_power_channel_ctrl:
+    type: pdu_channel_control
+    description: Control of the power channel of the motor driver.
+    access: extern
+  motor_driver_power_channel_current:
+    type: d16<0..5>
+    description: Current of the power channel of the motor driver.
+    unit: A
+    access: readonly
+  motor_driver_power_channel_status:
+    type: pdu_channel_status
+    description: Status of the power channel of the motor driver.
+    access: readonly
+
+  input_board_power_channel_ctrl:
+    type: pdu_channel_control
+    description: Control of the power channel fo the input board.
+    access: extern
+  input_board_power_channel_current:
+    type: d16<0..5>
+    description: Current of the power channel of the input board.
+    unit: A
+    access: readonly
+  input_board_power_channel_status:
+    type: pdu_channel_status
+    description: Status of the power channel of the input board.
+    access: readonly
+
+  raspberry_pi_power_channel_ctrl:
+    type: pdu_channel_control
+    description: Control of the power channel of the raspberry pi
+    access: extern
+  raspberry_pi_power_channel_current:
+    type: d16<0..5>
+    description: Current of the power channel of the raspberry pi.
+    unit: A
+    access: readonly
+  raspberry_pi_power_channel_status:
+    type: pdu_channel_status
+    description: Status of the power channel of the raspberry pi.
+    access: readonly
+
+  antenna_power_channel_ctrl:
+    type: pdu_channel_control
+    description: Control of the power channel of the telemetry antenna.
+    access: extern
+  antenna_power_channel_current:
+    type: d16<0..5>
+    description: Current of the power channel of the telemetry antenna.
+    unit: A
+    access: readonly
+  antenna_power_channel_status:
+    type: d16<0..5>
+    description: Status of the power channel of the telemetry antenna.
+    access: readonly
+
+  led_board_power_channel_ctrl:
+    type: pdu_channel_control
+    description: Control of the power channel of the led board.
+    access: extern
+  led_board_power_channel_current:
+    type: d8<0..5>
+    description: Current of the power channel of the led board.
+    access: readonly
+  led_board_power_channel_status:
+    type: pdu_channel_status
+    description: Status of the power channel of the led board.
+    unit: A
+    access: readonly
+
+  mcu_temperature:
+    type: d8<-1..150>
+    unit: °C
+    description: Temperature of the input board
+    access: readonly
+  error_level_mcu_temperature:
+    type: error_level
+    description: Status of the mcu temperature.
+    access: readonly
+  error_level_config_mcu_temperature:
+    type: error_level_config
+    description: Status configuration of the mcu temperature.
+    access: extern
+
+
+  
+
+
+
 tx_streams:
   state:
     description: State information about the pdu12.
     interval: 0ms-500ms
     mapping:
       - state
+      - sdc_status
+  temperature:
+    description: Temperature of the board.
+    interval: 500ms
+    mapping:
+      - mcu_temperature
+  
+  errors:
+    description: Errors comming from the board
+    interval: 0ms-1000ms
+    mapping:
+      - assertion_fault
+      - error_level_mcu_temperature
+
+  channel_status:
+    description: State of the high and low power channel
+    interval: 0ms-500ms
+    mapping:
+      - levitation_boards_power_channel_status
+      - guidance_boards_power_channel_status
+      - motor_driver_power_channel_status
+      - input_board_power_channel_status
+      - raspberry_pi_power_channel_status
+      - antenna_power_channel_status
+      - led_board_power_channel_status
+
+  channel_currents1:
+    description: Currents of the power channels.
+    interval: 100ms
+    mapping:
+      - levitation_boards_power_channel_current
+      - guidance_boards_power_channel_current
+      - motor_driver_power_channel_current
+      - input_board_power_channel_current
+
+  channel_currents2:
+    description: Currents of the power channels.
+    interval: 100ms
+    mapping:
+      - raspberry_pi_power_channel_current
+      - antenna_power_channel_current
+      - led_board_power_channel_current
+
+
+
+
 

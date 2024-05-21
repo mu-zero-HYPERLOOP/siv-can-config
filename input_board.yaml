@@ -13,7 +13,19 @@ object_dictionary:
   sdc_status: 
     type: sdc_status
     description: Status of the SDC-Switch
-    access: readonly
+
+  # System Control targets
+  target_acceleration:
+    type: d16<-50..50>
+    unit: m/s²
+    description: Target acceleration of the motor control.
+    access: extern
+  assert_45V_system_online:
+    type: bool_t
+    description: Tells the input board to assert that the 45V link is online.
+
+
+
 
   # State estimation
   position:
@@ -32,8 +44,99 @@ object_dictionary:
     description: Estimated acceleration of the pod.
     access: readonly
   linear_encoder_count:
-    type: u16
+    type: i16
     description: Counted stripes by the linear encoder.
+    access: readonly
+
+  raw_acceleration:
+    type: d16<-50..50>
+    unit: m/s²
+    description: Raw acceleration from the ADXL313 accelerometer.
+    access: readonly
+  error_acceleration_out_of_range:
+    type: error_flag
+    description: Error flag set, when the acceleration is out of the expected range.
+    access: readonly
+  acceleration_calibration_variance:
+    type: d16<-1..1>
+    unit: m/s²
+    description: Estimated variance during calibration.
+    access: readonly
+  acceleration_calibration_offset:
+    type: d16<-10..10>
+    unit: m/s²
+    description: Calibration offset of the acceleration.
+    access: readwrite
+  acceleration_calibration_target:
+    type: d16<-10..10>
+    unit: m/s²
+    description: Calibration target of the acceleration.
+    access: extern
+
+  raw_lateral_acceleration:
+    type: d16<-50..50>
+    unit: m/s²
+    description: Raw acceleration from the ADXL313 accelerometer.
+    access: readonly
+  lateral_acceleration:
+    type: d16<-10..10>
+    unit: m/s²
+    description: Lateral acceleration
+    access: readonly
+  error_lateral_acceleration_out_of_range:
+    type: error_flag
+    description: Error flag set, when the lateral acceleration is out of range.
+    access: readonly
+  lateral_acceleration_calibration_variance:
+    type: d16<-10..10>
+    unit: m/s²
+    description: Variance estimated during calibration.
+    access: readonly
+  lateral_acceleration_calibration_offset:
+    type: d16<-10..10>
+    unit: m/s²
+    description: Calibration offset of the lateral acceleration.
+    access: readonly
+  lateral_acceleration_calibration_target:
+    type: d16<-10..10>
+    unit: m/s²
+    description: Calibration target of the lateral acceleration.
+    access: readonly
+
+
+  raw_vertical_acceleration:
+    type: d16<-50..50>
+    unit: m/s²
+    description: Raw acceleration from the ADXL313 accelerometer.
+    access: readonly
+  vertical_acceleration:
+    type: d16<-10..10>
+    unit: m/s²
+    description: Vertical acceleration.
+    access: readonly
+  error_vertical_acceleration_out_of_range:
+    type: error_flag
+    description: Error flag set, when the vertical acceleration is out of range.
+    access: readonly
+  vertical_acceleration_calibration_variance:
+    type: d16<-10..10>
+    unit: m/s²
+    description: Variance estimated during calibration.
+    access: readonly
+  vertical_acceleration_calibration_offset:
+    type: d16<-10..10>
+    unit: m/s²
+    description: Calibration offset of the vertical acceleration
+    access: readonly
+  vertical_acceleration_calibration_target:
+    type: d16<-10..10>
+    unit: m/s²
+    description: Calibration target of the vertical acceleration
+    access: readonly
+
+  error_acceleration_calibation_failed:
+    type: error_flag
+    description: Flag set, when the calibration fails.
     access: readonly
 
 
@@ -49,6 +152,16 @@ object_dictionary:
     unit: V
     description: Voltage of the 24V Battery.
     access: readonly
+  bat24_voltage_calibration_offset:
+    type: d32<-10..10>
+    unit: V
+    description: Calibration offset of the isolated voltage measurement of the battery.
+    access: readwrite
+  bat24_voltage_calibration_target:
+    type: d32<0..50>
+    unit: V
+    description: Expected voltage during calibration of the battery voltage.
+    access: extern
   error_level_bat24_under_voltage:
     type: error_level
     description: Status of the  bat24 under voltage.
@@ -71,6 +184,23 @@ object_dictionary:
     unit: A
     description: Current through the 24V Battery
     access: readonly
+  bat24_current_calibration_offset:
+    type: d32<-30..30>
+    unit: A
+    description: Calibration offset of the 24V Battery current.
+    access: readwrite
+  bat24_current_calibration_target:
+    type: d32<-30..30>
+    unit: A
+    description: Expected voltage during calibration
+    access: readwrite
+  bat24_current_calibration_mode:
+    type: calibration_mode
+    description: Mode of the calibration.
+    access: readwrite
+  error_bat24_current_calibration_failed:
+    type: error_flag
+    description: Error flag, which is set when the calibration fails, by determining a unreasonable offset.
   error_level_bat24_over_current:
     type: error_level
     description: Status of the bat24 over current.
@@ -86,6 +216,16 @@ object_dictionary:
     unit: V
     description: Voltage of the 24V link
     access: readonly
+  link24_voltage_calibration_offset:
+    type: d32<-10..10>
+    unit: V
+    description: Calibration offset of the 24V link voltage.
+    access: readwrite
+  link24_voltage_calibration_target:
+    type: d32<0..50>
+    unit: V
+    description: Expected voltage during calibration of the 24V link voltage.
+    access: extern
   error_level_link24_under_voltage:
     type: error_level
     description: Status of the link24 under voltage.
@@ -108,6 +248,16 @@ object_dictionary:
     unit: A
     description: Current through the 24V link.
     access: readonly
+  link24_current_calibration_offset:
+    type: d32<-10..10>
+    unit: A
+    description: Calibration offset of the 24V link current.
+    access: readwrite
+  link24_current_calibration_target:
+    type: d32<-30..30>
+    unit: A
+    description: Calibration target of the 24V link current.
+    access: extern
   error_level_link24_over_current:
     type: error_level
     description: Status of the link24 over current.
@@ -120,11 +270,17 @@ object_dictionary:
   link45_voltage:
     type: d32<0..1000>
     unit: V
-    description: Voltage of the 24V link
+    description: Voltage of the 45V link
     access: readonly
-  link45_expect_online:
-    type: bool_t
-    description: Expects that the link45 is online
+  link45_voltage_calibration_offset:
+    type: d32<-100..100>
+    unit: V
+    description: Calibration offset of the 45V link.
+    access: readwrite
+  link45_voltage_calibration_target:
+    type: d32<0..1000>
+    unit: V
+    description: Calibration target of the 45V link
     access: extern
   error_level_link45_under_voltage:
     type: error_level
@@ -146,8 +302,18 @@ object_dictionary:
   link45_current:
     type: d32<-1000..1000>
     unit: A
-    description: Current through the 24V link.
+    description: Current through the 45V link.
     access: readonly
+  link45_current_calibration_offset:
+    type: d32<-100..100>
+    unit: A
+    description: Calibration offset of the 45V link current.
+    access: readwrite
+  link45_current_calibration_target:
+    type: d32<-1000..1000>
+    unit: A
+    description: Calibration target of the 45V link current.
+    access: extern
   error_level_link45_over_current:
     type: error_level
     description: Status of the link45 over current.
@@ -163,6 +329,16 @@ object_dictionary:
     unit: bar
     description: Pressure of the cooling cycle.
     access: readonly
+  cooling_cycle_pressure_calibration_offset:
+    type: d32<-1..9>
+    unit: bar
+    description: Calibration offset of the cooling cycle pressure.
+    access: readwrite
+  cooling_cycle_pressure_calibration_target:
+    type: d32<-1..9>
+    unit: bar
+    description: Target of the calibration of the cooling cycle
+    access: extern
   error_level_cooling_cycle_under_pressure:
     type: error_level
     description: Status of the cooling cycle under pressure.
@@ -224,6 +400,10 @@ object_dictionary:
     type: error_level_config
     description: Status configuration of the bat24 temperature.
     access: extern
+  error_bat24_temperature_invalid:
+    type: error_flag
+    description: The measured temperatures doesn't make sense. Probably not connected or to the wrong pin.
+    access: readonly
 
   supercap_temperature:
     type: d8<-1..150>
@@ -272,6 +452,10 @@ object_dictionary:
     unit: °C
     description: Ambient temperature.
     access: readonly
+  error_ambient_temperature_invalid:
+    type: error_flag
+    description: Checked during calibration if the input voltage is 0. Could indicate the the sensor is not connected properly.
+    access: readonly
   error_level_ambient_temperature:
     type: error_level
     description: Status of the ambient temperature.
@@ -280,6 +464,13 @@ object_dictionary:
     type: error_level_config
     description: Status configuration of the ambient temperature.
     access: extern
+
+
+  cooling_cycle_flow_rate:
+    type: d8<0..1>
+    description: Flow rate of the cooling cycle.
+    unit: l/s
+    access: readonly
 
   assertion_fault:
     type: error_flag
@@ -301,7 +492,22 @@ tx_streams:
       - position
       - velocity
       - acceleration
+
+  linear_encoder:
+    description: Linear encoder count
+    interval: 50ms-1000ms
+    mapping:
       - linear_encoder_count
+
+  accelerations:
+    description: Additionall acceleration data
+    interval: 200ms
+    mapping:
+      - raw_acceleration
+      - lateral_acceleration
+      - vertical_acceleration
+
+    
   bat24:
     description: Current and voltage of the 24V battery.
     interval: 100ms
