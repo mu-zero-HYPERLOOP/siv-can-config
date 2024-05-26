@@ -15,4 +15,5 @@ nodes:
   levitation_board6: levitation_board.yaml
   power_board12: power_board12.yaml
   power_board24: power_board24.yaml
+  gamepad : gamepad.yaml
 

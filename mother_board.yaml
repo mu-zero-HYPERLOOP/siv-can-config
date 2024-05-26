@@ -25,12 +25,8 @@ object_dictionary:
     unit: m
     access: readwrite
   target_acceleration:
-    type: d32<0..5>
+    type: d32<-50..50>
     unit: m/s²
-    access: readwrite
-  target_velocity:
-    type: d32<0..10>
-    unit: m/s
     access: readwrite
 
 
@@ -154,6 +150,13 @@ object_dictionary:
     type: sdc_status
     access: extern
 
+  gamepad_lt2:
+    type: d8<0..1>
+    description: lt2 input
+  gamepad_rt2:
+    type: d8<0..1>
+    description: rt2 input
+
   
 
 tx_streams:
@@ -166,6 +169,7 @@ tx_streams:
     description: Commands the motor driver
     interval: 0ms-500ms
     mapping:
+      - target_acceleration
       - motor_driver_command
 
   guidance_command:
@@ -247,6 +251,11 @@ rx_streams:
     state:
       state: power_board24_state
       sdc_status: power_board24_sdc_status
+
+  gamepad:
+    input:
+      lt2 : gamepad_lt2
+      rt2 : gamepad_rt2
 
   
 

@@ -21,6 +21,34 @@ object_dictionary:
     unit: m/s²
     description: Local estimation of the acceleration.
     access: readonly
+  acceleration_calibration_variance:
+    type: d64<-1..1> 
+    unit: m/s²
+    description: Variance of the local acceleration reading
+    access: readonly
+  acceleration_calibration_offset:
+    type: d64<-1..1>
+    unit: m/s²
+    description: Calibration offset of the acceleration
+    access: readwrite
+  error_acceleration_out_of_range:
+    type: error_flag
+    description: The local acceleration reading on the motor driver is out of the expected range.
+    friend: acceleration
+    access: readonly
+  error_acceleration_calibration_failed:
+    type: error_flag
+    description: The calibration of the accelerometer failed.
+    friend: acceleration
+    access: readonly
+  target_acceleration:
+    type: d32<-50..50>
+    unit: m/s²
+    access: extern
+  error_invalid_target_acceleration:
+    type: error_flag
+    description: The target acceleraiton is not valid.
+    access: readonly
 
 
   external_acceleration:
@@ -34,85 +62,34 @@ object_dictionary:
     description: External estimation of the velocity of the pod.
     access: readonly
   external_position:
-    type: d16<-0..50>
+    type: d16<-50..50>
     unit: m
     description: External estimation of the positin of the pod.
     access: extern
 
   
-  voltage45:
+  vdc45:
     type: d16<-100..100>
     unit: V
     description: Voltage of the 45V plane.
     access: readonly
-  error_level_over_voltage45:
+  error_level_over_vdc45:
     type: error_level
-    description: Status of over voltage45.
+    description: The VDC on the motor driver is to high
+    friend: vdc45
     access: readonly
-  error_level_config_over_voltage45:
+  error_level_config_over_vdc45:
     type: error_level_config
     description: Status configuration of over voltage45.
     access: extern
-  error_level_under_voltage45:
+  error_level_under_vdc45:
     type: error_level
-    description: Status of under voltage45.
+    description: The VDC on the motor driver is to low.
+    friend: vdc45
     access: readonly
-  error_level_config_under_voltage45:
+  error_level_config_under_vdc45:
     type: error_level_config
     description: Status configuration of under voltage45.
-    access: extern
-
-  mosfet_v1_temperature:
-    type: d8<-1..150>
-    unit: °C
-    description: Temperature of the v1 mosfet.
-    access: readonly
-  mosfet_v2_temperature:
-    type: d8<-1..150>
-    unit: °C
-    description: Temperature of the v2 mosfet.
-    access: readonly
-  link45_connector_temperature:
-    type: d8<-1..150>
-    unit: °C
-    description: Temperature of the vdc connector.
-    access: readonly
-  error_level_mosfet_temperature:
-    type: error_level
-    description: Status of the v1 mosfet temperature.
-    access: readonly
-  error_level_config_mosfet_temperature:
-    type: error_level_config
-    description: Status configuration of the v1 mosfet temperature.
-    access: extern
-
-  motor_temperature1:
-    type: d8<-1..150>
-    unit: °C
-    description: First reading of the motor temperature.
-    access: readonly
-  motor_temperature2:
-    type: d8<-1..150>
-    unit: °C
-    description: Second reading of the motor temperature.
-    access: readonly
-  motor_temperature3:
-    type: d8<-1..150>
-    unit: °C
-    description: Second reading of the motor temperature.
-    access: readonly
-  motor_temperature4:
-    type: d8<-1..150>
-    unit: °C
-    description: Second reading of the motor temperature.
-    access: readonly
-  error_level_motor_temperature:
-    type: error_level
-    description: Status of the motor temperature
-    access: readonly
-  error_level_config_motor_temperature:
-    type: error_level_config
-    description: Status of the motor temperature
     access: extern
 
   mcu_temperature:
@@ -120,9 +97,14 @@ object_dictionary:
     unit: °C
     description: Temperature of the input board
     access: readonly
+  error_mcu_temperature_invalid:
+    type: error_flag
+    description: The motor drivers mcu temperature is not sensible.
+    friend: mcu_temperature
   error_level_mcu_temperature:
     type: error_level
     description: Status of the mcu temperature.
+    friend: mcu_temperature
     access: readonly
   error_level_config_mcu_temperature:
     type: error_level_config
@@ -144,22 +126,15 @@ tx_streams:
     description: Temperature readings
     interval: 2500ms
     mapping:
-      - motor_temperature1
-      - motor_temperature2
-      - motor_temperature3
-      - motor_temperature4
-      - mosfet_v1_temperature
-      - mosfet_v2_temperature
-      - link45_connector_temperature
       - mcu_temperature
   errors:
     description: All error flags from the motor.
     interval: 0ms-1000ms
     mapping:
-      - error_level_over_voltage45
-      - error_level_under_voltage45
-      - error_level_mosfet_temperature
-      - error_level_motor_temperature
+      - error_acceleration_out_of_range
+      - error_level_over_vdc45
+      - error_level_under_vdc45
+      - error_mcu_temperature_invalid
       - error_level_mcu_temperature
       - assertion_fault
 

@@ -1,14 +1,14 @@
 
 error_level_config:
-  ignore_info: bool_t
-  ignore_warning: bool_t
-  ignore_error: bool_t
   info_thresh : d32<-1000..1000>
   info_timeout: d32<0..60>
   warning_thresh: d32<-1000..1000>
   warning_timeout: d32<0..60>
   error_thresh: d32<-1000..1000>
   error_timeout: d32<0..60>
+  ignore_info: bool_t
+  ignore_warning: bool_t
+  ignore_error: bool_t
   
 complex_polar:
   rho : d32<0..1>
