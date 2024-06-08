@@ -137,7 +137,7 @@ object_dictionary:
     description: Calibration target of the vertical acceleration
     access: readonly
 
-  error_acceleration_calibation_failed:
+  error_acceleration_calibration_failed:
     type: error_flag
     description: The calibration of the accelerometer failed.
     access: readonly
@@ -564,6 +564,13 @@ object_dictionary:
     unit: l/s
     access: readonly
 
+
+  loop_frequency: 
+    type: d32<0..1000>
+    description: Frequency of the main loop
+    unit: kHz
+    access: readonly
+
   assertion_fault:
     type: error_flag
     description: The input board failed an assertion. Restart required.
@@ -639,6 +646,7 @@ tx_streams:
     interval: 1ms-1000ms
     mapping:
       - error_acceleration_out_of_range
+      - error_acceleration_calibration_failed
       - error_lateral_acceleration_out_of_range
       - error_vertical_acceleration_out_of_range
       - error_bat24_voltage_invalid
@@ -678,3 +686,6 @@ rx_streams:
   mother_board:
     motor_command:
       target_acceleration: target_acceleration
+    input_board_command:
+      input_board_command : command
+      input_board_assert_45V_online: assert_45V_system_online

@@ -27,9 +27,17 @@ object_dictionary:
   target_acceleration:
     type: d32<-50..50>
     unit: m/s²
+    access: readonly
+
+  acceleration_target_velocity:
+    type: d32<0..10>
+    unit: m/s
     access: readwrite
 
-
+  velocity_pid:
+    type: pid_parameters
+    description: PID parameters of the velocity PID controller.
+    access: readwrite
 
   position:
     type: d16<-0..50>
@@ -106,32 +114,19 @@ object_dictionary:
     type: sdc_status
     access: extern
 
-  levitation_board4_state:
-    type: levitation_state
-    access: extern
-  levitation_board4_sdc_status:
-    type: sdc_status
-    access: extern
-
-  levitation_board5_state:
-    type: levitation_state
-    access: extern
-  levitation_board5_sdc_status:
-    type: sdc_status
-    access: extern
-
-  levitation_board6_state:
-    type: levitation_state
-    access: extern
-  levitation_board6_sdc_status:
-    type: sdc_status
-    access: extern
-
 
   input_board_state:
     type: input_board_state
     description: State of the input board
     access : extern
+  input_board_command:
+    type: input_board_command
+    description: Command send to the input board.
+    access: readonly
+  input_board_assert_45V_online:
+    type: bool_t
+    description: Asserts that the 45V system is online.
+    access: readonly
   input_board_sdc_status:
     type: sdc_status
     access: extern
@@ -150,6 +145,13 @@ object_dictionary:
     type: sdc_status
     access: extern
 
+
+  gamepad_max_acceleration:
+    type: d32<0..10>
+    unit: m/s²
+    decription: Maximum acceleration that can be controlled by the gampad.
+    access: readwrite
+
   gamepad_lt2:
     type: d8<0..1>
     description: lt2 input
@@ -165,12 +167,19 @@ tx_streams:
     interval: 0ms-500ms
     mapping:
       - state
+      - command
   motor_command:
     description: Commands the motor driver
     interval: 0ms-500ms
     mapping:
       - target_acceleration
       - motor_driver_command
+  input_board_command:
+    description: Command send to the input board.
+    interval: 0ms-500ms
+    mapping:
+      - input_board_command
+      - input_board_assert_45V_online
 
   guidance_command:
     description: Commands the guidance system
@@ -216,21 +225,6 @@ rx_streams:
     state:
       state: levitation_board3_state
       sdc_status: levitation_board3_sdc_status
-
-  levitation_board4:
-    state:
-      state: levitation_board4_state
-      sdc_status: levitation_board4_sdc_status
-
-  levitation_board5:
-    state:
-      state: levitation_board5_state
-      sdc_status: levitation_board5_sdc_status
-
-  levitation_board6:
-    state:
-      state: levitation_board6_state
-      sdc_status: levitation_board6_sdc_status
 
   input_board:
     state:

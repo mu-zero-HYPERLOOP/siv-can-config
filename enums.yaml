@@ -33,84 +33,97 @@ pdu_channel_status:
 global_state:
   INIT: ~
   IDLE: ~
-  DISCONNECTING : ~
+  ARMING45 : ~
   PRECHARGE : ~
+  DISARMING45: ~
   READY: ~
   START_LEVITATION : ~
   LEVITATION_STABLE: ~
   START_GUIDANCE : ~
   GUIDANCE_STABLE : ~
   ACCELERATION : ~
+  CONTROLLER: ~
   CRUISING : ~
   DECELERATION : ~
   STOP_LEVITATION: ~
+  STOP_GUIDANCE: ~
+  SHUTDOWN: ~
+  RESTARTING: ~
+  CALIBRATING: ~
 
 global_command:
   NONE: ~
-  PRECHARGE: ~
-  DISCONNECT: ~
+  START_45: ~
+  STOP_45: ~
   START_LEVITATION: ~
+  STOP_LEVITATION: ~
   START_PROPULSION: ~
   STOP_PROPULSION: ~
-  STOP_LEVITATION: ~
+  START_CONTROLLER: ~
+  STOP_CONTROLLER: ~
   ABORT: ~
-  MANUAL_CONTROL: ~
   EMERGENCY: ~
+  SHUTDOWN: ~
+  RESTART: ~
+  CALIBRATE: ~
 
 # MLU State Machine types
 levitation_state:
   INIT: ~
   IDLE: ~
+  ARMING45: ~
   PRECHARGE: ~
   READY: ~
   START : ~
   CONTROL : ~
-  STOP : ~
+  STOP: ~
+  DISARMING45: ~
 
 levitation_command:
   NONE: ~
+  ARM45: ~
   PRECHARGE: ~
   START: ~
   STOP: ~
   ABORT: ~
-  DISCONNECT: ~
+  DISARM45: ~
 
 # MGU State Machine types
 guidance_state:
   INIT: ~
   IDLE: ~
+  ARMING45: ~
   PRECHARGE: ~
   READY: ~
-  START : ~
   CONTROL : ~
-  STOP : ~
+  DISARMING45: ~
 
 guidance_command:
   NONE: ~
+  ARM45: ~
   PRECHARGE: ~
   START: ~
   STOP: ~
-  DISCONNECT: ~
+  DISARM45: ~
 
 # Motor State Machine types
 motor_state:
   INIT: ~
   IDLE: ~
+  ARMING45: ~
   PRECHARGE: ~
   READY: ~
-  ACCELERATE : ~
   CONTROL : ~
-  DECELERATE : ~
-  MANUAL : ~
-  ERROR: ~
+  DISARMING45: ~
 
 motor_command:
   NONE: ~
+  ARM45 : ~
   PRECHARGE: ~
-  ACCELERATE: ~
-  DECELERATE: ~
-  DISCONNECT: ~
-  MANUAL_CONTROL: ~
+  START: ~
+  STOP: ~
+  ABORT: ~
+  DISARM45: ~
 
 input_board_state:
   INIT: ~
@@ -134,33 +147,3 @@ perf_pattern:
   LINEAR: ~
   RANDOM: ~
   COLD: ~
-
-perf_func:
-  CMATH: ~
-  STD_POLAR: ~
-  LOOKUP256: ~
-  LOOKUP256_LINT: ~
-  LOOKUP512: ~
-  LOOKUP512_LINT: ~
-  LOOKUP1024: ~
-  LOOKUP1024_LINT: ~
-  LOOKUP2048: ~
-  LOOKUP2048_LINT: ~
-  LOOKUP4096: ~
-  LOOKUP4096_LINT: ~
-  TAYLOR3: ~
-  TAYLOR4: ~
-  TAYLOR5: ~
-  TAYLOR6: ~
-  TAYLOR7: ~
-  TAYLOR8: ~
-  TAYLOR9: ~
-  TAYLOR10: ~
-  CORDIC3: ~
-  CORDIC4: ~
-  CORDIC5: ~
-  CORDIC6: ~
-  CORDIC7: ~
-  CORDIC8: ~
-  CORDIC9: ~
-  CORDIC10: ~
