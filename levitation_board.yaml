@@ -212,6 +212,48 @@ object_dictionary:
   gamepad_x_down:
     type: bool_t
 
+  airgap_pid:
+    type: pid_parameters
+    description: PID parameters of the airgap control
+    access: readwrite
+
+  current_pi:
+    type: pid_parameters
+    description: PI parameters of the current control
+    access: readwrite
+
+  left_airgap_controller_p_term:
+    type: d16<-15..15>
+    access: readonly
+  left_airgap_controller_i_term:
+    type: d16<-15..15>
+    access: readonly
+  left_airgap_controller_d_term:
+    type: d16<-15..15>
+    access: readonly
+  right_airgap_controller_p_term:
+    type: d16<-15..15>
+    access: readonly
+  right_airgap_controller_i_term:
+    type: d16<-15..15>
+    access: readonly
+  right_airgap_controller_d_term:
+    type: d16<-15..15>
+    access: readonly
+
+  left_current_controller_p_term:
+    type: d16<-50..50>
+    access: readonly
+  left_current_controller_i_term:
+    type: d16<-50..50>
+    access: readonly
+  right_current_controller_p_term:
+    type: d16<-50..50>
+    access: readonly
+  right_current_controller_i_term:
+    type: d16<-50..50>
+    access: readonly
+  
 
 tx_streams:
   state:
@@ -254,6 +296,27 @@ tx_streams:
       - airgap_right
       - target_airgap_left
       - target_airgap_right
+  controller_debug_1:
+    interval: 5ms
+    mapping:
+      - left_airgap_controller_p_term
+      - left_airgap_controller_i_term
+      - left_airgap_controller_d_term
+  controller_debug_2:
+    interval: 5ms
+    mapping:
+      - right_airgap_controller_p_term
+      - right_airgap_controller_i_term
+      - right_airgap_controller_d_term
+
+  controller_debug_3:
+    interval: 5ms
+    mapping:
+      - left_current_controller_p_term
+      - left_current_controller_i_term
+      - right_current_controller_p_term
+      - right_current_controller_i_term
+
 
 
 rx_streams:
