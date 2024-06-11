@@ -282,7 +282,7 @@ tx_streams:
       - assertion_fault
   voltage_and_currents:
     description: Voltage and current readings of the guidance board.
-    interval: 5ms
+    interval: 10ms
     mapping:
       - vdc_voltage
       - current_left
@@ -297,20 +297,20 @@ tx_streams:
       - target_airgap_left
       - target_airgap_right
   controller_debug_1:
-    interval: 5ms
+    interval: 10ms
     mapping:
       - left_airgap_controller_p_term
       - left_airgap_controller_i_term
       - left_airgap_controller_d_term
   controller_debug_2:
-    interval: 5ms
+    interval: 10ms
     mapping:
       - right_airgap_controller_p_term
       - right_airgap_controller_i_term
       - right_airgap_controller_d_term
 
   controller_debug_3:
-    interval: 5ms
+    interval: 10ms
     mapping:
       - left_current_controller_p_term
       - left_current_controller_i_term

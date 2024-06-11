@@ -164,32 +164,32 @@ object_dictionary:
 tx_streams:
   state:
     description: State of the global FSM.
-    interval: 0ms-500ms
+    interval: 1ms-500ms
     mapping:
       - state
       - command
   motor_command:
     description: Commands the motor driver
-    interval: 0ms-500ms
+    interval: 1ms-500ms
     mapping:
       - target_acceleration
       - motor_driver_command
   input_board_command:
     description: Command send to the input board.
-    interval: 0ms-500ms
+    interval: 1ms-500ms
     mapping:
       - input_board_command
       - input_board_assert_45V_online
 
   guidance_command:
     description: Commands the guidance system
-    interval: 0ms-500ms
+    interval: 1ms-500ms
     mapping:
       - guidance_command
 
   levitation_command:
     description: Commands the levitation system
-    interval: 0ms-500ms
+    interval: 1ms-500ms
     mapping:
       - levitation_command
 
