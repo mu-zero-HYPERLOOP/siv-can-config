@@ -14,4 +14,13 @@ pid_parameters:
   Kp : d64<0..100>
   Ki : d64<0..100>
   Kd : d64<0..100>
+  Ki_min : d64<-500..0>
+  Ki_max : d64<0..500>
+  ema_alpha : d64<0..1>
   
+pi_parameters:
+  Kp : d64<0..100>
+  Ki : d64<0..100>
+  Ki_min : d64<-500..0>
+  Ki_max : d64<0..500>
+  ema_alpha : d64<0..1>
