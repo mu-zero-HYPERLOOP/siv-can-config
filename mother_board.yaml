@@ -132,14 +132,14 @@ object_dictionary:
     access: extern
 
   power_board12_state:
-    type: pdu_state
+    type: pdu_12v_state
     access: extern
   power_board12_sdc_status:
     type: sdc_status
     access: extern
 
   power_board24_state:
-    type: pdu_state
+    type: pdu_24v_state
     access: extern
   power_board24_sdc_status:
     type: sdc_status

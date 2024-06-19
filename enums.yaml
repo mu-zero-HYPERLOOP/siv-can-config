@@ -139,9 +139,21 @@ calibration_mode:
   USE_TARGET: ~
   DISABLE: ~
 
-pdu_state:
+pdu_24v_state:
   INIT: ~
   RUNNING : ~
+
+pdu_12v_state:
+  INIT: ~
+  CHANNELS_OFF: ~
+  CHANNELS_TELEMETRY: ~
+  CHANNELS_ON: ~
+
+pdu_12v_command:
+  NONE: ~
+  START: ~
+  STOP: ~
+  TELEMETRY: ~
 
 perf_pattern:
   LINEAR: ~

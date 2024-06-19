@@ -2,9 +2,14 @@ description: Power distribution unit 12V. (PDU12)
 
 object_dictionary:
   state:
-    type: pdu_state
+    type: pdu_12v_state
     description: State of the pdu12.
     access: readonly
+
+  command:
+    type: pdu_12v_command
+    description: Command for the pdu board state machine.
+    access: external
 
   sdc_status:
     type: sdc_status
@@ -13,7 +18,7 @@ object_dictionary:
 
   assertion_fault:
     type: error_flag
-    description: Error flag, which is set when a assertion fails.
+    description: Error flag, which is set when an assertion fails.
     access: readonly
 
   loop_frequency:
@@ -24,44 +29,44 @@ object_dictionary:
 
   levitation_boards_power_channel_ctrl:
     type: pdu_channel_control
-    description: Control of the power channel for all 6 levitation boards.
+    description: Control of the power channel for all 3 levitation boards.
     access: extern
   levitation_boards_power_channel_current:
-    type: d16<0..5>
-    description: Current of the power channel for all 6 levitation boards.
+    type: d8<0..5>
+    description: Current of the power channel for all 3 levitation boards.
     unit: A
     access: readonly
   levitation_boards_power_channel_status:
     type: pdu_channel_status
-    description: State of the power channel for all 6 levitation boards.
+    description: State of the power channel for all 3 levitation boards.
     access: readonly
 
   guidance_boards_power_channel_ctrl:
     type: pdu_channel_control
-    description: Control of the power channel for both levitation boards.
+    description: Control of the power channel for both guidance boards.
     access: extern
   guidance_boards_power_channel_current:
-    type: d16<0..5>
-    description: Current of the power channel for both levitation boards.
+    type: d8<0..5>
+    description: Current of the power channel for both guidance boards.
     unit: A
     access: readonly
   guidance_boards_power_channel_status:
     type: pdu_channel_status
-    description: Status of the power channel for both levitation boards..
+    description: Status of the power channel for both guidance boards.
     access: readonly
 
   motor_driver_power_channel_ctrl:
     type: pdu_channel_control
-    description: Control of the power channel of the motor driver.
+    description: Control of the power channel of the motor driver board.
     access: extern
   motor_driver_power_channel_current:
-    type: d16<0..5>
-    description: Current of the power channel of the motor driver.
+    type: d8<0..5>
+    description: Current of the power channel of the motor driver board.
     unit: A
     access: readonly
   motor_driver_power_channel_status:
     type: pdu_channel_status
-    description: Status of the power channel of the motor driver.
+    description: Status of the power channel of the motor driver board.
     access: readonly
 
   input_board_power_channel_ctrl:
@@ -69,7 +74,7 @@ object_dictionary:
     description: Control of the power channel fo the input board.
     access: extern
   input_board_power_channel_current:
-    type: d16<0..5>
+    type: d8<0..5>
     description: Current of the power channel of the input board.
     unit: A
     access: readonly
@@ -83,7 +88,7 @@ object_dictionary:
     description: Control of the power channel of the raspberry pi
     access: extern
   raspberry_pi_power_channel_current:
-    type: d16<0..5>
+    type: d8<0..5>
     description: Current of the power channel of the raspberry pi.
     unit: A
     access: readonly
@@ -97,12 +102,12 @@ object_dictionary:
     description: Control of the power channel of the telemetry antenna.
     access: extern
   antenna_power_channel_current:
-    type: d16<0..5>
+    type: d8<0..5>
     description: Current of the power channel of the telemetry antenna.
     unit: A
     access: readonly
   antenna_power_channel_status:
-    type: d16<0..5>
+    type: pdu_channel_status
     description: Status of the power channel of the telemetry antenna.
     access: readonly
 
@@ -111,13 +116,32 @@ object_dictionary:
     description: Control of the power channel of the led board.
     access: extern
   led_board_power_channel_current:
-    type: d8<0..5>
+    type: d8<0..10>
     description: Current of the power channel of the led board.
+    unit: A
     access: readonly
   led_board_power_channel_status:
     type: pdu_channel_status
     description: Status of the power channel of the led board.
+    access: readonly
+
+  fans_power_channel_ctrl:
+    type: pdu_channel_control
+    description: Control of the power channel of the cooling fans.
+    access: extern
+  fans_power_channel_current:
+    type: d8<0..5>
+    description: Current of the power channel of the cooling fans.
     unit: A
+    access: readonly
+  fans_power_channel_status:
+    type: pdu_channel_status
+    description: Status of the power channel of the cooling fans.
+    access: readonly
+
+  error_any_short:
+    type: error_flag
+    description: Set if any of the channels detects a short circuit
     access: readonly
 
   mcu_temperature:
@@ -134,10 +158,14 @@ object_dictionary:
     description: Status configuration of the mcu temperature.
     access: extern
 
+  total_power:
+    type: d16<0..17>
+    description: Total power output of all channels combined.
+    access: readonly
+    unit: W
+
 
   
-
-
 
 tx_streams:
   state:
@@ -157,11 +185,12 @@ tx_streams:
     interval: 0ms-1000ms
     mapping:
       - assertion_fault
+      - error_any_short
       - error_level_mcu_temperature
 
   channel_status:
     description: State of the high and low power channel
-    interval: 0ms-500ms
+    interval: 0ms-1s
     mapping:
       - levitation_boards_power_channel_status
       - guidance_boards_power_channel_status
@@ -171,22 +200,25 @@ tx_streams:
       - antenna_power_channel_status
       - led_board_power_channel_status
 
-  channel_currents1:
+  channel_currents:
     description: Currents of the power channels.
-    interval: 100ms
-    mapping:
-      - levitation_boards_power_channel_current
-      - guidance_boards_power_channel_current
-      - motor_driver_power_channel_current
-      - input_board_power_channel_current
-
-  channel_currents2:
-    description: Currents of the power channels.
-    interval: 100ms
+    interval: 500ms
     mapping:
       - raspberry_pi_power_channel_current
       - antenna_power_channel_current
       - led_board_power_channel_current
+      - levitation_boards_power_channel_current
+      - guidance_boards_power_channel_current
+      - motor_driver_power_channel_current
+      - input_board_power_channel_current
+      - fans_power_channel_current
+
+  power_consumption:
+    description: Power consumption of the channels.
+    interval: 500ms
+    mapping:
+      - total_power
+
 
 
 
