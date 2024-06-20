@@ -141,7 +141,15 @@ calibration_mode:
 
 pdu_24v_state:
   INIT: ~
-  RUNNING : ~
+  CHANNELS_OFF: ~
+  CHANNELS_IDLE: ~
+  CHANNELS_ON: ~
+
+pdu_24v_command:
+  NONE: ~
+  START: ~
+  IDLE: ~
+  STOP: ~
 
 pdu_12v_state:
   INIT: ~

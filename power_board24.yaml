@@ -6,6 +6,11 @@ object_dictionary:
     description: State of the pdu24.
     access: readonly
 
+  command:
+    type: pdu_24v_command
+    description: Command for the pdu board state machine.
+    access: external
+
   sdc_status:
     type: sdc_status
     description: State of the sdc switch
@@ -22,10 +27,6 @@ object_dictionary:
     unit: Hz
     access: readonly
   
-  cooling_pump_channel_ctrl:
-    type: pdu_channel_control
-    description: Channel control for the cooling pump power channel.
-    access: extern
   cooling_pump_channel_current:
     type: d8<0..10>
     description: Current of the cooling pump channel.
@@ -36,10 +37,6 @@ object_dictionary:
     description: Channel status of the cooling pump power channel.
     access: readonly
 
-  sdc_board_power_channel_ctrl:
-    type: pdu_channel_control
-    description: Channel control of the sdc board power channel.
-    access: extern
   sdc_board_power_channel_current:
     type: d8<0..10>
     description: Current of the sdc board power channel.
@@ -50,10 +47,6 @@ object_dictionary:
     description: Channel status of the sdc board power channel.
     access: readonly
 
-  sdc_signal_channel_ctrl:
-    type: pdu_channel_control
-    description: Channel control of the sdc signal channel.
-    access: extern
   sdc_signal_channel_current:
     type: d8<0..5>
     description: Current sdc signal 
@@ -64,10 +57,6 @@ object_dictionary:
     description: Channel status of the sdc signal channel.
     access: readonly
 
-  fan_channel_ctrl:
-    type: pdu_channel_control
-    description: Channel control of the cooling fan channel.
-    access: extern
   fan_channel_current:
     type: d16<0..5>
     description: Current of the cooling fan channel.
@@ -96,6 +85,13 @@ object_dictionary:
     type: error_level_config
     description: Status configuration of the mcu temperature.
     access: extern
+
+  total_power:
+    type: d16<0..44>
+    description: Total power output of all channels combined.
+    access: readonly
+    unit: W
+
 
 
 tx_streams:
@@ -137,5 +133,15 @@ tx_streams:
       - sdc_signal_channel_current
       - fan_channel_current
 
+  power_consumption:
+    description: Power consumption of the channels.
+    interval: 500ms
+    mapping:
+      - total_power
 
+
+rx_streams:
+  mother_board:
+    pdu_24v_command:
+      power_board24_command: command
 

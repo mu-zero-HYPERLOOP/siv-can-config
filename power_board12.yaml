@@ -27,10 +27,6 @@ object_dictionary:
     unit: Hz
     access: readonly
 
-  levitation_boards_power_channel_ctrl:
-    type: pdu_channel_control
-    description: Control of the power channel for all 3 levitation boards.
-    access: extern
   levitation_boards_power_channel_current:
     type: d8<0..5>
     description: Current of the power channel for all 3 levitation boards.
@@ -41,10 +37,6 @@ object_dictionary:
     description: State of the power channel for all 3 levitation boards.
     access: readonly
 
-  guidance_boards_power_channel_ctrl:
-    type: pdu_channel_control
-    description: Control of the power channel for both guidance boards.
-    access: extern
   guidance_boards_power_channel_current:
     type: d8<0..5>
     description: Current of the power channel for both guidance boards.
@@ -55,10 +47,6 @@ object_dictionary:
     description: Status of the power channel for both guidance boards.
     access: readonly
 
-  motor_driver_power_channel_ctrl:
-    type: pdu_channel_control
-    description: Control of the power channel of the motor driver board.
-    access: extern
   motor_driver_power_channel_current:
     type: d8<0..5>
     description: Current of the power channel of the motor driver board.
@@ -69,10 +57,6 @@ object_dictionary:
     description: Status of the power channel of the motor driver board.
     access: readonly
 
-  input_board_power_channel_ctrl:
-    type: pdu_channel_control
-    description: Control of the power channel fo the input board.
-    access: extern
   input_board_power_channel_current:
     type: d8<0..5>
     description: Current of the power channel of the input board.
@@ -83,10 +67,6 @@ object_dictionary:
     description: Status of the power channel of the input board.
     access: readonly
 
-  raspberry_pi_power_channel_ctrl:
-    type: pdu_channel_control
-    description: Control of the power channel of the raspberry pi
-    access: extern
   raspberry_pi_power_channel_current:
     type: d8<0..5>
     description: Current of the power channel of the raspberry pi.
@@ -97,10 +77,6 @@ object_dictionary:
     description: Status of the power channel of the raspberry pi.
     access: readonly
 
-  antenna_power_channel_ctrl:
-    type: pdu_channel_control
-    description: Control of the power channel of the telemetry antenna.
-    access: extern
   antenna_power_channel_current:
     type: d8<0..5>
     description: Current of the power channel of the telemetry antenna.
@@ -111,10 +87,6 @@ object_dictionary:
     description: Status of the power channel of the telemetry antenna.
     access: readonly
 
-  led_board_power_channel_ctrl:
-    type: pdu_channel_control
-    description: Control of the power channel of the led board.
-    access: extern
   led_board_power_channel_current:
     type: d8<0..10>
     description: Current of the power channel of the led board.
@@ -125,10 +97,6 @@ object_dictionary:
     description: Status of the power channel of the led board.
     access: readonly
 
-  fans_power_channel_ctrl:
-    type: pdu_channel_control
-    description: Control of the power channel of the cooling fans.
-    access: extern
   fans_power_channel_current:
     type: d8<0..5>
     description: Current of the power channel of the cooling fans.
@@ -166,7 +134,6 @@ object_dictionary:
 
 
   
-
 tx_streams:
   state:
     description: State information about the pdu12.
@@ -218,6 +185,12 @@ tx_streams:
     interval: 500ms
     mapping:
       - total_power
+
+
+rx_streams:
+  mother_board:
+    pdu_12v_command:
+      power_board12_command: command
 
 
 
