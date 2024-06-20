@@ -190,6 +190,11 @@ object_dictionary:
     description: Error flag for cassert faults.
     access: readonly
 
+  error_heartbeat_miss:
+    type: error_flag
+    description: Heartbeat of any node is missed.
+    access: readonly
+
   gamepad_lt2:
     type: d8<0..1>
     description: lt2 input
@@ -236,6 +241,7 @@ tx_streams:
       - error_level_magnet_temperature_left
       - error_level_magnet_temperature_right
       - error_level_mcu_temperature
+      - error_heartbeat_miss
       - assertion_fault
 
   debug:

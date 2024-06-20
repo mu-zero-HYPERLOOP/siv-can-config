@@ -167,6 +167,11 @@ object_dictionary:
     type: d8<0..1>
     description: rt2 input
 
+  error_heartbeat_miss:
+    type: error_flag
+    description: Heartbeat from any node is missed.
+    access: readonly
+
   
 
 tx_streams:
@@ -212,6 +217,12 @@ tx_streams:
     interval: 1ms-500ms
     mapping:
       - power_board24_command
+
+  errors:
+    description: All errors of the mother board.
+    interval: 1ms-1s
+    mapping:
+      - error_heartbeat_miss
     
   
 rx_streams:

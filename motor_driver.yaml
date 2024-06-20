@@ -344,6 +344,12 @@ object_dictionary:
   assertion_fault:
     type: error_flag
     description: Error flag for cassert faults.
+    access: readonly
+
+  error_heartbeat_miss:
+    type: error_flag
+    description: Heartbeat of any node is missed.
+    access: readonly
 
 tx_streams:
   state:
@@ -439,6 +445,7 @@ tx_streams:
       - error_lim_temperature3_invalid
       - error_lim_temperature4_invalid
       - error_level_lim_temperature
+      - error_heartbeat_miss
       - assertion_fault
 
 rx_streams:

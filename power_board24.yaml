@@ -72,6 +72,11 @@ object_dictionary:
     description: Set if any of the channels detects a short circuit.
     access: readonly
 
+  error_heartbeat_miss:
+    type: error_flag
+    description: heartbeat from any node is missed
+    access: readonly
+
   mcu_temperature:
     type: d8<-1..150>
     unit: °C
@@ -113,6 +118,7 @@ tx_streams:
     mapping:
       - assertion_fault
       - error_any_short
+      - error_heartbeat_miss
       - error_level_mcu_temperature
 
   channel_status:
