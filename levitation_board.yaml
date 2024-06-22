@@ -1,4 +1,5 @@
 description: Levitation board
+heartbeat_timeout: 500ms
 object_dictionary:
   state: 
     type: levitation_state

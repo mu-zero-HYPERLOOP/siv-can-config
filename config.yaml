@@ -13,4 +13,4 @@ nodes:
   levitation_board3: levitation_board.yaml
   power_board12: power_board12.yaml
   power_board24: power_board24.yaml
-
+  test_node: test2.yaml
