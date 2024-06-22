@@ -1,5 +1,5 @@
 description: Power distribution unit 24V. (PDU24)
-
+heartbeat_timeout: 500ms
 object_dictionary:
   state:
     type: pdu_24v_state

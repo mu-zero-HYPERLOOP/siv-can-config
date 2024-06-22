@@ -1,4 +1,5 @@
 description: Motor driver board
+heartbeat_timeout: 500ms
 object_dictionary:
 
   state:
