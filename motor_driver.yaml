@@ -1,5 +1,5 @@
 description: Motor driver board
-heartbeat_timeout: 500ms
+heartbeat_timeout: 1s
 object_dictionary:
 
   state:
@@ -182,7 +182,7 @@ object_dictionary:
 
   
   vdc_voltage:
-    type: d16<0..100>
+    type: d16<-100..100>
     unit: V
     description: Voltage of the VDC plane.
     access: readonly
