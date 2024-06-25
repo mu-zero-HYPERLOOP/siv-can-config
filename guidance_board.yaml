@@ -232,17 +232,17 @@ tx_streams:
     description: Errors of the guidance boards.
     interval: 1ms-1s
     mapping:
-      - error_level_vdc_voltage
+      - assertion_fault
+      - error_heartbeat_miss
       - error_arming_failed
       - error_precharge_failed
+      - error_level_vdc_voltage
       - error_level_magnet_current_left
       - error_level_magnet_current_right
       - error_level_input_current
       - error_level_magnet_temperature_left
       - error_level_magnet_temperature_right
       - error_level_mcu_temperature
-      - error_heartbeat_miss
-      - assertion_fault
 
   debug:
     description: Debugging information about the software
