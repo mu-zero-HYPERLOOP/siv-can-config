@@ -163,6 +163,14 @@ pdu_12v_command:
   STOP: ~
   TELEMETRY: ~
 
+led_board_state:
+  INIT: ~
+  SHOW_STARTUP: ~
+
+led_board_command:
+  NONE: ~
+  DO_SHIT: ~
+
 perf_pattern:
   LINEAR: ~
   RANDOM: ~

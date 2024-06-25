@@ -1,0 +1,32 @@
+description: LED boards for fancy lighting effects.
+heartbeat_timeout: 1s
+object_dictionary:
+  state:
+    type: led_board_state
+    description: State of the led board
+    access: readonly
+
+  command:
+    type: led_board_command
+    description: Command for the led board.
+    access: extern
+
+  sdc_status:
+    type: sdc_status
+    description: Sdc switch state of the led_board
+    access: readonly
+
+
+tx_streams:
+  state:
+    description: State of the led board.
+    interval: 0-500ms
+    mapping:
+      - state
+      - sdc_status
+
+
+rx_streams:
+  mother_board:
+    led_board_command:
+      led_board_command: command
