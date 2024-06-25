@@ -1,4 +1,5 @@
 description: Guidance board
+heartbeat_timeout: 1s
 object_dictionary:
   state: 
     type: guidance_state
@@ -269,6 +270,9 @@ tx_streams:
 
 
 rx_streams:
+  mother_board:
+    guidance_command:
+      guidance_command: command
   gamepad:
     input:
       lt2 : gamepad_lt2

@@ -167,3 +167,8 @@ perf_pattern:
   LINEAR: ~
   RANDOM: ~
   COLD: ~
+
+test_enum:
+  VARIANT_A: 0
+  VARIANT_B: 10
+  VARIANT_Z: 429496729

@@ -1,4 +1,5 @@
 description: input board (teensy 4.1)
+heartbeat_timeout: 1s
 object_dictionary:
   state:
     type : input_board_state
@@ -306,7 +307,7 @@ object_dictionary:
     access: extern
 
   link45_voltage:
-    type: d32<0..1000>
+    type: d32<-100..100>
     unit: V
     description: Voltage of the 45V link
     access: readonly

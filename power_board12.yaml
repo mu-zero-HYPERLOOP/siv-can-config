@@ -1,5 +1,5 @@
 description: Power distribution unit 12V. (PDU12)
-
+heartbeat_timeout: 1s
 object_dictionary:
   state:
     type: pdu_12v_state

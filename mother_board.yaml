@@ -1,5 +1,5 @@
 description: Motherboard (Raspberry pi)
-
+heartbeat_timeout: 1s
 object_dictionary:
   state:
     type: global_state
