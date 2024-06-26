@@ -165,7 +165,7 @@ pdu_12v_command:
 
 led_board_state:
   INIT: ~
-  SHOW_STARTUP: ~
+  STARTUP: ~
 
 led_board_command:
   NONE: ~
