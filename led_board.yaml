@@ -16,6 +16,32 @@ object_dictionary:
     description: Sdc switch state of the led_board
     access: readonly
 
+  loop_frequency:
+    type: d64<0..1000000000>
+    description: Frequency of the main loop
+    unit: Hz
+    access: readonly
+  
+  error_heartbeat_miss:
+    type: error_flag
+    description: heartbeat from any node is missed
+    access: readonly
+
+  mcu_temperature:
+    type: d8<-1..150>
+    unit: °C
+    description: Temperature of the input board
+    access: readonly
+  error_level_mcu_temperature:
+    type: error_level
+    description: Status of the mcu temperature.
+    access: readonly
+  error_level_config_mcu_temperature:
+    type: error_level_config
+    description: Status configuration of the mcu temperature.
+    access: extern
+
+
 
 tx_streams:
   state:
@@ -24,6 +50,13 @@ tx_streams:
     mapping:
       - state
       - sdc_status
+
+  errors:
+    description: Errors comming from the board
+    interval: 0ms-1000ms
+    mapping:
+      - error_heartbeat_miss
+      - error_level_mcu_temperature
 
 
 rx_streams:
