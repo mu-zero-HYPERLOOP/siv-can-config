@@ -582,6 +582,11 @@ object_dictionary:
     description: Heartbeat of any node is missed.
     access: readonly
 
+  ignore_45v:
+    type: bool_t
+    description: If true, ignore all checks of the 45V system.
+    access: extern
+
 
 tx_streams:
   state:
@@ -696,3 +701,5 @@ rx_streams:
     input_board_command:
       input_board_command : command
       input_board_assert_45V_online: assert_45V_system_online
+    debug_settings:
+      ignore_45v: ignore_45v
