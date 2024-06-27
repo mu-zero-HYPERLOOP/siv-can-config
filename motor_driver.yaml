@@ -352,6 +352,11 @@ object_dictionary:
     description: Heartbeat of any node is missed.
     access: readonly
 
+  ignore_45v:
+    type: bool_t
+    description: If true, ignore all voltage checks of the 45V system
+    access: extern
+
 tx_streams:
   state:
     description: State of the motor driver
@@ -454,3 +459,5 @@ rx_streams:
     motor_command:
       motor_driver_command: command
       target_acceleration: target_acceleration
+    debug_settings:
+      ignore_45v: ignore_45v

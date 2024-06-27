@@ -253,6 +253,11 @@ object_dictionary:
     description: Heartbeat from any node is missed.
     access: readonly
 
+  ignore_45v:
+    type: bool_t
+    description: If set, all voltage checks of the 45V system are ignored.
+    access: readwrite
+
   
 
 tx_streams:
@@ -304,6 +309,12 @@ tx_streams:
     interval: 1ms-1s
     mapping:
       - error_heartbeat_miss
+
+  debug_settings:
+    description: Ignore if 45V system is on or off.
+    interval: 1ms-10s
+    mapping:
+      - ignore_45v
     
   
 rx_streams:

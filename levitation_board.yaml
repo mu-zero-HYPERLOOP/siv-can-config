@@ -292,7 +292,6 @@ object_dictionary:
     type: d16<-100..100>
     access: readonly
 
-
   airgap_controller_N:
     type: u16
     access: readwrite
@@ -300,6 +299,10 @@ object_dictionary:
     type: u16
     access: readwrite
 
+  ignore_45v:
+    type: bool_t
+    description: If true, ignore all voltage checks of the 45V system
+    access: extern
   
 
 tx_streams:
@@ -386,3 +389,5 @@ rx_streams:
   mother_board:
     levitation_command:
       levitation_command : command
+    debug_settings:
+      ignore_45v: ignore_45v

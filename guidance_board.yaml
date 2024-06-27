@@ -217,6 +217,10 @@ object_dictionary:
   gamepad_x_down:
     type: bool_t
 
+  ignore_45v:
+    type: bool_t
+    description: If true, ignore all voltage checks of the 45V system.
+    access: extern
 
 tx_streams:
   state:
@@ -273,6 +277,8 @@ rx_streams:
   mother_board:
     guidance_command:
       guidance_command: command
+    debug_settings:
+      ignore_45v: ignore_45v
   gamepad:
     input:
       lt2 : gamepad_lt2
