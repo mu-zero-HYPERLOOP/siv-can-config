@@ -9,6 +9,10 @@ object_dictionary:
     type: global_command
     description: Command send to the global FSM.
     access: extern
+  system_sdc_status:
+    type: sdc_status
+    description: Overall SDC status. Derived from all subsystems.
+    access: readonly
 
 
   track_length:
@@ -271,6 +275,7 @@ tx_streams:
     mapping:
       - state
       - command
+      - system_sdc_status
   motor_command:
     description: Commands the motor driver
     interval: 1ms-500ms
