@@ -316,6 +316,14 @@ tx_streams:
       - control_active
       - precharge_status
       - feedthrough_status
+  
+  temperatures:
+    description: Temperature Readings
+    interval: 500ms
+    mapping:
+      - magnet_temperature_left1
+      - magnet_temperature_right1
+      - mcu_temperature
 
   errors:
     description: Errors of the guidance boards.

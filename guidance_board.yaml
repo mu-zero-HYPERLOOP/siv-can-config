@@ -270,6 +270,13 @@ tx_streams:
       - inner_airgap_left
       - outer_airgap_right
       - inner_airgap_right
+  temperatures:
+    description: Temperature Readings
+    interval: 500ms
+    mapping:
+      - magnet_temperature_left1
+      - magnet_temperature_right1
+      - mcu_temperature
 
 
 
@@ -279,6 +286,7 @@ rx_streams:
       guidance_command: command
     debug_settings:
       ignore_45v: ignore_45v
+
   gamepad:
     input:
       lt2 : gamepad_lt2
