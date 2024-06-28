@@ -21,6 +21,10 @@ object_dictionary:
     unit: m/s²
     description: Target acceleration of the motor control.
     access: extern
+  pod_grounded:
+    type: bool_t
+    description: Set, by other systems if the pod is grounded.
+    access: extern
   assert_45V_system_online:
     type: bool_t
     description: Tells the input board to assert that the 45V link is online.
@@ -587,6 +591,11 @@ object_dictionary:
     description: If true, ignore all checks of the 45V system.
     access: extern
 
+  _motor_command:
+    type: motor_command
+    description: Don't know why i need you (But don't remove something if rx mapping is not working properly)
+    access: extern
+
 
 tx_streams:
   state:
@@ -698,6 +707,8 @@ rx_streams:
   mother_board:
     motor_command:
       target_acceleration: target_acceleration
+      motor_driver_command : _motor_command
+      pod_grounded: pod_grounded
     input_board_command:
       input_board_command : command
       input_board_assert_45V_online: assert_45V_system_online

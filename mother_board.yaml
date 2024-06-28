@@ -28,6 +28,10 @@ object_dictionary:
     type: d32<-50..50>
     unit: m/s²
     access: readonly
+  pod_grounded:
+    type: bool_t
+    description: Set if the pod is in a grounded state.
+    access: readonly
 
   acceleration_target_velocity:
     type: d32<0..10>
@@ -273,6 +277,7 @@ tx_streams:
     mapping:
       - target_acceleration
       - motor_driver_command
+      - pod_grounded
   input_board_command:
     description: Command send to the input board.
     interval: 1ms-500ms
