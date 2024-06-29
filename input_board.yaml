@@ -596,6 +596,12 @@ object_dictionary:
     description: Don't know why i need you (But don't remove something if rx mapping is not working properly)
     access: extern
 
+  system_power_consumption:
+    type: d16<0..10000>
+    description: Total power consumption of the complete pod.
+    access: readonly
+    unit: W
+
 
 tx_streams:
   state:
@@ -626,7 +632,6 @@ tx_streams:
       - lateral_acceleration
       - vertical_acceleration
 
-    
   bat24:
     description: Current and voltage of the 24V battery.
     interval: 100ms
@@ -661,6 +666,12 @@ tx_streams:
       - buck_temperature
       - ebox_temperature
       - ambient_temperature
+  power_consumption:
+    description: Power consumption of the pod.
+    interval: 500ms
+    mapping:
+      - system_power_consumption
+
   errors:
     description: All error flags from the input_board
     interval: 1ms-1000ms
@@ -714,3 +725,5 @@ rx_streams:
       input_board_assert_45V_online: assert_45V_system_online
     debug_settings:
       ignore_45v: ignore_45v
+
+
