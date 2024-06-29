@@ -234,45 +234,45 @@ object_dictionary:
     access: extern
 
 
-  link24_voltage:
+  supercap_voltage:
     type: d32<0..50>
     unit: V
     description: Voltage of the 24V link
     access: readonly
-  link24_voltage_calibration_mode:
+  supercap_voltage_calibration_mode:
     type: calibration_mode
     description: Calibration mode of the 24V link voltage.
     access: readwrite
-  link24_voltage_calibration_offset:
+  supercap_voltage_calibration_offset:
     type: d32<-10..10>
     unit: V
     description: Calibration offset of the 24V link voltage.
     access: readwrite
-  link24_voltage_calibration_target:
+  supercap_voltage_calibration_target:
     type: d32<0..50>
     unit: V
     description: Expected voltage during calibration of the 24V link voltage.
     access: extern
-  error_link24_voltage_invalid:
+  error_supercap_voltage_invalid:
     type: error_flag
     description: The voltage of the 24V link is not sensible. Check sensor connection.
-    friend: link24_voltage
+    friend: supercap_voltage
     access: readonly
-  error_level_link24_under_voltage:
+  error_level_supercap_under_voltage:
     type: error_level
     description: The voltage of the 24V link is to low.
-    friend: link24_voltage
+    friend: supercap_voltage
     access: readonly
-  error_level_config_link24_under_voltage:
+  error_level_config_supercap_under_voltage:
     type: error_level_config
     description: Status configuration of the link24 under voltage.
     access: extern
-  error_level_link24_over_voltage:
+  error_level_supercap_over_voltage:
     type: error_level
     description: The voltage of the 24V link is to high.
-    friend: link24_voltage
+    friend: supercap_voltage
     access: readonly
-  error_level_config_link24_over_voltage:
+  error_level_config_supercap_over_voltage:
     type: error_level_config
     description: Status configuration of the link24 over voltage.
     access: extern
@@ -642,7 +642,7 @@ tx_streams:
     description: Current and voltage of the link24.
     interval: 100ms
     mapping:
-      - link24_voltage
+      - supercap_voltage
       - link24_current
   link45:
     description: Current and voltage of the link45.
@@ -685,9 +685,9 @@ tx_streams:
       - error_level_bat24_over_voltage
       - error_bat24_current_invalid
       - error_level_bat24_over_current
-      - error_link24_voltage_invalid
-      - error_level_link24_under_voltage
-      - error_level_link24_over_voltage
+      - error_supercap_voltage_invalid
+      - error_level_supercap_under_voltage
+      - error_level_supercap_over_voltage
       - error_link24_current_invalid
       - error_level_link24_over_current
       - error_link45_voltage_invalid
