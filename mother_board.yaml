@@ -342,7 +342,7 @@ rx_streams:
       sdc_status: guidance_board_front_sdc_status
     errors:
       error_heartbeat_miss: guidance_board_front_error_heartbeat_miss
-      errro_level_mcu_temperature: guidance_board_front_error_level_mcu_temperature
+      error_level_mcu_temperature: guidance_board_front_error_level_mcu_temperature
 
   guidance_board_back:
     state:
@@ -350,7 +350,7 @@ rx_streams:
       sdc_status: guidance_board_back_sdc_status
     errors:
       error_heartbeat_miss: guidance_board_back_error_heartbeat_miss
-      errro_level_mcu_temperature: guidance_board_back_error_level_mcu_temperature
+      error_level_mcu_temperature: guidance_board_back_error_level_mcu_temperature
 
   levitation_board1:
     state:
