@@ -167,6 +167,9 @@ led_board_state:
   INIT: ~
   STARTUP: ~
   LIFTOFF: ~
+  BREATHE: ~
+  RAINBOW: ~
+  SHUTDOWN: ~
 
 led_board_command:
   NONE: ~
