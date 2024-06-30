@@ -456,6 +456,25 @@ object_dictionary:
     description: Error level of MCU temperature of 24V PDU.
     access: extern
 
+  led_board_state:
+    type: led_board_state
+    description: State of the LED board.
+    access: extern
+  led_board_command:
+    type: led_board_command
+    description: Command send to the LED board.
+    access: readonly
+  led_board_sdc_status:
+    type: sdc_status
+    description: Status of the SDC on the LED board.
+    access: extern
+  led_board_assertion_fault:
+    type: error_flag
+  led_board_error_heartbeat_miss:
+    type: error_flag
+  led_board_error_level_mcu_temperature:
+    type: error_level
+
 
   gamepad_max_acceleration:
     type: d32<0..10>
@@ -726,6 +745,15 @@ rx_streams:
       error_any_short: power_board24_error_any_short
       error_heartbeat_miss: power_board24_error_heartbeat_miss
       error_level_mcu_temperature: power_board24_error_level_mcu_temperature
+
+  led_board:
+    state:
+      state: led_board_state
+      sdc_status: led_board_sdc_status
+    errors:
+      assertion_fault: led_board_assertion_fault
+      error_heartbeat_miss: led_board_error_heartbeat_miss
+      error_level_mcu_temperature: led_board_error_level_mcu_temperature
 
   gamepad:
     input:
