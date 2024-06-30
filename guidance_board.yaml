@@ -238,9 +238,9 @@ tx_streams:
     interval: 1ms-1s
     mapping:
       - assertion_fault
-      - error_heartbeat_miss
       - error_arming_failed
       - error_precharge_failed
+      - error_heartbeat_miss
       - error_level_vdc_voltage
       - error_level_magnet_current_left
       - error_level_magnet_current_right

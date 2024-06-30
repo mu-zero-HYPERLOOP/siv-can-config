@@ -14,7 +14,6 @@ object_dictionary:
     description: Overall SDC status. Derived from all subsystems.
     access: readonly
 
-
   track_length:
     type: d32<0..50>
     unit: m
@@ -48,7 +47,7 @@ object_dictionary:
     access: readwrite
 
   position:
-    type: d16<-0..50>
+    type: d16<-10..40>
     unit: m
     description: Estimated positin of the pod.
     access: extern
@@ -74,14 +73,61 @@ object_dictionary:
   motor_driver_sdc_status:
     type: sdc_status
     access: extern
+
+  motor_driver_assertion_fault:
+    type: error_flag
+  motor_driver_error_arming_failed:
+    type: error_flag
+  motor_driver_error_precharge_failed:
+    type: error_flag
+  motor_driver_error_acceleration_out_of_range:
+    type: error_flag
+  motor_driver_error_acceleration_calibration_failed:
+    type: error_flag
+  motor_driver_error_invalid_target_acceleration:
+    type: error_flag
+  motor_driver_error_board_temperature1_invalid:
+    type: error_flag
+  motor_driver_error_board_temperature2_invalid:
+    type: error_flag
+  motor_driver_error_board_temperature3_invalid:
+    type: error_flag
+  motor_driver_error_mcu_temperature_invalid:
+    type: error_flag
+  motor_driver_error_lim_temperature1_invalid:
+    type: error_flag
+  motor_driver_error_lim_temperature2_invalid:
+    type: error_flag
+  motor_driver_error_lim_temperature3_invalid:
+    type: error_flag
+  motor_driver_error_lim_temperature4_invalid:
+    type: error_flag
   motor_driver_error_heartbeat_miss:
     type: error_flag
-    access: extern
+
+  motor_driver_error_level_current_u1:
+    type: error_level
+  motor_driver_error_level_current_v1:
+    type: error_level
+  motor_driver_error_level_current_w1:
+    type: error_level
+  motor_driver_error_level_current_u2:
+    type: error_level
+  motor_driver_error_level_current_v2:
+    type: error_level
+  motor_driver_error_level_current_w2:
+    type: error_level
+  motor_driver_error_level_vdc_voltage:
+    type: error_level
+  motor_driver_error_level_board_temperature:
+    type: error_level
   motor_driver_error_level_mcu_temperature:
     type: error_level
-    access: extern
+  motor_driver_error_level_lim_temperature:
+    type: error_level
 
 
+# ========== GUIDANCE BOARDS ==========
   guidance_command:
     type: guidance_command
     description: Command send to the guidance
@@ -93,14 +139,31 @@ object_dictionary:
   guidance_board_front_sdc_status:
     type: sdc_status
     access: extern
+
+  guidance_board_front_assertion_fault:
+    type: error_flag
+  guidance_board_front_error_arming_failed:
+    type: error_flag
+  guidance_board_front_error_precharge_failed:
+    type: error_flag
   guidance_board_front_error_heartbeat_miss:
     type: error_flag
-    description: Error flag for heartbeat miss of front guidance board.
-    access: extern
+
+  guidance_board_front_error_level_vdc_voltage:
+    type: error_level
+  guidance_board_front_error_level_magnet_current_left:
+    type: error_level
+  guidance_board_front_error_level_magnet_current_right:
+    type: error_level
+  guidance_board_front_error_level_input_current:
+    type: error_level
+  guidance_board_front_error_level_magnet_temperature_left:
+    type: error_level
+  guidance_board_front_error_level_magnet_temperature_right:
+    type: error_level
   guidance_board_front_error_level_mcu_temperature:
     type: error_level
-    description: Error level of MCU temperature of front guidance board.
-    access: extern
+
 
   guidance_board_back_state:
     type: guidance_state
@@ -108,16 +171,33 @@ object_dictionary:
   guidance_board_back_sdc_status:
     type: sdc_status
     access: extern
+
+  guidance_board_back_assertion_fault:
+    type: error_flag
+  guidance_board_back_error_arming_failed:
+    type: error_flag
+  guidance_board_back_error_precharge_failed:
+    type: error_flag
   guidance_board_back_error_heartbeat_miss:
     type: error_flag
-    description: Error flag for heartbeat miss of back guidance board.
-    access: extern
+
+  guidance_board_back_error_level_vdc_voltage:
+    type: error_level
+  guidance_board_back_error_level_magnet_current_left:
+    type: error_level
+  guidance_board_back_error_level_magnet_current_right:
+    type: error_level
+  guidance_board_back_error_level_input_current:
+    type: error_level
+  guidance_board_back_error_level_magnet_temperature_left:
+    type: error_level
+  guidance_board_back_error_level_magnet_temperature_right:
+    type: error_level
   guidance_board_back_error_level_mcu_temperature:
     type: error_level
-    description: Error level of MCU temperature of back guidance board.
-    access: extern
 
 
+# ========== LEVITATION BOARDS ==========
   levitation_command:
     type: levitation_command
     description: Command send to the levitation
@@ -129,12 +209,31 @@ object_dictionary:
   levitation_board1_sdc_status:
     type: sdc_status
     access: extern
+
+  levitation_board1_assertion_fault:
+    type: error_flag
+  levitation_board1_error_arming_failed:
+    type: error_flag
+  levitation_board1_error_precharge_failed:
+    type: error_flag
   levitation_board1_error_heartbeat_miss:
     type: error_flag
-    access: extern
+
+  levitation_board1_error_level_vdc_voltage:
+    type: error_level
+  levitation_board1_error_level_magnet_current_left:
+    type: error_level
+  levitation_board1_error_level_magnet_current_right:
+    type: error_level
+  levitation_board1_error_level_input_current:
+    type: error_level
+  levitation_board1_error_level_magnet_temperature_left:
+    type: error_level
+  levitation_board1_error_level_magnet_temperature_right:
+    type: error_level
   levitation_board1_error_level_mcu_temperature:
     type: error_level
-    access: extern
+
 
   levitation_board2_state:
     type: levitation_state
@@ -142,12 +241,31 @@ object_dictionary:
   levitation_board2_sdc_status:
     type: sdc_status
     access: extern
+
+  levitation_board2_assertion_fault:
+    type: error_flag
+  levitation_board2_error_arming_failed:
+    type: error_flag
+  levitation_board2_error_precharge_failed:
+    type: error_flag
   levitation_board2_error_heartbeat_miss:
     type: error_flag
-    access: extern
+
+  levitation_board2_error_level_vdc_voltage:
+    type: error_level
+  levitation_board2_error_level_magnet_current_left:
+    type: error_level
+  levitation_board2_error_level_magnet_current_right:
+    type: error_level
+  levitation_board2_error_level_input_current:
+    type: error_level
+  levitation_board2_error_level_magnet_temperature_left:
+    type: error_level
+  levitation_board2_error_level_magnet_temperature_right:
+    type: error_level
   levitation_board2_error_level_mcu_temperature:
     type: error_level
-    access: extern
+
 
   levitation_board3_state:
     type: levitation_state
@@ -155,14 +273,33 @@ object_dictionary:
   levitation_board3_sdc_status:
     type: sdc_status
     access: extern
+
+  levitation_board3_assertion_fault:
+    type: error_flag
+  levitation_board3_error_arming_failed:
+    type: error_flag
+  levitation_board3_error_precharge_failed:
+    type: error_flag
   levitation_board3_error_heartbeat_miss:
     type: error_flag
-    access: extern
+
+  levitation_board3_error_level_vdc_voltage:
+    type: error_level
+  levitation_board3_error_level_magnet_current_left:
+    type: error_level
+  levitation_board3_error_level_magnet_current_right:
+    type: error_level
+  levitation_board3_error_level_input_current:
+    type: error_level
+  levitation_board3_error_level_magnet_temperature_left:
+    type: error_level
+  levitation_board3_error_level_magnet_temperature_right:
+    type: error_level
   levitation_board3_error_level_mcu_temperature:
     type: error_level
-    access: extern
 
 
+# ========== INPUT BOARD ==========
   input_board_state:
     type: input_board_state
     description: State of the input board
@@ -178,15 +315,86 @@ object_dictionary:
   input_board_sdc_status:
     type: sdc_status
     access: extern
+
+  input_board_assertion_fault:
+    type: error_flag
+  input_board_error_acceleration_out_of_range:
+    type: error_flag
+  input_board_error_lateral_acceleration_out_of_range:
+    type: error_flag
+  input_board_error_vertical_acceleration_out_of_range:
+    type: error_flag
+  input_board_error_acceleration_calibration_failed:
+    type: error_flag
+  input_board_error_bat24_voltage_invalid:
+    type: error_flag
+  input_board_error_bat24_current_invalid:
+    type: error_flag
+  input_board_error_supercap_voltage_invalid:
+    type: error_flag
+  input_board_error_link24_current_invalid:
+    type: error_flag
+  input_board_error_link45_voltage_invalid:
+    type: error_flag
+  input_board_error_link45_current_invalid:
+    type: error_flag
+  input_board_error_cooling_cycle_pressure_invalid:
+    type: error_flag
+  input_board_error_mcu_temperature_invalid:
+    type: error_flag
+  input_board_error_cooling_cycle_temperature_invalid:
+    type: error_flag
+  input_board_error_bat24_temperature_invalid:
+    type: error_flag
+  input_board_error_supercap_temperature_invalid:
+    type: error_flag
+  input_board_error_buck_temperature_invalid:
+    type: error_flag
+  input_board_error_ebox_temperature_invalid:
+    type: error_flag
+  input_board_error_ambient_temperature_invalid:
+    type: error_flag
   input_board_error_heartbeat_miss:
     type: error_flag
-    description: Flag for heartbeat miss on input board
-    access: extern
+
+
+  input_board_error_level_bat24_under_voltage:
+    type: error_level
+  input_board_error_level_bat24_over_voltage:
+    type: error_level
+  input_board_error_level_bat24_over_current:
+    type: error_level
+  input_board_error_level_supercap_under_voltage:
+    type: error_level
+  input_board_error_level_supercap_over_voltage:
+    type: error_level
+  input_board_error_level_link24_over_current:
+    type: error_level
+  input_board_error_level_link45_under_voltage:
+    type: error_level
+  input_board_error_level_link45_over_voltage:
+    type: error_level
+  input_board_error_level_link45_over_current:
+    type: error_level
+  input_board_error_level_cooling_cycle_over_pressure:
+    type: error_level
   input_board_error_level_mcu_temperature:
     type: error_level
-    description: Error level of input board MCU temperature.
-    access: extern
+  input_board_error_level_cooling_cycle_temperature:
+    type: error_level
+  input_board_error_level_bat24_temperature:
+    type: error_level
+  input_board_error_level_supercap_temperature:
+    type: error_level
+  input_board_error_level_buck_temperature:
+    type: error_level
+  input_board_error_level_ebox_temperature:
+    type: error_level
+  input_board_error_level_ambient_temperature:
+    type: error_level
 
+
+# ========== PDU 12V ==========
   power_board12_state:
     type: pdu_12v_state
     access: extern
@@ -197,6 +405,7 @@ object_dictionary:
   power_board12_sdc_status:
     type: sdc_status
     access: extern
+
   power_board12_assertion_fault:
     type: error_flag
     description: Flag for assertion fault on 12V PDU.
@@ -229,6 +438,7 @@ object_dictionary:
     type: bool_t
     description: Control the cooling pump.
     access: readonly
+
   power_board24_assertion_fault:
     type: error_flag
     description: Flag for assertion fault on 24V PDU.
@@ -338,15 +548,47 @@ rx_streams:
       state : motor_driver_state
       sdc_status: motor_driver_sdc_status
     errors:
+      assertion_fault: motor_driver_assertion_fault
+      error_arming_failed: motor_driver_error_arming_failed
+      error_precharge_failed: motor_driver_error_precharge_failed
+      error_acceleration_out_of_range: motor_driver_error_acceleration_out_of_range
+      error_acceleration_calibration_failed: motor_driver_error_acceleration_calibration_failed
+      error_invalid_target_acceleration: motor_driver_error_invalid_target_acceleration
+      error_board_temperature1_invalid: motor_driver_error_board_temperature1_invalid
+      error_board_temperature2_invalid: motor_driver_error_board_temperature2_invalid
+      error_board_temperature3_invalid: motor_driver_error_board_temperature3_invalid
+      error_mcu_temperature_invalid: motor_driver_error_mcu_temperature_invalid
+      error_lim_temperature1_invalid: motor_driver_error_lim_temperature1_invalid
+      error_lim_temperature2_invalid: motor_driver_error_lim_temperature2_invalid
+      error_lim_temperature3_invalid: motor_driver_error_lim_temperature3_invalid
+      error_lim_temperature4_invalid: motor_driver_error_lim_temperature4_invalid
       error_heartbeat_miss: motor_driver_error_heartbeat_miss
+      error_level_current_u1: motor_driver_error_level_current_u1
+      error_level_current_v1: motor_driver_error_level_current_v1
+      error_level_current_w1: motor_driver_error_level_current_w1
+      error_level_current_u2: motor_driver_error_level_current_u2
+      error_level_current_v2: motor_driver_error_level_current_v2
+      error_level_current_w2: motor_driver_error_level_current_w2
+      error_level_vdc_voltage: motor_driver_error_level_vdc_voltage
+      error_level_board_temperature: motor_driver_error_level_board_temperature
       error_level_mcu_temperature: motor_driver_error_level_mcu_temperature
+      error_level_lim_temperature: motor_driver_error_level_lim_temperature
 
   guidance_board_front:
     state:
       state: guidance_board_front_state
       sdc_status: guidance_board_front_sdc_status
     errors:
+      assertion_fault: guidance_board_front_assertion_fault
+      error_arming_failed: guidance_board_front_error_arming_failed
+      error_precharge_failed: guidance_board_front_error_precharge_failed
       error_heartbeat_miss: guidance_board_front_error_heartbeat_miss
+      error_level_vdc_voltage: guidance_board_front_error_level_vdc_voltage
+      error_level_magnet_current_left: guidance_board_front_error_level_magnet_current_left
+      error_level_magnet_current_right: guidance_board_front_error_level_magnet_current_right
+      error_level_input_current: guidance_board_front_error_level_input_current
+      error_level_magnet_temperature_left: guidance_board_front_error_level_magnet_temperature_left
+      error_level_magnet_temperature_right: guidance_board_front_error_level_magnet_temperature_right
       error_level_mcu_temperature: guidance_board_front_error_level_mcu_temperature
 
   guidance_board_back:
@@ -354,7 +596,16 @@ rx_streams:
       state: guidance_board_back_state
       sdc_status: guidance_board_back_sdc_status
     errors:
+      assertion_fault: guidance_board_back_assertion_fault
+      error_arming_failed: guidance_board_back_error_arming_failed
+      error_precharge_failed: guidance_board_back_error_precharge_failed
       error_heartbeat_miss: guidance_board_back_error_heartbeat_miss
+      error_level_vdc_voltage: guidance_board_back_error_level_vdc_voltage
+      error_level_magnet_current_left: guidance_board_back_error_level_magnet_current_left
+      error_level_magnet_current_right: guidance_board_back_error_level_magnet_current_right
+      error_level_input_current: guidance_board_back_error_level_input_current
+      error_level_magnet_temperature_left: guidance_board_back_error_level_magnet_temperature_left
+      error_level_magnet_temperature_right: guidance_board_back_error_level_magnet_temperature_right
       error_level_mcu_temperature: guidance_board_back_error_level_mcu_temperature
 
   levitation_board1:
@@ -362,7 +613,16 @@ rx_streams:
       state: levitation_board1_state
       sdc_status: levitation_board1_sdc_status
     errors:
+      assertion_fault: levitation_board1_assertion_fault
+      error_arming_failed: levitation_board1_error_arming_failed
+      error_precharge_failed: levitation_board1_error_precharge_failed
       error_heartbeat_miss: levitation_board1_error_heartbeat_miss
+      error_level_vdc_voltage: levitation_board1_error_level_vdc_voltage
+      error_level_magnet_current_left: levitation_board1_error_level_magnet_current_left
+      error_level_magnet_current_right: levitation_board1_error_level_magnet_current_right
+      error_level_input_current: levitation_board1_error_level_input_current
+      error_level_magnet_temperature_left: levitation_board1_error_level_magnet_temperature_left
+      error_level_magnet_temperature_right: levitation_board1_error_level_magnet_temperature_right
       error_level_mcu_temperature: levitation_board1_error_level_mcu_temperature
 
   levitation_board2:
@@ -370,7 +630,16 @@ rx_streams:
       state: levitation_board2_state
       sdc_status: levitation_board2_sdc_status
     errors:
+      assertion_fault: levitation_board2_assertion_fault
+      error_arming_failed: levitation_board2_error_arming_failed
+      error_precharge_failed: levitation_board2_error_precharge_failed
       error_heartbeat_miss: levitation_board2_error_heartbeat_miss
+      error_level_vdc_voltage: levitation_board2_error_level_vdc_voltage
+      error_level_magnet_current_left: levitation_board2_error_level_magnet_current_left
+      error_level_magnet_current_right: levitation_board2_error_level_magnet_current_right
+      error_level_input_current: levitation_board2_error_level_input_current
+      error_level_magnet_temperature_left: levitation_board2_error_level_magnet_temperature_left
+      error_level_magnet_temperature_right: levitation_board2_error_level_magnet_temperature_right
       error_level_mcu_temperature: levitation_board2_error_level_mcu_temperature
 
   levitation_board3:
@@ -378,8 +647,18 @@ rx_streams:
       state: levitation_board3_state
       sdc_status: levitation_board3_sdc_status
     errors:
+      assertion_fault: levitation_board3_assertion_fault
+      error_arming_failed: levitation_board3_error_arming_failed
+      error_precharge_failed: levitation_board3_error_precharge_failed
       error_heartbeat_miss: levitation_board3_error_heartbeat_miss
+      error_level_vdc_voltage: levitation_board3_error_level_vdc_voltage
+      error_level_magnet_current_left: levitation_board3_error_level_magnet_current_left
+      error_level_magnet_current_right: levitation_board3_error_level_magnet_current_right
+      error_level_input_current: levitation_board3_error_level_input_current
+      error_level_magnet_temperature_left: levitation_board3_error_level_magnet_temperature_left
+      error_level_magnet_temperature_right: levitation_board3_error_level_magnet_temperature_right
       error_level_mcu_temperature: levitation_board3_error_level_mcu_temperature
+
 
   input_board:
     state:
@@ -390,8 +669,43 @@ rx_streams:
       velocity: velocity
       acceleration: acceleration
     errors:
+      error_assertion_fault: input_board_assertion_fault
+      error_acceleration_out_of_range: input_board_error_acceleration_out_of_range
+      error_lateral_acceleration_out_of_range: input_board_error_lateral_acceleration_out_of_range
+      error_vertical_acceleration_out_of_range: input_board_error_vertical_acceleration_out_of_range
+      error_acceleration_calibration_failed: input_board_error_acceleration_calibration_failed
+      error_bat24_voltage_invalid: input_board_error_bat24_voltage_invalid
+      error_bat24_current_invalid: input_board_error_bat24_current_invalid
+      error_supercap_voltage_invalid: input_board_error_supercap_voltage_invalid
+      error_link24_current_invalid: input_board_error_link24_current_invalid
+      error_link45_voltage_invalid: input_board_error_link45_voltage_invalid
+      error_link45_current_invalid: input_board_error_link45_current_invalid
+      error_cooling_cycle_pressure_invalid: input_board_error_cooling_cycle_pressure_invalid
+      error_mcu_temperature_invalid: input_board_error_mcu_temperature_invalid
+      error_cooling_cycle_temperature_invalid: input_board_error_cooling_cycle_temperature_invalid
+      error_bat24_temperature_invalid: input_board_error_bat24_temperature_invalid
+      error_supercap_temperature_invalid: input_board_error_supercap_temperature_invalid
+      error_buck_temperature_invalid: input_board_error_buck_temperature_invalid
+      error_ebox_temperature_invalid: input_board_error_ebox_temperature_invalid
+      error_ambient_temperature_invalid: input_board_error_ambient_temperature_invalid
       error_heartbeat_miss: input_board_error_heartbeat_miss
+      error_level_bat24_under_voltage: input_board_error_level_bat24_under_voltage
+      error_level_bat24_over_voltage: input_board_error_level_bat24_over_voltage
+      error_level_bat24_over_current: input_board_error_level_bat24_over_current
+      error_level_supercap_under_voltage: input_board_error_level_supercap_under_voltage
+      error_level_supercap_over_voltage: input_board_error_level_supercap_over_voltage
+      error_level_link24_over_current: input_board_error_level_link24_over_current
+      error_level_link45_under_voltage: input_board_error_level_link45_under_voltage
+      error_level_link45_over_voltage: input_board_error_level_link45_over_voltage
+      error_level_link45_over_current: input_board_error_level_link45_over_current
+      error_level_cooling_cycle_over_pressure: input_board_error_level_cooling_cycle_over_pressure
       error_level_mcu_temperature: input_board_error_level_mcu_temperature
+      error_level_cooling_cycle_temperature: input_board_error_level_cooling_cycle_temperature
+      error_level_bat24_temperature: input_board_error_level_bat24_temperature
+      error_level_supercap_temperature: input_board_error_level_supercap_temperature
+      error_level_buck_temperature: input_board_error_level_buck_temperature
+      error_level_ebox_temperature: input_board_error_level_ebox_temperature
+      error_level_ambient_temperature: input_board_error_level_ambient_temperature
 
   power_board12:
     state:

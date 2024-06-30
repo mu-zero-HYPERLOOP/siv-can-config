@@ -27,6 +27,11 @@ object_dictionary:
     description: heartbeat from any node is missed
     access: readonly
 
+  assertion_fault:
+    type: error_flag
+    description: Error flag, which is set when an assertion fails.
+    access: readonly
+
   mcu_temperature:
     type: d8<-1..150>
     unit: °C
@@ -55,6 +60,7 @@ tx_streams:
     description: Errors comming from the board
     interval: 0ms-1000ms
     mapping:
+      - assertion_fault
       - error_heartbeat_miss
       - error_level_mcu_temperature
 

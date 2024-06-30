@@ -29,12 +29,9 @@ object_dictionary:
     type: bool_t
     description: Tells the input board to assert that the 45V link is online.
 
-
-
-
   # State estimation
   position:
-    type: d16<-0..50>
+    type: d16<-10..40>
     unit: m
     description: Estimated position of the pod.
     access: readonly
@@ -676,43 +673,44 @@ tx_streams:
     description: All error flags from the input_board
     interval: 1ms-1000ms
     mapping:
+      - error_assertion_fault
       - error_acceleration_out_of_range
-      - error_acceleration_calibration_failed
       - error_lateral_acceleration_out_of_range
       - error_vertical_acceleration_out_of_range
+      - error_acceleration_calibration_failed
       - error_bat24_voltage_invalid
+      - error_bat24_current_invalid
+      - error_supercap_voltage_invalid
+      - error_link24_current_invalid
+      - error_link45_voltage_invalid
+      - error_link45_current_invalid
+      - error_cooling_cycle_pressure_invalid
+      - error_mcu_temperature_invalid
+      - error_cooling_cycle_temperature_invalid
+      - error_bat24_temperature_invalid
+      - error_supercap_temperature_invalid
+      - error_buck_temperature_invalid
+      - error_ebox_temperature_invalid
+      - error_ambient_temperature_invalid
+      - error_heartbeat_miss
       - error_level_bat24_under_voltage
       - error_level_bat24_over_voltage
-      - error_bat24_current_invalid
       - error_level_bat24_over_current
-      - error_supercap_voltage_invalid
       - error_level_supercap_under_voltage
       - error_level_supercap_over_voltage
-      - error_link24_current_invalid
       - error_level_link24_over_current
-      - error_link45_voltage_invalid
       - error_level_link45_under_voltage
       - error_level_link45_over_voltage
-      - error_link45_current_invalid
       - error_level_link45_over_current
-      - error_cooling_cycle_pressure_invalid
       - error_level_cooling_cycle_over_pressure
-      - error_mcu_temperature_invalid
       - error_level_mcu_temperature
-      - error_cooling_cycle_temperature_invalid
       - error_level_cooling_cycle_temperature
-      - error_bat24_temperature_invalid
       - error_level_bat24_temperature
-      - error_supercap_temperature_invalid
       - error_level_supercap_temperature
-      - error_buck_temperature_invalid
       - error_level_buck_temperature
-      - error_ebox_temperature_invalid
       - error_level_ebox_temperature
-      - error_ambient_temperature_invalid
       - error_level_ambient_temperature
-      - error_heartbeat_miss
-      - assertion_fault
+
 
 rx_streams:
   mother_board:

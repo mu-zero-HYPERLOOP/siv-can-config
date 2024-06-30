@@ -117,8 +117,6 @@ object_dictionary:
     description: Error configuration of the phase currents.
     access: readwrite.
 
-
-
   frequency:
     type: d16<0..50>
     unit: Hz
@@ -428,31 +426,31 @@ tx_streams:
     description: All error flags of the motor driver.
     interval: 1ms-1000ms
     mapping:
+      - assertion_fault
       - error_arming_failed
       - error_precharge_failed
+      - error_acceleration_out_of_range
+      - error_acceleration_calibration_failed
+      - error_invalid_target_acceleration
+      - error_board_temperature1_invalid
+      - error_board_temperature2_invalid
+      - error_board_temperature3_invalid
+      - error_mcu_temperature_invalid
+      - error_lim_temperature1_invalid
+      - error_lim_temperature2_invalid
+      - error_lim_temperature3_invalid
+      - error_lim_temperature4_invalid
+      - error_heartbeat_miss
       - error_level_current_u1
       - error_level_current_v1
       - error_level_current_w1
       - error_level_current_u2
       - error_level_current_v2
       - error_level_current_w2
-      - error_acceleration_out_of_range
-      - error_acceleration_calibration_failed
-      - error_invalid_target_acceleration
       - error_level_vdc_voltage
-      - error_board_temperature1_invalid
-      - error_board_temperature2_invalid
-      - error_board_temperature3_invalid
       - error_level_board_temperature
-      - error_mcu_temperature_invalid
       - error_level_mcu_temperature
-      - error_lim_temperature1_invalid
-      - error_lim_temperature2_invalid
-      - error_lim_temperature3_invalid
-      - error_lim_temperature4_invalid
       - error_level_lim_temperature
-      - error_heartbeat_miss
-      - assertion_fault
 
 rx_streams:
   mother_board:
