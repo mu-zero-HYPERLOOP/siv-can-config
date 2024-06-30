@@ -3,6 +3,11 @@ bool_t:
   FALSE: 0
   TRUE: 1
 
+tristate_t:
+  FALSE: 1
+  TRUE: 2
+  DONT_CARE: 3
+
 # Used for error flags
 error_flag:
   OK : 0
@@ -142,13 +147,11 @@ calibration_mode:
 pdu_24v_state:
   INIT: ~
   CHANNELS_OFF: ~
-  CHANNELS_IDLE: ~
   CHANNELS_ON: ~
 
 pdu_24v_command:
   NONE: ~
   START: ~
-  IDLE: ~
   STOP: ~
 
 pdu_12v_state:

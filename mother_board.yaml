@@ -225,6 +225,10 @@ object_dictionary:
   power_board24_sdc_status:
     type: sdc_status
     access: extern
+  power_board24_cooling_pump_channel_ctrl:
+    type: bool_t
+    description: Control the cooling pump.
+    access: readonly
   power_board24_assertion_fault:
     type: error_flag
     description: Flag for assertion fault on 24V PDU.
@@ -313,6 +317,7 @@ tx_streams:
     interval: 1ms-500ms
     mapping:
       - power_board24_command
+      - power_board24_cooling_pump_channel_ctrl
 
   errors:
     description: All errors of the mother board.

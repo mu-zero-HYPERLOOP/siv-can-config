@@ -36,6 +36,15 @@ object_dictionary:
     type: pdu_channel_status
     description: Channel status of the cooling pump power channel.
     access: readonly
+  cooling_pump_channel_ctrl:
+    type: bool_t
+    description: If true the cooling pump channel is turned on.
+    access: extern
+
+  overwrite_cooling:
+    type: tristate_t
+    description: Can be used to manually set cooling from control panel.
+    access: extern
 
   sdc_board_power_channel_current:
     type: d8<0..10>
@@ -150,4 +159,6 @@ rx_streams:
   mother_board:
     pdu_24v_command:
       power_board24_command: command
+      power_board24_cooling_pump_channel_ctrl: cooling_pump_channel_ctrl
+
 
