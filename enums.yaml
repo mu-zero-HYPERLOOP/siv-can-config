@@ -159,12 +159,14 @@ pdu_12v_state:
   CHANNELS_OFF: ~
   CHANNELS_TELEMETRY: ~
   CHANNELS_ON: ~
+  RESTARTING: ~
 
 pdu_12v_command:
   NONE: ~
   START: ~
   STOP: ~
   TELEMETRY: ~
+  RESTART: ~
 
 led_board_state:
   INIT: ~
