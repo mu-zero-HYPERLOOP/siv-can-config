@@ -530,6 +530,19 @@ object_dictionary:
     description: Heartbeat from any node is missed.
     access: readonly
 
+  target_airgap:
+    type: d32<0..15>
+    description: Target airgap of the control.
+    access: readwrite
+  airgap_transition_duration:
+    type: d16<0..60>
+    description: Duration of a airgap transition.
+    access: extern
+  airgap_transition_mode:
+    type: airgap_transition_mode
+    description: Ease funciton of the airgap transition.
+    access: extern
+
   ignore_45v:
     type: bool_t
     description: If set, all voltage checks of the 45V system are ignored.
@@ -570,6 +583,13 @@ tx_streams:
     interval: 1ms-500ms
     mapping:
       - levitation_command
+  levitation_conifg:
+    description: Target airgap and transition type.
+    interval: 1ms-10s
+    mapping:
+      - target_airgap
+      - airgap_transition_duration
+      - airgap_transition_mode
 
   pdu_12v_command:
     description: Command send to the 12V pdu.

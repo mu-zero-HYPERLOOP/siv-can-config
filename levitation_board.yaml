@@ -28,6 +28,14 @@ object_dictionary:
     type: d32<0..15>
     description: Target airgap of the control.
     access: readwrite
+  airgap_transition_duration:
+    type: d16<0..60>
+    description: Duration of a airgap transition.
+    access: extern
+  airgap_transition_mode:
+    type: airgap_transition_mode
+    description: Ease funciton of the airgap transition.
+    access: extern
 
   control_active:
     type: bool_t
@@ -240,38 +248,55 @@ object_dictionary:
     description: PI parameters of the current control
     access: readwrite
 
+
+
+  left_airgap_controller_airgap:
+    type: d16<-10..50>
+    unit: mm
+    access: readonly
+  left_airgap_controller_error2: 
+    type: d16<0..20>
+    unit: mm2
+    access: readonly
   left_airgap_controller_p_term:
-    type: d16<-200..200>
+    type: d16<-500..500>
     access: readonly
   left_airgap_controller_i_term:
-    type: d16<0..600>
+    type: d16<0..10000>
     access: readonly
   left_airgap_controller_d_term:
-    type: d16<-200..200>
+    type: d16<-1000..1000>
     access: readonly
   left_airgap_controller_output:
-    type: d16<0..50>
-    access: readonly
-  left_airgap_controller_variance:
-    type: d16<0..10>
+    type: d16<0..1000>
+    unit: N
     access: readonly
 
+  right_airgap_controller_airgap:
+    type: d16<-10..50>
+    unit: mm
+    access: readonly
+  right_airgap_controller_error2: 
+    type: d16<0..20>
+    unit: mm2
+    access: readonly
   right_airgap_controller_p_term:
-    type: d16<-200..200>
+    type: d16<-500..500>
     access: readonly
   right_airgap_controller_i_term:
-    type: d16<0..600>
+    type: d16<0..10000>
     access: readonly
   right_airgap_controller_d_term:
-    type: d16<-200..200>
+    type: d16<-1000..1000>
     access: readonly
   right_airgap_controller_output:
-    type: d16<0..50>
-    access: readonly
-  right_airgap_controller_variance:
-    type: d16<0..10>
+    type: d16<0..1000>
+    unit: N
     access: readonly
 
+  left_current_controller_target:
+    type: d16<-40..40>
+    access: readonly
   left_current_controller_p_term:
     type: d16<-100..100>
     access: readonly
@@ -282,6 +307,9 @@ object_dictionary:
     type: d16<-100..100>
     access: readonly
 
+  right_current_controller_target:
+    type: d16<-40..40>
+    access: readonly
   right_current_controller_p_term:
     type: d16<-100..100>
     access: readonly
@@ -292,12 +320,10 @@ object_dictionary:
     type: d16<-100..100>
     access: readonly
 
-  airgap_controller_N:
-    type: u16
-    access: readwrite
-  isr_time:
-    type: u16
-    access: readwrite
+  control_frequency:
+    type: d16<0..40>
+    unit: kHz
+    access: readonly
 
   ignore_45v:
     type: bool_t
@@ -356,14 +382,6 @@ tx_streams:
       - airgap_right
       - target_airgap_left
       - target_airgap_right
-  airgap_variance:
-    description: Airgap variances
-    interval: 15ms
-    mapping:
-      - airgap_left_variance
-      - airgap_right_variance
-      - left_airgap_controller_variance
-      - right_airgap_controller_variance
   controller_debug_1:
     interval: 10ms
     mapping:
@@ -384,12 +402,21 @@ tx_streams:
       - left_current_controller_p_term
       - left_current_controller_i_term
       - left_current_controller_output
+      - left_current_controller_target
   controller_debug_4:
     interval: 10ms
     mapping:
       - right_current_controller_p_term
       - right_current_controller_i_term
       - right_current_controller_output
+      - right_current_controller_target
+  controller_debug5:
+    interval: 10ms
+    mapping:
+      - left_airgap_controller_airgap
+      - left_airgap_controller_error2
+      - right_airgap_controller_airgap
+      - right_airgap_controller_error2
 
   config_hash:
     description: The config hash of the code.
@@ -402,5 +429,11 @@ rx_streams:
   mother_board:
     levitation_command:
       levitation_command : command
+    levitation_config:
+      target_airgap : target_airgap
+      airgap_transition_duration: airgap_transition_duration
+      airgap_transition_mode: airgap_transition_mode
     debug_settings:
       ignore_45v: ignore_45v
+
+

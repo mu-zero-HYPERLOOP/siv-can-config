@@ -11,19 +11,25 @@ error_level_config:
   ignore_error: bool_t
 
 pid_parameters:
-  Kp : d64<0..1000>
-  Ki : d64<0..1000>
-  Kd : d64<0..1000>
+  Kp : d64<0..10000>
+  Ki : d64<0..10000>
+  Kd : d64<0..10000>
 pid_parameters_extra:
-  Ki_min : d64<-500..0>
-  Ki_max : d64<0..500>
-  ema_alpha : d64<0..1>
+  Ki_min : d16<-10000..0>
+  Ki_max : d16<0..10000>
+  force_max: d16<0..10000>
+  filter_mode: filter_mode
+  boxcar_n : u15
+  ema_alpha : d16<0..1>
+  conv_filter_mode: filter_mode
+  conv_boxcar_n: u15
+  conv_ema_alpha: d16<0..1>
   
 pi_parameters:
-  Kp : d64<0..100>
-  Ki : d64<0..100>
+  Kp : d64<0..1000>
+  Ki : d64<0..1000>
 
 pi_parameters_extra:
-  Ki_min : d64<-500..0>
-  Ki_max : d64<0..500>
+  Ki_min : d64<-10000..0>
+  Ki_max : d64<0..10000>
   ema_alpha : d64<0..1>
