@@ -278,6 +278,11 @@ tx_streams:
       - magnet_temperature_right1
       - mcu_temperature
 
+  config_hash:
+    description: The config hash of the code.
+    interval: 0s-5s
+    mapping:
+      - config_hash
 
 
 rx_streams:

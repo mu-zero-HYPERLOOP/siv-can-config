@@ -154,6 +154,12 @@ tx_streams:
     mapping:
       - total_power
 
+  config_hash:
+    description: The config hash of the code.
+    interval: 0s-5s
+    mapping:
+      - config_hash
+
 
 rx_streams:
   mother_board:

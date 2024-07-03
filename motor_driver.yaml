@@ -355,6 +355,7 @@ object_dictionary:
     description: If true, ignore all voltage checks of the 45V system
     access: extern
 
+
 tx_streams:
   state:
     description: State of the motor driver
@@ -451,6 +452,13 @@ tx_streams:
       - error_level_board_temperature
       - error_level_mcu_temperature
       - error_level_lim_temperature
+
+  config_hash:
+    description: The config hash of the code.
+    interval: 0s-5s
+    mapping:
+      - config_hash
+
 
 rx_streams:
   mother_board:

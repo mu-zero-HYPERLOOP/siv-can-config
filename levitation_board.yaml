@@ -391,6 +391,11 @@ tx_streams:
       - right_current_controller_i_term
       - right_current_controller_output
 
+  config_hash:
+    description: The config hash of the code.
+    interval: 0s-5s
+    mapping:
+      - config_hash
 
 
 rx_streams:

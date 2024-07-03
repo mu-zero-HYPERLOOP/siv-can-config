@@ -62,6 +62,11 @@ object_dictionary:
     description: Estimated acceleration of the pod.
     access: readonly
 
+  error_level_config_consistency:
+    type: error_level
+    access: extern
+
+# ========== MOTOR BOARD ==========
   motor_driver_state:
     type: motor_state
     description: Current state of the motor
@@ -72,6 +77,9 @@ object_dictionary:
     access: readonly
   motor_driver_sdc_status:
     type: sdc_status
+    access: extern
+  motor_driver_config_hash:
+    type: u64
     access: extern
 
   motor_driver_assertion_fault:
@@ -139,6 +147,9 @@ object_dictionary:
   guidance_board_front_sdc_status:
     type: sdc_status
     access: extern
+  guidance_board_front_config_hash:
+    type: u64
+    access: extern
 
   guidance_board_front_assertion_fault:
     type: error_flag
@@ -170,6 +181,9 @@ object_dictionary:
     access: extern
   guidance_board_back_sdc_status:
     type: sdc_status
+    access: extern
+  guidance_board_back_config_hash:
+    type: u64
     access: extern
 
   guidance_board_back_assertion_fault:
@@ -209,6 +223,9 @@ object_dictionary:
   levitation_board1_sdc_status:
     type: sdc_status
     access: extern
+  levitation_board1_config_hash:
+    type: u64
+    access: extern
 
   levitation_board1_assertion_fault:
     type: error_flag
@@ -241,6 +258,9 @@ object_dictionary:
   levitation_board2_sdc_status:
     type: sdc_status
     access: extern
+  levitation_board2_config_hash:
+    type: u64
+    access: extern
 
   levitation_board2_assertion_fault:
     type: error_flag
@@ -272,6 +292,9 @@ object_dictionary:
     access: extern
   levitation_board3_sdc_status:
     type: sdc_status
+    access: extern
+  levitation_board3_config_hash:
+    type: u64
     access: extern
 
   levitation_board3_assertion_fault:
@@ -315,6 +338,9 @@ object_dictionary:
   input_board_sdc_status:
     type: sdc_status
     access: extern
+  input_board_config_hash:
+    type: u64
+    access: extern
 
   input_board_assertion_fault:
     type: error_flag
@@ -356,7 +382,6 @@ object_dictionary:
     type: error_flag
   input_board_error_heartbeat_miss:
     type: error_flag
-
 
   input_board_error_level_bat24_under_voltage:
     type: error_level
@@ -405,6 +430,9 @@ object_dictionary:
   power_board12_sdc_status:
     type: sdc_status
     access: extern
+  power_board12_config_hash:
+    type: u64
+    access: extern
 
   power_board12_assertion_fault:
     type: error_flag
@@ -424,6 +452,7 @@ object_dictionary:
     access: extern
 
 
+# ========== PDU 24V ==========
   power_board24_state:
     type: pdu_24v_state
     access: extern
@@ -438,6 +467,9 @@ object_dictionary:
     type: bool_t
     description: Control the cooling pump.
     access: readonly
+  power_board24_config_hash:
+    type: u64
+    access: extern
 
   power_board24_assertion_fault:
     type: error_flag
@@ -468,6 +500,10 @@ object_dictionary:
     type: sdc_status
     description: Status of the SDC on the LED board.
     access: extern
+  led_board_config_hash:
+    type: u64
+    access: extern
+
   led_board_assertion_fault:
     type: error_flag
   led_board_error_heartbeat_miss:
@@ -566,6 +602,8 @@ rx_streams:
     state:
       state : motor_driver_state
       sdc_status: motor_driver_sdc_status
+    config_hash:
+      config_hash: motor_driver_config_hash
     errors:
       assertion_fault: motor_driver_assertion_fault
       error_arming_failed: motor_driver_error_arming_failed
@@ -597,6 +635,8 @@ rx_streams:
     state:
       state: guidance_board_front_state
       sdc_status: guidance_board_front_sdc_status
+    config_hash:
+      config_hash: guidance_board_front_config_hash
     errors:
       assertion_fault: guidance_board_front_assertion_fault
       error_arming_failed: guidance_board_front_error_arming_failed
@@ -614,6 +654,8 @@ rx_streams:
     state:
       state: guidance_board_back_state
       sdc_status: guidance_board_back_sdc_status
+    config_hash:
+      config_hash: guidance_board_back_config_hash
     errors:
       assertion_fault: guidance_board_back_assertion_fault
       error_arming_failed: guidance_board_back_error_arming_failed
@@ -631,6 +673,8 @@ rx_streams:
     state:
       state: levitation_board1_state
       sdc_status: levitation_board1_sdc_status
+    config_hash:
+      config_hash: levitation_board1_config_hash
     errors:
       assertion_fault: levitation_board1_assertion_fault
       error_arming_failed: levitation_board1_error_arming_failed
@@ -648,6 +692,8 @@ rx_streams:
     state:
       state: levitation_board2_state
       sdc_status: levitation_board2_sdc_status
+    config_hash:
+      config_hash: levitation_board2_config_hash
     errors:
       assertion_fault: levitation_board2_assertion_fault
       error_arming_failed: levitation_board2_error_arming_failed
@@ -665,6 +711,8 @@ rx_streams:
     state:
       state: levitation_board3_state
       sdc_status: levitation_board3_sdc_status
+    config_hash:
+      config_hash: levitation_board3_config_hash
     errors:
       assertion_fault: levitation_board3_assertion_fault
       error_arming_failed: levitation_board3_error_arming_failed
@@ -687,6 +735,8 @@ rx_streams:
       position: position
       velocity: velocity
       acceleration: acceleration
+    config_hash:
+      config_hash: input_board_config_hash
     errors:
       error_assertion_fault: input_board_assertion_fault
       error_acceleration_out_of_range: input_board_error_acceleration_out_of_range
@@ -730,6 +780,8 @@ rx_streams:
     state:
       state: power_board12_state
       sdc_status: power_board12_sdc_status
+    config_hash:
+      config_hash: power_board12_config_hash
     errors:
       assertion_fault: power_board12_assertion_fault
       error_any_short: power_board12_error_any_short
@@ -740,6 +792,8 @@ rx_streams:
     state:
       state: power_board24_state
       sdc_status: power_board24_sdc_status
+    config_hash:
+      config_hash: power_board24_config_hash
     errors:
       assertion_fault: power_board24_assertion_fault
       error_any_short: power_board24_error_any_short
@@ -750,6 +804,8 @@ rx_streams:
     state:
       state: led_board_state
       sdc_status: led_board_sdc_status
+    config_hash:
+      config_hash: led_board_config_hash
     errors:
       assertion_fault: led_board_assertion_fault
       error_heartbeat_miss: led_board_error_heartbeat_miss
@@ -763,5 +819,3 @@ rx_streams:
   
 
 
-
-      

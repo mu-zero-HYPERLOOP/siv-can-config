@@ -64,6 +64,12 @@ tx_streams:
       - error_heartbeat_miss
       - error_level_mcu_temperature
 
+  config_hash:
+    description: The config hash of the code.
+    interval: 0s-5s
+    mapping:
+      - config_hash
+
 
 rx_streams:
   mother_board:
