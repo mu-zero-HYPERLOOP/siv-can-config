@@ -46,6 +46,16 @@ object_dictionary:
     description: Status configuration of the mcu temperature.
     access: extern
 
+  global_state:
+    type: global_state
+    description: The state of the mother board/the entire system.
+    access: extern
+
+  global_command:
+    type: global_command
+    description: Command of the mother board/the entire system.
+    access: extern
+
 
 
 tx_streams:
@@ -75,3 +85,7 @@ rx_streams:
   mother_board:
     led_board_command:
       led_board_command: command
+    state:
+      state: global_state
+      command: global_command
+
