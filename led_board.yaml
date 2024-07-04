@@ -68,6 +68,9 @@ object_dictionary:
     type: sdc_status
     access: extern
 
+  input_board_error_level_bat24_under_voltage:
+    type: error_level
+    access: extern
 
 tx_streams:
   state:
@@ -103,4 +106,7 @@ rx_streams:
     errors:
       error_any: mother_board_error_any
       error_level_over_temperature_system: mother_board_error_level_over_temperature_system
+  input_board:
+    errors:
+      error_level_bat24_under_voltage: input_board_error_level_bat24_under_voltage
 

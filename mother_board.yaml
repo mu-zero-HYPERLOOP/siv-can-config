@@ -498,6 +498,7 @@ object_dictionary:
     description: Error level of MCU temperature of 24V PDU.
     access: extern
 
+# ========== LED BOARD ==========
   led_board_state:
     type: led_board_state
     description: State of the LED board.
