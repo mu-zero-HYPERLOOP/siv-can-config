@@ -56,6 +56,13 @@ object_dictionary:
     description: Command of the mother board/the entire system.
     access: extern
 
+  mother_board_error_any:
+    type: error_flag
+    access: extern
+
+  mother_board_error_level_over_temperature_system:
+    type: error_level
+    access: extern
 
 
 tx_streams:
@@ -88,4 +95,7 @@ rx_streams:
     state:
       state: global_state
       command: global_command
+    errors:
+      error_any: mother_board_error_any
+      error_level_over_temperature_system: mother_board_error_level_over_temperature_system
 

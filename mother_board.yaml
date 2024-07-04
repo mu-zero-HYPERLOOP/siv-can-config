@@ -66,6 +66,16 @@ object_dictionary:
     type: error_level
     access: extern
 
+  error_any:
+    type: error_flag
+    description: Set if any error occurs in the system.
+    access: readonly
+
+  error_level_over_temperature_system:
+    type: error_level
+    description: Maximum over all temperature related error levels.
+    access: readonly
+
 # ========== MOTOR BOARD ==========
   motor_driver_state:
     type: motor_state
@@ -609,6 +619,8 @@ tx_streams:
     interval: 1ms-1s
     mapping:
       - error_heartbeat_miss
+      - error_any
+      - error_level_over_temperature_system
 
   debug_settings:
     description: Ignore if 45V system is on or off.
