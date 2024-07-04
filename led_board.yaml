@@ -64,6 +64,10 @@ object_dictionary:
     type: error_level
     access: extern
 
+  mother_board_system_sdc_status:
+    type: sdc_status
+    access: extern
+
 
 tx_streams:
   state:
@@ -95,6 +99,7 @@ rx_streams:
     state:
       state: global_state
       command: global_command
+      system_sdc_status: mother_board_system_sdc_status
     errors:
       error_any: mother_board_error_any
       error_level_over_temperature_system: mother_board_error_level_over_temperature_system
