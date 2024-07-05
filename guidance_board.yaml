@@ -194,7 +194,13 @@ object_dictionary:
   error_heartbeat_miss:
     type: error_flag
     description: Heartbeat of any node is missed.
+    friend: last_node_missed
     access: readonly
+
+  last_node_missed:
+    type: u8
+    description: Last node whose heartbeat was missed.
+    access: readlonly
 
   gamepad_lt2:
     type: d8<0..1>
@@ -248,6 +254,7 @@ tx_streams:
       - error_level_magnet_temperature_left
       - error_level_magnet_temperature_right
       - error_level_mcu_temperature
+      - last_node_missed
 
   debug:
     description: Debugging information about the software

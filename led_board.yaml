@@ -25,7 +25,13 @@ object_dictionary:
   error_heartbeat_miss:
     type: error_flag
     description: heartbeat from any node is missed
+    friend: last_node_missed
     access: readonly
+
+  last_node_missed:
+    type: u8
+    description: Last node whose heartbeat was missed.
+    access: readlonly
 
   assertion_fault:
     type: error_flag
@@ -87,6 +93,7 @@ tx_streams:
       - assertion_fault
       - error_heartbeat_miss
       - error_level_mcu_temperature
+      - last_node_missed
 
   config_hash:
     description: The config hash of the code.

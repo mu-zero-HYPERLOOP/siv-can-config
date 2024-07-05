@@ -539,7 +539,13 @@ object_dictionary:
   error_heartbeat_miss:
     type: error_flag
     description: Heartbeat from any node is missed.
+    friend: last_node_missed
     access: readonly
+
+  last_node_missed:
+    type: u8
+    description: Last node whose heartbeat was missed.
+    access: readlonly
 
   target_airgap:
     type: d32<0..15>
@@ -622,6 +628,7 @@ tx_streams:
       - error_heartbeat_miss
       - error_any
       - error_level_over_temperature_system
+      - last_node_missed
 
   debug_settings:
     description: Ignore if 45V system is on or off.

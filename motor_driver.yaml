@@ -348,7 +348,13 @@ object_dictionary:
   error_heartbeat_miss:
     type: error_flag
     description: Heartbeat of any node is missed.
+    friend: last_node_missed
     access: readonly
+
+  last_node_missed:
+    type: u8
+    description: Last node whose heartbeat was missed.
+    access: readlonly
 
   ignore_45v:
     type: bool_t
@@ -373,6 +379,7 @@ tx_streams:
     interval: 500ms
     mapping:
       - loop_frequency
+
   currents_u1v1w1:
     description: Currents of the motor phases.
     interval: 50ms
@@ -452,6 +459,7 @@ tx_streams:
       - error_level_board_temperature
       - error_level_mcu_temperature
       - error_level_lim_temperature
+      - last_node_missed
 
   config_hash:
     description: The config hash of the code.

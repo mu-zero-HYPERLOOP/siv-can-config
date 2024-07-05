@@ -207,7 +207,13 @@ object_dictionary:
   error_heartbeat_miss:
     type: error_flag
     description: Heartbeat of any node is missed.
+    friend: last_node_missed
     access: readonly
+
+  last_node_missed:
+    type: u8
+    description: Last node whose heartbeat was missed.
+    access: readlonly
 
   gamepad_lt2:
     type: d8<0..1>
@@ -352,7 +358,7 @@ tx_streams:
       - mcu_temperature
 
   errors:
-    description: Errors of the guidance boards.
+    description: Errors of the levitation boards.
     interval: 1ms-1s
     mapping:
       - assertion_fault
@@ -366,6 +372,8 @@ tx_streams:
       - error_level_magnet_temperature_left
       - error_level_magnet_temperature_right
       - error_level_mcu_temperature
+      - last_node_missed
+
   voltage_and_currents:
     description: Voltage and current readings of the guidance board.
     interval: 10ms
