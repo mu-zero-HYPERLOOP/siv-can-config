@@ -54,7 +54,7 @@ object_dictionary:
     access: readonly
 
   airgap_left:
-    type: d16<0..20>
+    type: d16<0..50>
     unit: mm
     description: Airgap of the left magnet facing the track.
     access : readonly
@@ -62,7 +62,7 @@ object_dictionary:
     type: d16<0..10>
 
   airgap_right:
-    type: d16<0..20>
+    type: d16<0..50>
     unit: mm
     description: Airgap of the right magnet facing the track.
     access : readonly
