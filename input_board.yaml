@@ -677,9 +677,9 @@ tx_streams:
 
   errors:
     description: All error flags from the input_board
-    interval: 1ms-1000ms
+    interval: 0ms-1000ms
     mapping:
-      - error_assertion_fault
+      - assertion_fault
       - error_acceleration_out_of_range
       - error_lateral_acceleration_out_of_range
       - error_vertical_acceleration_out_of_range

@@ -778,7 +778,7 @@ rx_streams:
     config_hash:
       config_hash: input_board_config_hash
     errors:
-      error_assertion_fault: input_board_assertion_fault
+      assertion_fault: input_board_assertion_fault
       error_acceleration_out_of_range: input_board_error_acceleration_out_of_range
       error_lateral_acceleration_out_of_range: input_board_error_lateral_acceleration_out_of_range
       error_vertical_acceleration_out_of_range: input_board_error_vertical_acceleration_out_of_range
