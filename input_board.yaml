@@ -605,6 +605,12 @@ object_dictionary:
     access: readonly
     unit: W
 
+  communication_power_consumption:
+    type: d16<0..500>
+    description: Power consumption of the communication and control system.
+    access: readonly
+    unit: W
+
 
 tx_streams:
   state:
@@ -670,10 +676,11 @@ tx_streams:
       - ebox_temperature
       - ambient_temperature
   power_consumption:
-    description: Power consumption of the pod.
+    description: Power consumption data.
     interval: 500ms
     mapping:
       - system_power_consumption
+      - communication_power_consumption
 
   errors:
     description: All error flags from the input_board
