@@ -296,6 +296,7 @@ object_dictionary:
   error_link24_current_invalid:
     type: error_flag
     description: The current of the 24V link is not sensible. Check sensor connection.
+    friend: link24_current
     access: readonly
   error_level_link24_over_current:
     type: error_level
@@ -372,6 +373,7 @@ object_dictionary:
   error_link45_current_invalid:
     type: error_flag
     description: The current of the 45V link is not sensible. Check sensor connection.
+    friend: link45_current
     access: readonly
   error_level_link45_over_current:
     type: error_level
@@ -381,41 +383,6 @@ object_dictionary:
   error_level_config_link45_over_current:
     type: error_level_config
     description: Status configuration of the link45 over current.
-    access: extern
-
-  # Pressure
-  cooling_cycle_pressure:
-    type: d8<-1..9>
-    unit: bar
-    description: Pressure of the cooling cycle.
-    access: readonly
-  cooling_cycle_pressure_calibration_mode:
-    type: calibration_mode
-    description: Calibration mode of the cooling cycle pressure.
-    access: readwrite
-  cooling_cycle_pressure_calibration_offset:
-    type: d32<-1..9>
-    unit: bar
-    description: Calibration offset of the cooling cycle pressure.
-    access: readwrite
-  cooling_cycle_pressure_calibration_target:
-    type: d32<-1..9>
-    unit: bar
-    description: Target of the calibration of the cooling cycle
-    access: extern
-  error_cooling_cycle_pressure_invalid:
-    type: error_flag
-    description: The pressure of the cooling cycle is not sensible. Check sensor connection.
-    friend: cooling_cycle_pressure
-    access: readonly
-  error_level_cooling_cycle_over_pressure:
-    type: error_level
-    description: The pressure inside of the cooling cycle is no high.
-    friend: cooling_cycle_pressure
-    access: readonly
-  error_level_config_cooling_cycle_over_pressure:
-    type: error_level_config
-    description: Status configuration of the cooling cycle over pressure.
     access: extern
 
   # Temperatures
@@ -438,47 +405,43 @@ object_dictionary:
     type: error_level_config
     description: Status configuration of the mcu temperature.
     access: extern
-
-  cooling_cycle_temperature:
-    type: d8<-1..150>
-    unit: °C
-    description: Temperature of the cooling cycle
-    access: readonly
-  error_cooling_cycle_temperature_invalid:
-    type: error_flag
-    description: The temperature of the cooling cycle is not sensible. Check sensor connection.
-    friend: cooling_cycle_temperature
-    access: readonly
-  error_level_cooling_cycle_temperature:
-    type: error_level
-    description: The temperature in the cooling cycle is to hot.
-    friend: cooling_cycle_temperature
-    access: readonly
-  error_level_config_cooling_temperature:
-    type: error_level_config
-    description: Status configuration of the cooling cycle temperature.
-    access: extern
     
 
-  bat24_temperature:
+  bat24_cell_temperature_1:
     type: d8<-1..150>
     unit: °C
-    description: Temperature of the 24V-Battery
+    description: Temperature of the 24V-Battery cells
+    access: readonly
+  bat24_cell_temperature_2:
+    type: d8<-1..150>
+    unit: °C
+    description: Temperature of the 24V-Battery cells
+    access: readonly
+  bat24_temperature_max:
+    type: d8<-1..150>
+    unit: °C
+    description: Maximum temperature of the 24V-Battery
+    access: readonly
+  error_bat24_cell_temperature_1_invalid:
+    type: error_flag
+    description: The measured temperatures doesn't make sense. Probably not connected or to the wrong pin.
+    friend: bat24_cell_temperature_1
+    access: readonly
+  error_bat24_cell_temperature_2_invalid:
+    type: error_flag
+    description: The measured temperatures doesn't make sense. Probably not connected or to the wrong pin.
+    friend: bat24_cell_temperature_2
     access: readonly
   error_level_bat24_temperature:
     type: error_level
     description: The temperature of the 24V Battery is not sensible. Check sensor connection.
-    friend: bat24_temperature
+    friend: bat24_temperature_max
     access: readonly
   error_level_config_bat24_temperature:
     type: error_level_config
     description: The 24V Battery is to hot.
     friend: bat24_temperature
     access: extern
-  error_bat24_temperature_invalid:
-    type: error_flag
-    description: The measured temperatures doesn't make sense. Probably not connected or to the wrong pin.
-    access: readonly
 
   supercap_temperature:
     type: d8<-1..150>
@@ -500,59 +463,90 @@ object_dictionary:
     description: Status configuration of the supercap temperature.
     access: extern
 
-  buck_temperature:
+  sac_ebox_temperature:
     type: d8<-1..150>
     unit: °C
-    description: Temperature of the 12V buck converter.
+    description: Temperature inside of the Sense & Control ebox.
     access: readonly
-  error_buck_temperature_invalid:
+  error_sac_ebox_temperature_invalid:
     type: error_flag
-    description: The 12V buck converter temperature is not sensible. Check sensor connection.
-    friend: buck_temperature
-    access: readwrite
-  error_level_buck_temperature:
+    description: The sense & control ebox temperature is not sensible.
+    friend: sac_ebox_temperature
+    access: readonly
+  error_level_sac_ebox_temperature:
     type: error_level
-    description: The 12V buck converter is to hot.
-    friend: buck_temperature
+    description: The sense & control ebox temperature is to hot.
+    friend: sac_ebox_temperature
     access: readonly
-  error_level_config_buck_temperature:
-    type: error_level_config
-    description: Status configuration of the buck temperature.
-    access: extern
-
-  ebox_temperature:
-    type: d8<-1..150>
-    unit: °C
-    description: Temperature inside of the ebox.
-    access: readonly
-  error_ebox_temperature_invalid:
-    type: error_flag
-    description: The ebox temperature is not sensible. Check sensor connection.
-    friend: ebox_temperature
-    access: readonly
-  error_level_ebox_temperature:
-    type: error_level
-    description: The ebox temperature is to hot.
-    friend: ebox_temperature
-    access: readonly
-  error_level_config_ebox_temperature:
+  error_level_config_sac_ebox_temperature:
     type: error_level_config
     description: Status configuration of the ebox temperature.
     access: extern
 
-  ambient_temperature:
+  power_ebox_temperature:
     type: d8<-1..150>
     unit: °C
-    description: Ambient temperature.
+    description: Temperature inside of the power ebox.
     access: readonly
-  error_ambient_temperature_invalid:
+  error_power_ebox_temperature_invalid:
+    type: error_flag
+    description: The power ebox temperature is not sensible.
+    friend: power_ebox_temperature
+    access: readonly
+  error_level_power_ebox_temperature:
+    type: error_level
+    description: The power ebox temperature is to hot.
+    friend: power_ebox_temperature
+    access: readonly
+  error_level_config_power_ebox_temperature:
+    type: error_level_config
+    description: Status configuration of the power ebox temperature.
+    access: extern
+
+  ambient_temperature_1:
+    type: d8<-1..150>
+    unit: °C
+    description: Ambient temperature. (Front)
+    access: readonly
+  ambient_temperature_2:
+    type: d8<-1..150>
+    unit: °C
+    description: Ambient temperature. (Middle)
+    access: readonly 
+  ambient_temperature_3:
+    type: d8<-1..150>
+    unit: °C
+    description: Ambient temperature. (Back)
+    access: readonly
+  ambient_temperature_avg:
+    type: d8<-1..150>
+    unit: °C
+    description: Average ambient temperature.
+    access: readonly
+  ambient_temperature_max:
+    type: d8<-1..150>
+    unit: °C
+    description: Maximum ambient temperature.
+    access: readonly
+  error_ambient_temperature_1_invalid:
     type: error_flag
     description: The ambient temperature is not sensible. Check sensor connection.
+    friend: ambient_temperature_1
+    access: readonly
+  error_ambient_temperature_2_invalid:
+    type: error_flag
+    description: The ambient temperature is not sensible. Check sensor connection.
+    friend: ambient_temperature_2
+    access: readonly
+  error_ambient_temperature_3_invalid:
+    type: error_flag
+    description: The ambient temperature is not sensible. Check sensor connection.
+    friend: ambient_temperature_3
     access: readonly
   error_level_ambient_temperature:
     type: error_level
     description: The ambient temperature is to hot.
-    friend: ambient_temperature
+    friend: ambient_temperature_max
     access: readonly
   error_level_config_ambient_temperature:
     type: error_level_config
@@ -659,22 +653,32 @@ tx_streams:
     mapping:
       - link45_voltage
       - link45_current
-  cooling:
-    description: Cooling measurements
-    interval: 500ms
-    mapping:
-      - cooling_cycle_pressure
-      - cooling_cycle_temperature
-  temperatures:
+  mics_temperatures:
     description: Collection of measured temperatures.
     interval: 500ms
     mapping:
       - mcu_temperature
-      - bat24_temperature
       - supercap_temperature
-      - buck_temperature
-      - ebox_temperature
-      - ambient_temperature
+      - sac_ebox_temperature
+      - power_ebox_temperature
+  bat_temperatures:
+    description: Collection of measured temperatures.
+    interval: 500ms
+    mapping:
+      - bat24_cell_temperature_1
+      - bat24_cell_temperature_2
+      - bat24_temperature_max
+  ambient_temperatures:
+    description: Collection of measured temperatures.
+    interval: 500ms
+    mapping:
+      - ambient_temperature_1 
+      - ambient_temperature_2 
+      - ambient_temperature_3
+      - ambient_temperature_max # 24 -32
+      - ambient_temperature_avg
+      - supercap_temperature
+
   power_consumption:
     description: Power consumption data.
     interval: 500ms
@@ -697,14 +701,15 @@ tx_streams:
       - error_link24_current_invalid
       - error_link45_voltage_invalid
       - error_link45_current_invalid
-      - error_cooling_cycle_pressure_invalid
       - error_mcu_temperature_invalid
-      - error_cooling_cycle_temperature_invalid
-      - error_bat24_temperature_invalid
+      - error_sac_ebox_temperature_invalid
+      - error_power_ebox_temperature_invalid
+      - error_bat24_cell_temperature_1_invalid
+      - error_bat24_cell_temperature_2_invalid
       - error_supercap_temperature_invalid
-      - error_buck_temperature_invalid
-      - error_ebox_temperature_invalid
-      - error_ambient_temperature_invalid
+      - error_ambient_temperature_1_invalid
+      - error_ambient_temperature_2_invalid
+      - error_ambient_temperature_3_invalid
       - error_heartbeat_miss
       - error_level_bat24_under_voltage
       - error_level_bat24_over_voltage
@@ -715,13 +720,11 @@ tx_streams:
       - error_level_link45_under_voltage
       - error_level_link45_over_voltage
       - error_level_link45_over_current
-      - error_level_cooling_cycle_over_pressure
       - error_level_mcu_temperature
-      - error_level_cooling_cycle_temperature
       - error_level_bat24_temperature
       - error_level_supercap_temperature
-      - error_level_buck_temperature
-      - error_level_ebox_temperature
+      - error_level_sac_ebox_temperature
+      - error_level_power_ebox_temperature
       - error_level_ambient_temperature
       - last_node_missed
 

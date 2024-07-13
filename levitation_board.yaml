@@ -58,6 +58,11 @@ object_dictionary:
     unit: mm
     description: Airgap of the left magnet facing the track.
     access : readonly
+  error_airgap_left_invalid:
+    type: error_flag
+    description: The left airgap reading is invalid.
+    friend: airgap_left
+    access: readonly
   airgap_left_variance:
     type: d16<0..10>
 
@@ -66,6 +71,11 @@ object_dictionary:
     unit: mm
     description: Airgap of the right magnet facing the track.
     access : readonly
+  error_airgap_right_invalid:
+    type: error_flag
+    description: The right airgap reading is invalid.
+    friend: airgap_right
+    access: readonly
   airgap_right_variance:
     type: d16<0..10>
 
@@ -85,6 +95,11 @@ object_dictionary:
     type: d16<0..100>
     unit: V
     description: Voltage of the VDC plane.
+    access: readonly
+  error_vdc_voltage_invalid:
+    type: error_flag
+    description: The vdc reading is invalid
+    friend: vdc_voltage
     access: readonly
   error_level_vdc_voltage:
     type: error_level
@@ -122,9 +137,19 @@ object_dictionary:
     description: Current through the left magnet is to high.
     friend: current_left
     access: readonly
+  error_magnet_current_left_invalid:
+    type: error_flag
+    description: Current through the left magnet is invalid
+    friend: current_left
+    access: readonly
   error_level_magnet_current_right:
     type: error_level
     description: Current through the right magnet is to high.
+    friend: current_right
+    access: readonly
+  error_magnet_current_right_invalid:
+    type: error_flag
+    description: Current through the right magnet is invalid
     friend: current_right
     access: readonly
   
@@ -137,47 +162,42 @@ object_dictionary:
     description: The input current of the guidance board is to high.
     friend: input_current
     access: readonly
+  error_input_current_invalid:
+    type: error_flag
+    description: The input current of the guidance board is invalid.
+    friend: input_current
+    access: readonly
 
-  magnet_temperature_left1:
+  magnet_temperature_left:
     type: d8<-1..150>
     aunit: °C
     description: Temperature of the left magnet (sensor1)
     access: readonly
-  magnet_temperature_left2:
-    type: d8<-1..150>
-    aunit: °C
-    description: Temperature of the left magnet (sensor2)
-    access: readonly
-  magnet_temperature_left_max:
-    type: d8<-1..150>
-    aunit: °C
-    description: Maximum measured temperature of the left magnet.
+  error_magnet_temperature_left_invalid:
+    type: error_flag
+    description: The left magnet temperature 1 is invalid.
+    friend: magnet_temperature_left
     access: readonly
   error_level_magnet_temperature_left:
     type: error_level
     description: Status of the left magnet temperature.
-    friend: magnet_temperature_left_max
+    friend: magnet_temperature_left
     access: readonly
 
-  magnet_temperature_right1:
+  magnet_temperature_right:
     type: d8<-1..150>
     unit: °C
     description: Temperature of the right magnet
     access: readonly
-  magnet_temperature_right2:
-    type: d8<-1..150>
-    unit: °C
-    description: Temperature of the right magnet
-    access: readonly
-  magnet_temperature_right_max:
-    type: d8<-1..150>
-    unit: °C
-    description: Maximum temperature measured in the right magnet.
+  error_magnet_temperature_right_invalid:
+    type: error_flag
+    description: The right magnet temperature is invalid.
+    friend: magnet_temperature_right
     access: readonly
   error_level_magnet_temperature_right:
     type: error_level
     description: Status of the left magnet temperature.
-    friend: magnet_temperature_right_max
+    friend: magnet_temperature_right
     access: readonly
 
   error_level_config_magnet_temperature:
@@ -190,9 +210,15 @@ object_dictionary:
     unit: °C
     description: Temperature of the input board
     access: readonly
+  error_mcu_temperature_invalid:
+    type: error_flag
+    description: The mcu temperature reading is invalid.
+    friend: mcu_temperature
+    access: readonly
   error_level_mcu_temperature:
     type: error_level
     description: Status of the mcu temperature.
+    friend: mcu_temperature
     access: readonly
   error_level_config_mcu_temperature:
     type: error_level_config
@@ -353,8 +379,8 @@ tx_streams:
     description: Temperature Readings
     interval: 500ms
     mapping:
-      - magnet_temperature_left1
-      - magnet_temperature_right1
+      - magnet_temperature_left
+      - magnet_temperature_right
       - mcu_temperature
 
   errors:
@@ -362,6 +388,14 @@ tx_streams:
     interval: 1ms-1s
     mapping:
       - assertion_fault
+      - error_airgap_left_invalid
+      - error_airgap_right_invalid
+      - error_vdc_voltage_invalid
+      - error_magnet_current_left_invalid
+      - error_magnet_current_right_invalid
+      - error_magnet_temperature_left_invalid
+      - error_magnet_temperature_right_invalid
+      - error_mcu_temperature_invalid
       - error_arming_failed
       - error_precharge_failed
       - error_heartbeat_miss
@@ -373,6 +407,7 @@ tx_streams:
       - error_level_magnet_temperature_right
       - error_level_mcu_temperature
       - last_node_missed
+
 
   voltage_and_currents:
     description: Voltage and current readings of the guidance board.

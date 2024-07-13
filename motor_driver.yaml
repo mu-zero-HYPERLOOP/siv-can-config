@@ -184,6 +184,11 @@ object_dictionary:
     unit: V
     description: Voltage of the VDC plane.
     access: readonly
+  error_vdc_voltage_invalid:
+    type: error_flag
+    description: The vdc voltage reading is invalid.
+    friend: vdc_voltage
+    access: readonly
   error_level_vdc_voltage:
     type: error_level
     description: The vdc voltage of the GDB is to high.
@@ -449,6 +454,7 @@ tx_streams:
       - error_lim_temperature3_invalid
       - error_lim_temperature4_invalid
       - error_heartbeat_miss
+      - error_vdc_voltage_invalid
       - error_level_current_u1
       - error_level_current_v1
       - error_level_current_w1

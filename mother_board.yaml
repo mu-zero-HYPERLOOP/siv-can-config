@@ -380,19 +380,26 @@ object_dictionary:
     type: error_flag
   input_board_error_cooling_cycle_temperature_invalid:
     type: error_flag
-  input_board_error_bat24_temperature_invalid:
+  input_board_error_bat24_cell_temperature_1_invalid:
+    type: error_flag
+  input_board_error_bat24_cell_temperature_2_invalid:
     type: error_flag
   input_board_error_supercap_temperature_invalid:
     type: error_flag
   input_board_error_buck_temperature_invalid:
     type: error_flag
-  input_board_error_ebox_temperature_invalid:
+  input_board_error_sac_ebox_temperature_invalid:
     type: error_flag
-  input_board_error_ambient_temperature_invalid:
+  input_board_error_power_ebox_temperature_invalid:
+    type: error_flag
+  input_board_error_ambient_temperature_1_invalid:
+    type: error_flag
+  input_board_error_ambient_temperature_2_invalid:
+    type: error_flag
+  input_board_error_ambient_temperature_3_invalid:
     type: error_flag
   input_board_error_heartbeat_miss:
     type: error_flag
-
   input_board_error_level_bat24_under_voltage:
     type: error_level
   input_board_error_level_bat24_over_voltage:
@@ -423,7 +430,9 @@ object_dictionary:
     type: error_level
   input_board_error_level_buck_temperature:
     type: error_level
-  input_board_error_level_ebox_temperature:
+  input_board_error_level_sac_ebox_temperature:
+    type: error_level
+  input_board_error_level_power_ebox_temperature:
     type: error_level
   input_board_error_level_ambient_temperature:
     type: error_level
@@ -778,43 +787,42 @@ rx_streams:
     config_hash:
       config_hash: input_board_config_hash
     errors:
-      assertion_fault: input_board_assertion_fault
-      error_acceleration_out_of_range: input_board_error_acceleration_out_of_range
-      error_lateral_acceleration_out_of_range: input_board_error_lateral_acceleration_out_of_range
-      error_vertical_acceleration_out_of_range: input_board_error_vertical_acceleration_out_of_range
-      error_acceleration_calibration_failed: input_board_error_acceleration_calibration_failed
-      error_bat24_voltage_invalid: input_board_error_bat24_voltage_invalid
-      error_bat24_current_invalid: input_board_error_bat24_current_invalid
-      error_supercap_voltage_invalid: input_board_error_supercap_voltage_invalid
-      error_link24_current_invalid: input_board_error_link24_current_invalid
-      error_link45_voltage_invalid: input_board_error_link45_voltage_invalid
-      error_link45_current_invalid: input_board_error_link45_current_invalid
-      error_cooling_cycle_pressure_invalid: input_board_error_cooling_cycle_pressure_invalid
-      error_mcu_temperature_invalid: input_board_error_mcu_temperature_invalid
-      error_cooling_cycle_temperature_invalid: input_board_error_cooling_cycle_temperature_invalid
-      error_bat24_temperature_invalid: input_board_error_bat24_temperature_invalid
-      error_supercap_temperature_invalid: input_board_error_supercap_temperature_invalid
-      error_buck_temperature_invalid: input_board_error_buck_temperature_invalid
-      error_ebox_temperature_invalid: input_board_error_ebox_temperature_invalid
-      error_ambient_temperature_invalid: input_board_error_ambient_temperature_invalid
-      error_heartbeat_miss: input_board_error_heartbeat_miss
-      error_level_bat24_under_voltage: input_board_error_level_bat24_under_voltage
-      error_level_bat24_over_voltage: input_board_error_level_bat24_over_voltage
-      error_level_bat24_over_current: input_board_error_level_bat24_over_current
-      error_level_supercap_under_voltage: input_board_error_level_supercap_under_voltage
-      error_level_supercap_over_voltage: input_board_error_level_supercap_over_voltage
-      error_level_link24_over_current: input_board_error_level_link24_over_current
-      error_level_link45_under_voltage: input_board_error_level_link45_under_voltage
-      error_level_link45_over_voltage: input_board_error_level_link45_over_voltage
-      error_level_link45_over_current: input_board_error_level_link45_over_current
-      error_level_cooling_cycle_over_pressure: input_board_error_level_cooling_cycle_over_pressure
-      error_level_mcu_temperature: input_board_error_level_mcu_temperature
-      error_level_cooling_cycle_temperature: input_board_error_level_cooling_cycle_temperature
-      error_level_bat24_temperature: input_board_error_level_bat24_temperature
-      error_level_supercap_temperature: input_board_error_level_supercap_temperature
-      error_level_buck_temperature: input_board_error_level_buck_temperature
-      error_level_ebox_temperature: input_board_error_level_ebox_temperature
-      error_level_ambient_temperature: input_board_error_level_ambient_temperature
+      assertion_fault : input_board_assertion_fault
+      error_acceleration_out_of_range : input_board_error_acceleration_out_of_range
+      error_lateral_acceleration_out_of_range : input_board_error_lateral_acceleration_out_of_range
+      error_vertical_acceleration_out_of_range : input_board_error_vertical_acceleration_out_of_range
+      error_acceleration_calibration_failed : input_board_error_acceleration_calibration_failed
+      error_bat24_voltage_invalid : input_board_error_bat24_voltage_invalid
+      error_bat24_current_invalid : input_board_error_bat24_current_invalid
+      error_supercap_voltage_invalid : input_board_error_supercap_voltage_invalid
+      error_link24_current_invalid : input_board_error_link24_current_invalid
+      error_link45_voltage_invalid : input_board_error_link45_voltage_invalid
+      error_link45_current_invalid : input_board_error_link45_current_invalid
+      error_mcu_temperature_invalid : input_board_error_mcu_temperature_invalid
+      error_sac_ebox_temperature_invalid : input_board_error_sac_ebox_temperature_invalid
+      error_power_ebox_temperature_invalid : input_board_error_power_ebox_temperature_invalid
+      error_bat24_cell_temperature_1_invalid : input_board_error_bat24_cell_temperature_1_invalid
+      error_bat24_cell_temperature_2_invalid : input_board_error_bat24_cell_temperature_2_invalid
+      error_supercap_temperature_invalid : input_board_error_supercap_temperature_invalid
+      error_ambient_temperature_1_invalid : input_board_error_ambient_temperature_1_invalid
+      error_ambient_temperature_2_invalid : input_board_error_ambient_temperature_2_invalid
+      error_ambient_temperature_3_invalid : input_board_error_ambient_temperature_3_invalid
+      error_heartbeat_miss : input_board_error_heartbeat_miss
+      error_level_bat24_under_voltage : input_board_error_level_bat24_under_voltage
+      error_level_bat24_over_voltage : input_board_error_level_bat24_over_voltage
+      error_level_bat24_over_current : input_board_error_level_bat24_over_current
+      error_level_supercap_under_voltage : input_board_error_level_supercap_under_voltage
+      error_level_supercap_over_voltage : input_board_error_level_supercap_over_voltage
+      error_level_link24_over_current : input_board_error_level_link24_over_current
+      error_level_link45_under_voltage : input_board_error_level_link45_under_voltage
+      error_level_link45_over_voltage : input_board_error_level_link45_over_voltage
+      error_level_link45_over_current : input_board_error_level_link45_over_current
+      error_level_mcu_temperature : input_board_error_level_mcu_temperature
+      error_level_bat24_temperature : input_board_error_level_bat24_temperature
+      error_level_supercap_temperature : input_board_error_level_supercap_temperature
+      error_level_sac_ebox_temperature : input_board_error_level_sac_ebox_temperature
+      error_level_power_ebox_temperature : input_board_error_level_power_ebox_temperature
+      error_level_ambient_temperature : input_board_error_level_ambient_temperature
 
   power_board12:
     state:

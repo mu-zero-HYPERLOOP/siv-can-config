@@ -46,6 +46,7 @@ object_dictionary:
   error_level_mcu_temperature:
     type: error_level
     description: Status of the mcu temperature.
+    friend: mcu_temperature
     access: readonly
   error_level_config_mcu_temperature:
     type: error_level_config

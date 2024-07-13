@@ -128,6 +128,11 @@ object_dictionary:
     unit: °C
     description: Temperature of the input board
     access: readonly
+  error_mcu_temperature_invalid:
+    type: error_flag
+    description: The mcu temperature reading is invalid
+    friend: mcu_temperature
+    access: readonly
   error_level_mcu_temperature:
     type: error_level
     description: Status of the mcu temperature.
@@ -164,6 +169,7 @@ tx_streams:
       - assertion_fault
       - error_any_short
       - error_heartbeat_miss
+      - error_mcu_temperature_invalid
       - error_level_mcu_temperature
       - last_node_missed
 
