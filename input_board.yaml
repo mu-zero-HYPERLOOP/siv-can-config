@@ -714,6 +714,12 @@ tx_streams:
       - error_level_bat24_under_voltage
       - error_level_bat24_over_voltage
       - error_level_bat24_over_current
+    
+
+  errors2:
+    description: All error flags from the input_board
+    interval: 0ms-1000ms
+    mapping:
       - error_level_supercap_under_voltage
       - error_level_supercap_over_voltage
       - error_level_link24_over_current

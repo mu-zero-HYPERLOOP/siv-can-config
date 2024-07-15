@@ -811,6 +811,7 @@ rx_streams:
       error_level_bat24_under_voltage : input_board_error_level_bat24_under_voltage
       error_level_bat24_over_voltage : input_board_error_level_bat24_over_voltage
       error_level_bat24_over_current : input_board_error_level_bat24_over_current
+    errors2:
       error_level_supercap_under_voltage : input_board_error_level_supercap_under_voltage
       error_level_supercap_over_voltage : input_board_error_level_supercap_over_voltage
       error_level_link24_over_current : input_board_error_level_link24_over_current
