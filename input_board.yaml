@@ -49,6 +49,14 @@ object_dictionary:
     type: i16
     description: Counted stripes by the linear encoder.
     access: readonly
+  absolute_position_known:
+    type: bool_t
+    description: Set to true if the absolute position of the pod is known.
+    access: readonly
+  absolute_position_offset:
+    type: d16<-10..30>
+    description: The offset between relative and absolute position.
+    access: readonly
 
   raw_acceleration:
     type: d16<-50..50>
@@ -626,6 +634,8 @@ tx_streams:
     interval: 50ms-1000ms
     mapping:
       - linear_encoder_count
+      - absolute_position_known
+      - absolute_position_offset
 
   accelerations:
     description: Additionall acceleration data

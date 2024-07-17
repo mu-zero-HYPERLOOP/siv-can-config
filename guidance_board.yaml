@@ -288,6 +288,9 @@ tx_streams:
       - error_inner_airgap_left_invalid
       - error_outer_airgap_right_invalid
       - error_inner_airgap_right_invalid
+      - error_vdc_voltage_invalid
+      - error_magnet_current_left_invalid
+      - error_magnet_current_right_invalid
       - error_input_current_invalid
       - error_magnet_temperature_left_invalid
       - error_magnet_temperature_right_invalid

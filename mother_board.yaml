@@ -169,6 +169,28 @@ object_dictionary:
     type: error_flag
   guidance_board_front_error_heartbeat_miss:
     type: error_flag
+  guidance_board_front_error_outer_airgap_left_invalid:
+    type: error_flag
+  guidance_board_front_error_inner_airgap_left_invalid:
+    type: error_flag
+  guidance_board_front_error_outer_airgap_right_invalid:
+    type: error_flag
+  guidance_board_front_error_inner_airgap_right_invalid:
+    type: error_flag
+  guidance_board_front_error_vdc_voltage_invalid:
+    type: error_flag
+  guidance_board_front_error_magnet_current_left_invalid:
+    type: error_flag
+  guidance_board_front_error_magnet_current_right_invalid:
+    type: error_flag
+  guidance_board_front_error_input_current_invalid:
+    type: error_flag
+  guidance_board_front_error_magnet_temperature_left_invalid:
+    type: error_flag
+  guidance_board_front_error_magnet_temperature_right_invalid:
+    type: error_flag
+  guidance_board_front_error_mcu_temperature_invalid:
+    type: error_flag
 
   guidance_board_front_error_level_vdc_voltage:
     type: error_level
@@ -203,6 +225,28 @@ object_dictionary:
   guidance_board_back_error_precharge_failed:
     type: error_flag
   guidance_board_back_error_heartbeat_miss:
+    type: error_flag
+  guidance_board_back_error_outer_airgap_left_invalid:
+    type: error_flag
+  guidance_board_back_error_inner_airgap_left_invalid:
+    type: error_flag
+  guidance_board_back_error_outer_airgap_right_invalid:
+    type: error_flag
+  guidance_board_back_error_inner_airgap_right_invalid:
+    type: error_flag
+  guidance_board_back_error_vdc_voltage_invalid:
+    type: error_flag
+  guidance_board_back_error_magnet_current_left_invalid:
+    type: error_flag
+  guidance_board_back_error_magnet_current_right_invalid:
+    type: error_flag
+  guidance_board_back_error_input_current_invalid:
+    type: error_flag
+  guidance_board_back_error_magnet_temperature_left_invalid:
+    type: error_flag
+  guidance_board_back_error_magnet_temperature_right_invalid:
+    type: error_flag
+  guidance_board_back_error_mcu_temperature_invalid:
     type: error_flag
 
   guidance_board_back_error_level_vdc_voltage:
@@ -691,6 +735,17 @@ rx_streams:
       error_arming_failed: guidance_board_front_error_arming_failed
       error_precharge_failed: guidance_board_front_error_precharge_failed
       error_heartbeat_miss: guidance_board_front_error_heartbeat_miss
+      error_outer_airgap_left_invalid: guidance_board_front_error_outer_airgap_left_invalid
+      error_inner_airgap_left_invalid: guidance_board_front_error_inner_airgap_left_invalid
+      error_outer_airgap_right_invalid: guidance_board_front_error_outer_airgap_right_invalid
+      error_inner_airgap_right_invalid: guidance_board_front_error_inner_airgap_right_invalid
+      error_vdc_voltage_invalid: guidance_board_front_error_vdc_voltage_invalid
+      error_magnet_current_left_invalid: guidance_board_front_error_magnet_current_left_invalid
+      error_magnet_current_right_invalid: guidance_board_front_error_magnet_current_right_invalid
+      error_input_current_invalid: guidance_board_front_error_input_current_invalid
+      error_magnet_temperature_left_invalid: guidance_board_front_error_magnet_temperature_left_invalid
+      error_magnet_temperature_right_invalid: guidance_board_front_error_magnet_temperature_right_invalid
+      error_mcu_temperature_invalid: guidance_board_front_error_mcu_temperature_invalid
       error_level_vdc_voltage: guidance_board_front_error_level_vdc_voltage
       error_level_magnet_current_left: guidance_board_front_error_level_magnet_current_left
       error_level_magnet_current_right: guidance_board_front_error_level_magnet_current_right
@@ -710,6 +765,17 @@ rx_streams:
       error_arming_failed: guidance_board_back_error_arming_failed
       error_precharge_failed: guidance_board_back_error_precharge_failed
       error_heartbeat_miss: guidance_board_back_error_heartbeat_miss
+      error_outer_airgap_left_invalid: guidance_board_back_error_outer_airgap_left_invalid
+      error_inner_airgap_left_invalid: guidance_board_back_error_inner_airgap_left_invalid
+      error_outer_airgap_right_invalid: guidance_board_back_error_outer_airgap_right_invalid
+      error_inner_airgap_right_invalid: guidance_board_back_error_inner_airgap_right_invalid
+      error_vdc_voltage_invalid: guidance_board_back_error_vdc_voltage_invalid
+      error_magnet_current_left_invalid: guidance_board_back_error_magnet_current_left_invalid
+      error_magnet_current_right_invalid: guidance_board_back_error_magnet_current_right_invalid
+      error_input_current_invalid: guidance_board_back_error_input_current_invalid
+      error_magnet_temperature_left_invalid: guidance_board_back_error_magnet_temperature_left_invalid
+      error_magnet_temperature_right_invalid: guidance_board_back_error_magnet_temperature_right_invalid
+      error_mcu_temperature_invalid: guidance_board_back_error_mcu_temperature_invalid
       error_level_vdc_voltage: guidance_board_back_error_level_vdc_voltage
       error_level_magnet_current_left: guidance_board_back_error_level_magnet_current_left
       error_level_magnet_current_right: guidance_board_back_error_level_magnet_current_right
