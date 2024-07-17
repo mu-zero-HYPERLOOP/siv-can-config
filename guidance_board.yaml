@@ -278,7 +278,7 @@ tx_streams:
       - feedthrough_status
   errors:
     description: Errors of the guidance boards.
-    interval: 1ms-1s
+    interval: 0ms-1s
     mapping:
       - assertion_fault
       - error_arming_failed

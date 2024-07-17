@@ -676,7 +676,7 @@ tx_streams:
 
   errors:
     description: All errors of the mother board.
-    interval: 1ms-1s
+    interval: 0ms-1s
     mapping:
       - error_heartbeat_miss
       - error_any

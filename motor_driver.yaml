@@ -437,7 +437,7 @@ tx_streams:
 
   errors:
     description: All error flags of the motor driver.
-    interval: 1ms-1000ms
+    interval: 0ms-1000ms
     mapping:
       - assertion_fault
       - error_arming_failed
