@@ -113,17 +113,17 @@ object_dictionary:
 
 
   current_left:
-    type: d16<-25..25>
+    type: d16<-200..200>
     unit: A
     description: Current through the left magnet.
     access: readonly
   current_right:
-    type: d16<-25..25>
+    type: d16<-200..200>
     unit: A
     description: Current through the right magnet.
     access: readonly
   input_current:
-    type: d16<-25..25>
+    type: d16<-200..200>
     unit: A
     description: Current going into the board.
     access: readonly
