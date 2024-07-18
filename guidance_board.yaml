@@ -145,6 +145,15 @@ object_dictionary:
     description: Current through the right magnet is to high.
     friend: current_right
     access: readonly
+  error_magnet_current_left_unexpected:
+    type: error_flag
+    description: Unexpected current in the left magnet.
+    access: readonly
+  error_magnet_current_right_unexpected:
+    type: error_flag
+    description: Unexpected current in the right magnet.
+    access: readonly
+
   
   error_level_config_input_current:
     type: error_level_config
@@ -264,6 +273,11 @@ object_dictionary:
     type: bool_t
     description: If true, ignore all voltage checks of the 45V system.
     access: extern
+  
+  error_sdc_brake:
+    type: error_flag
+    description: SDC brake was pulled
+    access: readonly
 
 tx_streams:
   state:
@@ -295,6 +309,9 @@ tx_streams:
       - error_magnet_temperature_left_invalid
       - error_magnet_temperature_right_invalid
       - error_mcu_temperature_invalid
+      - error_sdc_brake
+      - error_magnet_current_left_unexpected
+      - error_magnet_current_right_unexpected
       - error_level_vdc_voltage
       - error_level_magnet_current_left
       - error_level_magnet_current_right

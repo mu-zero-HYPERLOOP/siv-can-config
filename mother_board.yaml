@@ -677,6 +677,43 @@ object_dictionary:
     description: If set, all voltage checks of the 45V system are ignored.
     access: readwrite
 
+  guidance_board_front_error_sdc_brake:
+    type: error_flag
+  guidance_board_front_error_magnet_current_left_unexpected:
+    type: error_flag
+  guidance_board_front_error_magnet_current_right_unexpected:
+    type: error_flag
+
+  guidance_board_back_error_sdc_brake:
+    type: error_flag
+  guidance_board_back_error_magnet_current_left_unexpected:
+    type: error_flag
+  guidance_board_back_error_magnet_current_right_unexpected:
+    type: error_flag
+
+  levitation_board1_error_sdc_brake:
+    type: error_flag
+  levitation_board1_error_magnet_current_left_unexpected:
+    type: error_flag
+  levitation_board1_error_magnet_current_right_unexpected:
+    type: error_flag
+
+  levitation_board2_error_sdc_brake:
+    type: error_flag
+  levitation_board2_error_magnet_current_left_unexpected:
+    type: error_flag
+  levitation_board2_error_magnet_current_right_unexpected:
+    type: error_flag
+
+  levitation_board3_error_sdc_brake:
+    type: error_flag
+  levitation_board3_error_magnet_current_left_unexpected:
+    type: error_flag
+  levitation_board3_error_magnet_current_right_unexpected:
+    type: error_flag
+
+
+
   
 
 tx_streams:
@@ -748,6 +785,7 @@ tx_streams:
     interval: 1ms-10s
     mapping:
       - ignore_45v
+
     
   
 rx_streams:
@@ -807,6 +845,9 @@ rx_streams:
       error_magnet_temperature_left_invalid: guidance_board_front_error_magnet_temperature_left_invalid
       error_magnet_temperature_right_invalid: guidance_board_front_error_magnet_temperature_right_invalid
       error_mcu_temperature_invalid: guidance_board_front_error_mcu_temperature_invalid
+      error_sdc_brake: guidance_board_front_error_sdc_brake
+      error_magnet_current_left_unexpected: guidance_board_front_error_magnet_current_left_unexpected
+      error_magnet_current_right_unexpected: guidance_board_front_error_magnet_current_right_unexpected
       error_level_vdc_voltage: guidance_board_front_error_level_vdc_voltage
       error_level_magnet_current_left: guidance_board_front_error_level_magnet_current_left
       error_level_magnet_current_right: guidance_board_front_error_level_magnet_current_right
@@ -837,6 +878,9 @@ rx_streams:
       error_magnet_temperature_left_invalid: guidance_board_back_error_magnet_temperature_left_invalid
       error_magnet_temperature_right_invalid: guidance_board_back_error_magnet_temperature_right_invalid
       error_mcu_temperature_invalid: guidance_board_back_error_mcu_temperature_invalid
+      error_sdc_brake: guidance_board_back_error_sdc_brake
+      error_magnet_current_left_unexpected: guidance_board_back_error_magnet_current_left_unexpected
+      error_magnet_current_right_unexpected: guidance_board_back_error_magnet_current_right_unexpected
       error_level_vdc_voltage: guidance_board_back_error_level_vdc_voltage
       error_level_magnet_current_left: guidance_board_back_error_level_magnet_current_left
       error_level_magnet_current_right: guidance_board_back_error_level_magnet_current_right
@@ -864,6 +908,9 @@ rx_streams:
       error_arming_failed: levitation_board1_error_arming_failed
       error_precharge_failed: levitation_board1_error_precharge_failed
       error_heartbeat_miss: levitation_board1_error_heartbeat_miss
+      error_sdc_brake: levitation_board1_error_sdc_brake
+      error_magnet_current_left_unexpected: levitation_board1_error_magnet_current_left_unexpected
+      error_magnet_current_right_unexpected: levitation_board1_error_magnet_current_right_unexpected
       error_level_vdc_voltage: levitation_board1_error_level_vdc_voltage
       error_level_magnet_current_left: levitation_board1_error_level_magnet_current_left
       error_level_magnet_current_right: levitation_board1_error_level_magnet_current_right
@@ -891,6 +938,9 @@ rx_streams:
       error_arming_failed: levitation_board2_error_arming_failed
       error_precharge_failed: levitation_board2_error_precharge_failed
       error_heartbeat_miss: levitation_board2_error_heartbeat_miss
+      error_sdc_brake: levitation_board2_error_sdc_brake
+      error_magnet_current_left_unexpected: levitation_board2_error_magnet_current_left_unexpected
+      error_magnet_current_right_unexpected: levitation_board2_error_magnet_current_right_unexpected
       error_level_vdc_voltage: levitation_board2_error_level_vdc_voltage
       error_level_magnet_current_left: levitation_board2_error_level_magnet_current_left
       error_level_magnet_current_right: levitation_board2_error_level_magnet_current_right
@@ -918,6 +968,9 @@ rx_streams:
       error_arming_failed: levitation_board3_error_arming_failed
       error_precharge_failed: levitation_board3_error_precharge_failed
       error_heartbeat_miss: levitation_board3_error_heartbeat_miss
+      error_sdc_brake: levitation_board3_error_sdc_brake
+      error_magnet_current_left_unexpected: levitation_board3_error_magnet_current_left_unexpected
+      error_magnet_current_right_unexpected: levitation_board3_error_magnet_current_right_unexpected
       error_level_vdc_voltage: levitation_board3_error_level_vdc_voltage
       error_level_magnet_current_left: levitation_board3_error_level_magnet_current_left
       error_level_magnet_current_right: levitation_board3_error_level_magnet_current_right
