@@ -104,6 +104,8 @@ object_dictionary:
     type: error_flag
   motor_driver_error_invalid_target_acceleration:
     type: error_flag
+  motor_driver_error_vdc_voltage_invalid:
+    type: error_flag
   motor_driver_error_board_temperature1_invalid:
     type: error_flag
   motor_driver_error_board_temperature2_invalid:
@@ -281,7 +283,24 @@ object_dictionary:
     type: u64
     access: extern
 
+
   levitation_board1_assertion_fault:
+    type: error_flag
+  levitation_board1_error_airgap_left_invalid:
+    type: error_flag
+  levitation_board1_error_airgap_right_invalid:
+    type: error_flag
+  levitation_board1_error_vdc_voltage_invalid:
+    type: error_flag
+  levitation_board1_error_magnet_current_left_invalid:
+    type: error_flag
+  levitation_board1_error_magnet_current_right_invalid:
+    type: error_flag
+  levitation_board1_error_magnet_temperature_left_invalid:
+    type: error_flag
+  levitation_board1_error_magnet_temperature_right_invalid:
+    type: error_flag
+  levitation_board1_error_mcu_temperature_invalid:
     type: error_flag
   levitation_board1_error_arming_failed:
     type: error_flag
@@ -318,6 +337,22 @@ object_dictionary:
 
   levitation_board2_assertion_fault:
     type: error_flag
+  levitation_board2_error_airgap_left_invalid:
+    type: error_flag
+  levitation_board2_error_airgap_right_invalid:
+    type: error_flag
+  levitation_board2_error_vdc_voltage_invalid:
+    type: error_flag
+  levitation_board2_error_magnet_current_left_invalid:
+    type: error_flag
+  levitation_board2_error_magnet_current_right_invalid:
+    type: error_flag
+  levitation_board2_error_magnet_temperature_left_invalid:
+    type: error_flag
+  levitation_board2_error_magnet_temperature_right_invalid:
+    type: error_flag
+  levitation_board2_error_mcu_temperature_invalid:
+    type: error_flag
   levitation_board2_error_arming_failed:
     type: error_flag
   levitation_board2_error_precharge_failed:
@@ -352,6 +387,22 @@ object_dictionary:
     access: extern
 
   levitation_board3_assertion_fault:
+    type: error_flag
+  levitation_board3_error_airgap_left_invalid:
+    type: error_flag
+  levitation_board3_error_airgap_right_invalid:
+    type: error_flag
+  levitation_board3_error_vdc_voltage_invalid:
+    type: error_flag
+  levitation_board3_error_magnet_current_left_invalid:
+    type: error_flag
+  levitation_board3_error_magnet_current_right_invalid:
+    type: error_flag
+  levitation_board3_error_magnet_temperature_left_invalid:
+    type: error_flag
+  levitation_board3_error_magnet_temperature_right_invalid:
+    type: error_flag
+  levitation_board3_error_mcu_temperature_invalid:
     type: error_flag
   levitation_board3_error_arming_failed:
     type: error_flag
@@ -704,6 +755,7 @@ rx_streams:
       error_acceleration_out_of_range: motor_driver_error_acceleration_out_of_range
       error_acceleration_calibration_failed: motor_driver_error_acceleration_calibration_failed
       error_invalid_target_acceleration: motor_driver_error_invalid_target_acceleration
+      error_vdc_voltage_invalid: motor_driver_error_vdc_voltage_invalid
       error_board_temperature1_invalid: motor_driver_error_board_temperature1_invalid
       error_board_temperature2_invalid: motor_driver_error_board_temperature2_invalid
       error_board_temperature3_invalid: motor_driver_error_board_temperature3_invalid
@@ -792,6 +844,14 @@ rx_streams:
       config_hash: levitation_board1_config_hash
     errors:
       assertion_fault: levitation_board1_assertion_fault
+      error_airgap_left_invalid: levitation_board1_error_airgap_left_invalid
+      error_airgap_right_invalid: levitation_board1_error_airgap_right_invalid
+      error_vdc_voltage_invalid: levitation_board1_error_vdc_voltage_invalid
+      error_magnet_current_left_invalid: levitation_board1_error_magnet_current_left_invalid
+      error_magnet_current_right_invalid: levitation_board1_error_magnet_current_right_invalid
+      error_magnet_temperature_left_invalid: levitation_board1_error_magnet_temperature_left_invalid
+      error_magnet_temperature_right_invalid: levitation_board1_error_magnet_temperature_right_invalid
+      error_mcu_temperature_invalid: levitation_board1_error_mcu_temperature_invalid
       error_arming_failed: levitation_board1_error_arming_failed
       error_precharge_failed: levitation_board1_error_precharge_failed
       error_heartbeat_miss: levitation_board1_error_heartbeat_miss
@@ -811,6 +871,14 @@ rx_streams:
       config_hash: levitation_board2_config_hash
     errors:
       assertion_fault: levitation_board2_assertion_fault
+      error_airgap_left_invalid: levitation_board2_error_airgap_left_invalid
+      error_airgap_right_invalid: levitation_board2_error_airgap_right_invalid
+      error_vdc_voltage_invalid: levitation_board2_error_vdc_voltage_invalid
+      error_magnet_current_left_invalid: levitation_board2_error_magnet_current_left_invalid
+      error_magnet_current_right_invalid: levitation_board2_error_magnet_current_right_invalid
+      error_magnet_temperature_left_invalid: levitation_board2_error_magnet_temperature_left_invalid
+      error_magnet_temperature_right_invalid: levitation_board2_error_magnet_temperature_right_invalid
+      error_mcu_temperature_invalid: levitation_board2_error_mcu_temperature_invalid
       error_arming_failed: levitation_board2_error_arming_failed
       error_precharge_failed: levitation_board2_error_precharge_failed
       error_heartbeat_miss: levitation_board2_error_heartbeat_miss
@@ -830,6 +898,14 @@ rx_streams:
       config_hash: levitation_board3_config_hash
     errors:
       assertion_fault: levitation_board3_assertion_fault
+      error_airgap_left_invalid: levitation_board3_error_airgap_left_invalid
+      error_airgap_right_invalid: levitation_board3_error_airgap_right_invalid
+      error_vdc_voltage_invalid: levitation_board3_error_vdc_voltage_invalid
+      error_magnet_current_left_invalid: levitation_board3_error_magnet_current_left_invalid
+      error_magnet_current_right_invalid: levitation_board3_error_magnet_current_right_invalid
+      error_magnet_temperature_left_invalid: levitation_board3_error_magnet_temperature_left_invalid
+      error_magnet_temperature_right_invalid: levitation_board3_error_magnet_temperature_right_invalid
+      error_mcu_temperature_invalid: levitation_board3_error_mcu_temperature_invalid
       error_arming_failed: levitation_board3_error_arming_failed
       error_precharge_failed: levitation_board3_error_precharge_failed
       error_heartbeat_miss: levitation_board3_error_heartbeat_miss
