@@ -67,7 +67,7 @@ object_dictionary:
     access: extern
 
   error_any:
-    type: error_flag
+    type: error_level
     description: Set if any error occurs in the system.
     access: readonly
 

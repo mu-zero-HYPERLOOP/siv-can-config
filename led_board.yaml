@@ -64,7 +64,7 @@ object_dictionary:
     access: extern
 
   mother_board_error_any:
-    type: error_flag
+    type: error_level
     access: extern
 
   mother_board_error_level_over_temperature_system:
