@@ -1,5 +1,5 @@
 description: input board (teensy 4.1)
-heartbeat_timeout: 1s
+heartbeat_timeout: 700ms
 object_dictionary:
   state:
     type : input_board_state

@@ -1,5 +1,5 @@
 description: LED boards for fancy lighting effects.
-heartbeat_timeout: 1s
+heartbeat_timeout: 700ms
 object_dictionary:
   state:
     type: led_board_state
