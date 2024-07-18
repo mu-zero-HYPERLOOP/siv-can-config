@@ -124,6 +124,8 @@ object_dictionary:
     type: error_flag
   motor_driver_error_heartbeat_miss:
     type: error_flag
+  motor_driver_error_phase_current_unexpected:
+    type: error_flag
   motor_driver_error_sdc_brake:
     type: error_flag
 
@@ -150,6 +152,7 @@ object_dictionary:
 
   motor_driver_phase_current_unexpected:
     type: error_flag
+
 
 
 # ========== GUIDANCE BOARDS ==========
@@ -817,6 +820,7 @@ rx_streams:
       error_lim_temperature3_invalid: motor_driver_error_lim_temperature3_invalid
       error_lim_temperature4_invalid: motor_driver_error_lim_temperature4_invalid
       error_heartbeat_miss: motor_driver_error_heartbeat_miss
+      error_phase_current_unexpected: motor_driver_error_phase_current_unexpected
       error_sdc_brake: motor_driver_error_sdc_brake
       error_level_current_u1: motor_driver_error_level_current_u1
       error_level_current_v1: motor_driver_error_level_current_v1

@@ -116,7 +116,7 @@ object_dictionary:
     type: error_level_config
     description: Error configuration of the phase currents.
     access: readwrite.
-  phase_current_unexpected:
+  error_phase_current_unexpected:
     type: error_flag
     description: Set to ERROR if phase current has unexpected value
     access: readonly
@@ -464,6 +464,7 @@ tx_streams:
       - error_lim_temperature3_invalid
       - error_lim_temperature4_invalid
       - error_heartbeat_miss
+      - error_phase_current_unexpected
       - error_sdc_brake
       - error_level_current_u1
       - error_level_current_v1
