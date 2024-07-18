@@ -732,6 +732,7 @@ tx_streams:
       - error_heartbeat_miss
       - error_any
       - error_level_over_temperature_system
+      - error_level_config_consistency
       - last_node_missed
 
   debug_settings:
