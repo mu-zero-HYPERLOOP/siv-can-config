@@ -356,6 +356,11 @@ object_dictionary:
     friend: last_node_missed
     access: readonly
 
+  error_sdc_brake:
+    type: error_flag
+    description: SDC brake was pulled
+    access: readonly
+
   last_node_missed:
     type: u8
     description: Last node whose heartbeat was missed.
@@ -455,6 +460,7 @@ tx_streams:
       - error_lim_temperature3_invalid
       - error_lim_temperature4_invalid
       - error_heartbeat_miss
+      - error_sdc_brake
       - error_level_current_u1
       - error_level_current_v1
       - error_level_current_w1
