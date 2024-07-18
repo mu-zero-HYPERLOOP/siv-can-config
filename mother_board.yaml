@@ -148,6 +148,9 @@ object_dictionary:
   motor_driver_error_level_lim_temperature:
     type: error_level
 
+  motor_driver_phase_current_unexpected:
+    type: error_flag
+
 
 # ========== GUIDANCE BOARDS ==========
   guidance_command:
@@ -825,6 +828,7 @@ rx_streams:
       error_level_board_temperature: motor_driver_error_level_board_temperature
       error_level_mcu_temperature: motor_driver_error_level_mcu_temperature
       error_level_lim_temperature: motor_driver_error_level_lim_temperature
+      phase_current_unexpected: motor_driver_phase_current_unexpected
 
   guidance_board_front:
     state:

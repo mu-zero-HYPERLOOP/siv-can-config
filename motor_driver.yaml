@@ -116,6 +116,10 @@ object_dictionary:
     type: error_level_config
     description: Error configuration of the phase currents.
     access: readwrite.
+  phase_current_unexpected:
+    type: error_flag
+    description: Set to ERROR if phase current has unexpected value
+    access: readonly
 
   frequency:
     type: d16<0..50>
@@ -472,6 +476,7 @@ tx_streams:
       - error_level_mcu_temperature
       - error_level_lim_temperature
       - last_node_missed
+      - phase_current_unexpected
 
   config_hash:
     description: The config hash of the code.
