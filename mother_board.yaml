@@ -446,6 +446,14 @@ object_dictionary:
   input_board_config_hash:
     type: u64
     access: extern
+  absolute_position_known:
+    type: bool_t
+    description: Set to true if the absolute position of the pod is known.
+    access: readonly
+  absolute_position_offset:
+    type: d16<-10..30>
+    description: The offset between relative and absolute position.
+    access: readonly
 
   input_board_assertion_fault:
     type: error_flag
@@ -927,6 +935,9 @@ rx_streams:
       position: position
       velocity: velocity
       acceleration: acceleration
+    linear_encoder:
+      absolute_position_known: absolute_position_known
+      absolute_position_offset: absolute_position_offset
     config_hash:
       config_hash: input_board_config_hash
     errors:
