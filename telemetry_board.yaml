@@ -1,0 +1,14 @@
+description: Telemetry board
+heartbeat_timeout: 700ms
+object_dictionary:
+  telemetry_state: 
+    type: telemetry_state
+    description: State of the telemetry_board
+    access : readonly
+
+tx_streams:
+  state:
+    description: State of the telemetry_board
+    interval: 1ms-500ms
+    mapping:
+      - telemetry_state

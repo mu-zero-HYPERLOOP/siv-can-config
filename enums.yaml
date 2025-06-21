@@ -73,6 +73,10 @@ global_command:
   RESTART: ~
   CALIBRATE: ~
 
+telemetry_state:
+  DISCONNECTED: ~
+  CONNECTED: ~
+
 # MLU State Machine types
 levitation_state:
   INIT: ~
