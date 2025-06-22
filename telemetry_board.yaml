@@ -22,6 +22,18 @@ object_dictionary:
     description: Amount of dropped Can frames during reception.
     access: readonly
 
+  telemetry_tx_memory_througput:
+    type: d32<0..10000>
+    unit: Kb/s
+    description: Live memory throughput of the outgoing telemetry packets.
+    access: readonly
+  telemetry_rx_memory_throughput:
+    type: d32<0..10000>
+    unit: Kb/s
+    description: Live memory throughput of the incomming telemetry packets.
+    access: readonly
+
+
 tx_streams:
   state:
     description: State of the telemetry_board
