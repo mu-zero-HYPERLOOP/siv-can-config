@@ -76,7 +76,8 @@ global_command:
 telemetry_state:
   INIT: ~
   DISCONNECTED: ~
-  CONNECTED: ~
+  LISTENING: ~
+  CLIENT_CONNECTED: ~
 
 # MLU State Machine types
 levitation_state:

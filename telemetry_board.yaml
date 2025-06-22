@@ -42,6 +42,11 @@ object_dictionary:
     description: Iff. true the server can accept additional new connections.
     access: readonly
 
+  loop_frequency:
+    type: d16<0..100>
+    unit: kHz
+    description: Frequency of the main loop.
+    access: readonly
 
   test:
     type: u64
@@ -71,6 +76,10 @@ tx_streams:
       - dropped_rx_packets
       - dropped_tx_canframes
       - dropped_rx_canframes
+  loop_frequency:
+    interval: 100ms
+    mapping:
+      - loop_frequency
   
 
   test:
