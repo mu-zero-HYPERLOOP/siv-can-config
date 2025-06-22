@@ -33,6 +33,9 @@ object_dictionary:
     description: Live memory throughput of the incomming telemetry packets.
     access: readonly
 
+  test:
+    type: u64
+
 
 tx_streams:
   state:
@@ -40,3 +43,7 @@ tx_streams:
     interval: 1ms-500ms
     mapping:
       - telemetry_state
+  test:
+    interval: 1ms
+    mapping:
+      - test
