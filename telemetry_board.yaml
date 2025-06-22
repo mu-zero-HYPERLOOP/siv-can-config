@@ -33,6 +33,16 @@ object_dictionary:
     description: Live memory throughput of the incomming telemetry packets.
     access: readonly
 
+  active_connections:
+    type: u8
+    description: Amount of live clients. (i.e. Control-Panel or other utilities like canzero dump)
+    access: readonly
+  accepts_new_connections:
+    type: u1
+    description: Iff. true the server can accept additional new connections.
+    access: readonly
+
+
   test:
     type: u64
 
@@ -43,6 +53,8 @@ tx_streams:
     interval: 1ms-500ms
     mapping:
       - telemetry_state
+      - active_connections
+      - accepts_new_connections
 
   telemetry_bandwidth:
     description: Telemetry tx and rx memory throughput
@@ -59,6 +71,7 @@ tx_streams:
       - dropped_rx_packets
       - dropped_tx_canframes
       - dropped_rx_canframes
+  
 
   test:
     interval: 1ms
