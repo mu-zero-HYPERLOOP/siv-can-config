@@ -6,19 +6,19 @@ object_dictionary:
     description: State of the telemetry_board
     access : readonly
   dropped_tx_packets:
-    type: u32
+    type: u16
     description: Amount of dropped TCP packets across all connections.
     access: readonly
   dropped_rx_packets:
-    type: u32
+    type: u16
     description: Amount of dropped TCP packets across all connections.
     access: readonly
   dropped_tx_canframes:
-    type: u32
+    type: u16
     description: Amount of dropped Can frames during transmission.
     access: readonly
   dropped_rx_canframes:
-    type: u32
+    type: u16
     description: Amount of dropped Can frames during reception.
     access: readonly
 
@@ -50,6 +50,15 @@ tx_streams:
     mapping:
       - telemetry_tx_memory_throughput
       - telemetry_rx_memory_throughput
+
+  dropped_frames:
+    description: Dropped telemetry and can frames.
+    interval: 100ms-1000ms
+    mapping:
+      - dropped_tx_packets
+      - dropped_rx_packets
+      - dropped_tx_canframes
+      - dropped_rx_canframes
 
   test:
     interval: 1ms
