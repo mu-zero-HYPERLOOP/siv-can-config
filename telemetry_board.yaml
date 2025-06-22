@@ -22,7 +22,7 @@ object_dictionary:
     description: Amount of dropped Can frames during reception.
     access: readonly
 
-  telemetry_tx_memory_througput:
+  telemetry_tx_memory_throughput:
     type: d32<0..10000>
     unit: Kb/s
     description: Live memory throughput of the outgoing telemetry packets.
@@ -43,6 +43,14 @@ tx_streams:
     interval: 1ms-500ms
     mapping:
       - telemetry_state
+
+  telemetry_bandwidth:
+    description: Telemetry tx and rx memory throughput
+    interval: 100ms
+    mapping:
+      - telemetry_tx_memory_throughput
+      - telemetry_rx_memory_throughput
+
   test:
     interval: 1ms
     mapping:
