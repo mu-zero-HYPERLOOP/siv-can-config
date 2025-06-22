@@ -74,6 +74,7 @@ global_command:
   CALIBRATE: ~
 
 telemetry_state:
+  INIT: ~
   DISCONNECTED: ~
   CONNECTED: ~
 
