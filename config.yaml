@@ -4,7 +4,7 @@ struct_types: structs.yaml
 nodes:
   gamepad : gamepad.yaml
   telemetry_board: telemetry_board.yaml
-  mother_board: mother_board.yaml
+  # mother_board: mother_board.yaml
   motor_driver: motor_driver.yaml
   input_board: input_board.yaml
   guidance_board_front: guidance_board.yaml
@@ -14,4 +14,4 @@ nodes:
   levitation_board3: levitation_board.yaml
   power_board12: power_board12.yaml
   power_board24: power_board24.yaml
-  led_board: led_board.yaml
+  # led_board: led_board.yaml

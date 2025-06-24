@@ -477,7 +477,6 @@ tx_streams:
       - error_level_mcu_temperature
       - error_level_lim_temperature
       - last_node_missed
-      - phase_current_unexpected
 
   config_hash:
     description: The config hash of the code.
@@ -487,7 +486,7 @@ tx_streams:
 
 
 rx_streams:
-  mother_board:
+  input_board:
     motor_command:
       motor_driver_command: command
       target_acceleration: target_acceleration

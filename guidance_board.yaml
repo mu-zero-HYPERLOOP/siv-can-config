@@ -358,7 +358,7 @@ tx_streams:
 
 
 rx_streams:
-  mother_board:
+  input_board:
     guidance_command:
       guidance_command: command
     debug_settings:

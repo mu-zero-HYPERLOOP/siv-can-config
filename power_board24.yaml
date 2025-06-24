@@ -175,7 +175,7 @@ tx_streams:
 
 
 rx_streams:
-  mother_board:
+  input_board:
     pdu_24v_command:
       power_board24_command: command
       power_board24_cooling_pump_channel_ctrl: cooling_pump_channel_ctrl

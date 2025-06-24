@@ -137,15 +137,6 @@ motor_command:
   ABORT: ~
   DISARM45: ~
 
-input_board_state:
-  INIT: ~
-  CALIBRATION: ~
-  RUNNING : ~
-
-input_board_command:
-  NONE: ~
-  CALIBRATE: ~
-
 calibration_mode:
   USE_OFFSET: ~
   USE_TARGET: ~

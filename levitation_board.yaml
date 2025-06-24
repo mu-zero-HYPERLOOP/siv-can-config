@@ -484,7 +484,7 @@ tx_streams:
 
 
 rx_streams:
-  mother_board:
+  input_board:
     levitation_command:
       levitation_command : command
     levitation_config:

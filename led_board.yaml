@@ -63,15 +63,15 @@ object_dictionary:
     description: Command of the mother board/the entire system.
     access: extern
 
-  mother_board_error_any:
+  error_any:
     type: error_level
     access: extern
 
-  mother_board_error_level_over_temperature_system:
+  error_level_over_temperature_system:
     type: error_level
     access: extern
 
-  mother_board_system_sdc_status:
+  system_sdc_status:
     type: sdc_status
     access: extern
 
@@ -104,17 +104,16 @@ tx_streams:
 
 
 rx_streams:
-  mother_board:
+  input_board:
     led_board_command:
       led_board_command: command
     state:
       state: global_state
       command: global_command
       system_sdc_status: mother_board_system_sdc_status
-    errors:
-      error_any: mother_board_error_any
-      error_level_over_temperature_system: mother_board_error_level_over_temperature_system
-  input_board:
+    global_fsm_errors:
+      error_any: error_any
+      error_level_over_temperature_system: error_level_over_temperature_system
     errors:
       error_level_bat24_under_voltage: input_board_error_level_bat24_under_voltage
 
