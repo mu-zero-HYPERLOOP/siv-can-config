@@ -626,19 +626,42 @@ object_dictionary:
 
 
   # ============================ Cooling =============================
-  # TODO has to be implemented. and what errors can occure.
-  cooling_cycle_flow_rate:
-    type: d8<0..1>
-    description: Flow rate of the cooling cycle.
-    unit: l/s
+
+  # Flow rate sensors
+  cooling_flow_rate_begin:
+    type: d16<0..400>
+    unit: l/h
+    description: Flow rate at the beginning of the cooling cycle
     access: readonly
+  cooling_flow_rate_end:
+    type: d16<0..400>
+    unit: l/h
+    description: Flow rate at the end of the cooling cycle.
+    access: readonly
+  error_cooling_flow_rate_low:
+    type: error_flag
+    description: Cooling is on and the flow rate is to low.
+  error_cooling_flow_rate_mismatch:
+    type: error_flag
+    description: Flow rate at the beginning and end of the loop is off.
 
-  cooling_cycle_control:
-    type: u1
-    description: Toggle to enable / disable the cooling cycle.
-  # TODO temperature sensors and errors.
+  cooling_cycle_temp_begin:
+    type: d8<-1..150>
+    unit: °C
+  cooling_cycle_temp_end:
+    type: d8<-1..150>
+    unit: °C
 
+  error_cooling_cycle_temp_begin_invalid:
+    type: error_flag
+  error_cooling_cycle_temp_end_invalid:
+    type: error_flag
+  error_level_cooling_cycle_overtemp:
+    type: error_level
+    description: Temperature in the cooling cycle is to high.
 
+    
+  
 
 
   # Motor driver
@@ -1106,17 +1129,6 @@ object_dictionary:
     type: d8<0..1>
     description: rt2 input
 
-  error_heartbeat_miss:
-    type: error_flag
-    description: Heartbeat from any node is missed.
-    friend: last_node_missed
-    access: readonly
-
-  last_node_missed:
-    type: u8
-    description: Last node whose heartbeat was missed.
-    access: readlonly
-
   target_airgap:
     type: d32<0..15>
     description: Target airgap of the control.
@@ -1129,11 +1141,6 @@ object_dictionary:
     type: airgap_transition_mode
     description: Ease funciton of the airgap transition.
     access: extern
-
-  ignore_45v:
-    type: bool_t
-    description: If set, all voltage checks of the 45V system are ignored.
-    access: readwrite
 
   guidance_board_front_error_sdc_brake:
     type: error_flag
@@ -1243,6 +1250,16 @@ tx_streams:
       - bat24_cell_temperature_1
       - bat24_cell_temperature_2
       - bat24_temperature_max
+
+  cooling_cycle:
+    description: Collection of cooling cycle temp and flow rates.
+    interval: 1000ms
+    mapping:
+      - cooling_flow_rate_begin
+      - cooling_flow_rate_end
+      - cooling_cycle_temp_begin
+      - cooling_cycle_temp_end
+
   ambient_temperatures:
     description: Collection of measured temperatures.
     interval: 500ms
@@ -1262,7 +1279,7 @@ tx_streams:
       - communication_power_consumption
 
   errors:
-    description: All error flags from the input_board
+    description: error flags from the input_board
     interval: 0ms-1000ms
     mapping:
       - assertion_fault
@@ -1292,8 +1309,8 @@ tx_streams:
     
 
   errors2:
-    description: All error flags from the input_board
-    interval: 0ms-1000ms
+    description: error flags from the input_board
+    interval: 1ms-1000ms
     mapping:
       - error_level_supercap_under_voltage
       - error_level_supercap_over_voltage
@@ -1308,6 +1325,16 @@ tx_streams:
       - error_level_power_ebox_temperature
       - error_level_ambient_temperature
       - last_node_missed
+
+  errors3:
+    description: errors flags from the input board
+    interval: 1ms-1000ms
+    mapping:
+      - error_cooling_flow_rate_low
+      - error_cooling_flow_rate_mismatch
+      - error_cooling_cycle_temp_begin_invalid
+      - error_cooling_cycle_temp_end_invalid
+      - error_level_cooling_cycle_overtemp
 
   config_hash:
     description: The config hash of the code.

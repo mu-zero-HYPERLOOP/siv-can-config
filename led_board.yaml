@@ -79,6 +79,13 @@ object_dictionary:
     type: error_level
     access: extern
 
+  cooling_cycle_temp_begin:
+    type: d8<-1..150>
+    unit: °C
+  cooling_cycle_temp_end:
+    type: d8<-1..150>
+    unit: °C
+
 tx_streams:
   state:
     description: State of the led board.
@@ -105,6 +112,9 @@ tx_streams:
 
 rx_streams:
   input_board:
+    cooling_cycle:
+      cooling_cycle_temp_begin: cooling_cycle_temp_begin
+      cooling_cycle_temp_end: cooling_cycle_temp_end
     led_board_command:
       led_board_command: command
     state:
@@ -116,4 +126,3 @@ rx_streams:
       error_level_over_temperature_system: error_level_over_temperature_system
     errors:
       error_level_bat24_under_voltage: input_board_error_level_bat24_under_voltage
-

@@ -397,7 +397,7 @@ tx_streams:
 
   errors:
     description: Errors of the levitation boards.
-    interval: 0ms-1s
+    interval: 1ms-1s
     mapping:
       - assertion_fault
       - error_airgap_left_invalid
