@@ -176,43 +176,6 @@ object_dictionary:
     friend: input_current
     access: readonly
 
-  magnet_temperature_left:
-    type: d8<-1..150>
-    aunit: °C
-    description: Temperature of the left magnet (sensor1)
-    access: readonly
-  error_magnet_temperature_left_invalid:
-    type: error_flag
-    description: The left magnet temperature 1 is invalid.
-    friend: magnet_temperature_left
-    access: readonly
-  error_level_magnet_temperature_left:
-    type: error_level
-    description: Status of the left magnet temperature.
-    friend: magnet_temperature_left
-    access: readonly
-
-  magnet_temperature_right:
-    type: d8<-1..150>
-    unit: °C
-    description: Temperature of the right magnet
-    access: readonly
-  error_magnet_temperature_right_invalid:
-    type: error_flag
-    description: The right magnet temperature is invalid.
-    friend: magnet_temperature_right
-    access: readonly
-  error_level_magnet_temperature_right:
-    type: error_level
-    description: Status of the left magnet temperature.
-    friend: magnet_temperature_right
-    access: readonly
-
-  error_level_config_magnet_temperature:
-    type: error_level_config
-    description: Status configuration of the left magnet temperature.
-    access: extern
-
   mcu_temperature:
     type: d8<-1..150>
     unit: °C
@@ -391,8 +354,6 @@ tx_streams:
     description: Temperature Readings
     interval: 500ms
     mapping:
-      - magnet_temperature_left
-      - magnet_temperature_right
       - mcu_temperature
 
   errors:
@@ -405,8 +366,6 @@ tx_streams:
       - error_vdc_voltage_invalid
       - error_magnet_current_left_invalid
       - error_magnet_current_right_invalid
-      - error_magnet_temperature_left_invalid
-      - error_magnet_temperature_right_invalid
       - error_mcu_temperature_invalid
       - error_arming_failed
       - error_precharge_failed
@@ -418,8 +377,6 @@ tx_streams:
       - error_level_magnet_current_left
       - error_level_magnet_current_right
       - error_level_input_current
-      - error_level_magnet_temperature_left
-      - error_level_magnet_temperature_right
       - error_level_mcu_temperature
       - last_node_missed
 
