@@ -1129,10 +1129,6 @@ object_dictionary:
     type: error_flag
   guidance_board_front_error_input_current_invalid:
     type: error_flag
-  guidance_board_front_error_magnet_temperature_left_invalid:
-    type: error_flag
-  guidance_board_front_error_magnet_temperature_right_invalid:
-    type: error_flag
   guidance_board_front_error_mcu_temperature_invalid:
     type: error_flag
 
@@ -1186,10 +1182,6 @@ object_dictionary:
     type: error_flag
   guidance_board_back_error_input_current_invalid:
     type: error_flag
-  guidance_board_back_error_magnet_temperature_left_invalid:
-    type: error_flag
-  guidance_board_back_error_magnet_temperature_right_invalid:
-    type: error_flag
   guidance_board_back_error_mcu_temperature_invalid:
     type: error_flag
 
@@ -1239,10 +1231,6 @@ object_dictionary:
     type: error_flag
   levitation_board1_error_magnet_current_right_invalid:
     type: error_flag
-  levitation_board1_error_magnet_temperature_left_invalid:
-    type: error_flag
-  levitation_board1_error_magnet_temperature_right_invalid:
-    type: error_flag
   levitation_board1_error_mcu_temperature_invalid:
     type: error_flag
   levitation_board1_error_arming_failed:
@@ -1290,10 +1278,6 @@ object_dictionary:
     type: error_flag
   levitation_board2_error_magnet_current_right_invalid:
     type: error_flag
-  levitation_board2_error_magnet_temperature_left_invalid:
-    type: error_flag
-  levitation_board2_error_magnet_temperature_right_invalid:
-    type: error_flag
   levitation_board2_error_mcu_temperature_invalid:
     type: error_flag
   levitation_board2_error_arming_failed:
@@ -1340,10 +1324,6 @@ object_dictionary:
   levitation_board3_error_magnet_current_left_invalid:
     type: error_flag
   levitation_board3_error_magnet_current_right_invalid:
-    type: error_flag
-  levitation_board3_error_magnet_temperature_left_invalid:
-    type: error_flag
-  levitation_board3_error_magnet_temperature_right_invalid:
     type: error_flag
   levitation_board3_error_mcu_temperature_invalid:
     type: error_flag
@@ -1884,8 +1864,6 @@ rx_streams:
       error_magnet_current_left_invalid: guidance_board_front_error_magnet_current_left_invalid
       error_magnet_current_right_invalid: guidance_board_front_error_magnet_current_right_invalid
       error_input_current_invalid: guidance_board_front_error_input_current_invalid
-      error_magnet_temperature_left_invalid: guidance_board_front_error_magnet_temperature_left_invalid
-      error_magnet_temperature_right_invalid: guidance_board_front_error_magnet_temperature_right_invalid
       error_mcu_temperature_invalid: guidance_board_front_error_mcu_temperature_invalid
       error_sdc_brake: guidance_board_front_error_sdc_brake
       error_magnet_current_left_unexpected: guidance_board_front_error_magnet_current_left_unexpected
@@ -1917,8 +1895,6 @@ rx_streams:
       error_magnet_current_left_invalid: guidance_board_back_error_magnet_current_left_invalid
       error_magnet_current_right_invalid: guidance_board_back_error_magnet_current_right_invalid
       error_input_current_invalid: guidance_board_back_error_input_current_invalid
-      error_magnet_temperature_left_invalid: guidance_board_back_error_magnet_temperature_left_invalid
-      error_magnet_temperature_right_invalid: guidance_board_back_error_magnet_temperature_right_invalid
       error_mcu_temperature_invalid: guidance_board_back_error_mcu_temperature_invalid
       error_sdc_brake: guidance_board_back_error_sdc_brake
       error_magnet_current_left_unexpected: guidance_board_back_error_magnet_current_left_unexpected
@@ -1944,8 +1920,6 @@ rx_streams:
       error_vdc_voltage_invalid: levitation_board1_error_vdc_voltage_invalid
       error_magnet_current_left_invalid: levitation_board1_error_magnet_current_left_invalid
       error_magnet_current_right_invalid: levitation_board1_error_magnet_current_right_invalid
-      error_magnet_temperature_left_invalid: levitation_board1_error_magnet_temperature_left_invalid
-      error_magnet_temperature_right_invalid: levitation_board1_error_magnet_temperature_right_invalid
       error_mcu_temperature_invalid: levitation_board1_error_mcu_temperature_invalid
       error_arming_failed: levitation_board1_error_arming_failed
       error_precharge_failed: levitation_board1_error_precharge_failed
@@ -1974,8 +1948,6 @@ rx_streams:
       error_vdc_voltage_invalid: levitation_board2_error_vdc_voltage_invalid
       error_magnet_current_left_invalid: levitation_board2_error_magnet_current_left_invalid
       error_magnet_current_right_invalid: levitation_board2_error_magnet_current_right_invalid
-      error_magnet_temperature_left_invalid: levitation_board2_error_magnet_temperature_left_invalid
-      error_magnet_temperature_right_invalid: levitation_board2_error_magnet_temperature_right_invalid
       error_mcu_temperature_invalid: levitation_board2_error_mcu_temperature_invalid
       error_arming_failed: levitation_board2_error_arming_failed
       error_precharge_failed: levitation_board2_error_precharge_failed
@@ -2004,8 +1976,6 @@ rx_streams:
       error_vdc_voltage_invalid: levitation_board3_error_vdc_voltage_invalid
       error_magnet_current_left_invalid: levitation_board3_error_magnet_current_left_invalid
       error_magnet_current_right_invalid: levitation_board3_error_magnet_current_right_invalid
-      error_magnet_temperature_left_invalid: levitation_board3_error_magnet_temperature_left_invalid
-      error_magnet_temperature_right_invalid: levitation_board3_error_magnet_temperature_right_invalid
       error_mcu_temperature_invalid: levitation_board3_error_mcu_temperature_invalid
       error_arming_failed: levitation_board3_error_arming_failed
       error_precharge_failed: levitation_board3_error_precharge_failed
