@@ -1872,8 +1872,6 @@ rx_streams:
       error_level_magnet_current_left: guidance_board_front_error_level_magnet_current_left
       error_level_magnet_current_right: guidance_board_front_error_level_magnet_current_right
       error_level_input_current: guidance_board_front_error_level_input_current
-      error_level_magnet_temperature_left: guidance_board_front_error_level_magnet_temperature_left
-      error_level_magnet_temperature_right: guidance_board_front_error_level_magnet_temperature_right
       error_level_mcu_temperature: guidance_board_front_error_level_mcu_temperature
 
   guidance_board_back:
@@ -1903,8 +1901,6 @@ rx_streams:
       error_level_magnet_current_left: guidance_board_back_error_level_magnet_current_left
       error_level_magnet_current_right: guidance_board_back_error_level_magnet_current_right
       error_level_input_current: guidance_board_back_error_level_input_current
-      error_level_magnet_temperature_left: guidance_board_back_error_level_magnet_temperature_left
-      error_level_magnet_temperature_right: guidance_board_back_error_level_magnet_temperature_right
       error_level_mcu_temperature: guidance_board_back_error_level_mcu_temperature
 
   levitation_board1:
@@ -1931,8 +1927,6 @@ rx_streams:
       error_level_magnet_current_left: levitation_board1_error_level_magnet_current_left
       error_level_magnet_current_right: levitation_board1_error_level_magnet_current_right
       error_level_input_current: levitation_board1_error_level_input_current
-      error_level_magnet_temperature_left: levitation_board1_error_level_magnet_temperature_left
-      error_level_magnet_temperature_right: levitation_board1_error_level_magnet_temperature_right
       error_level_mcu_temperature: levitation_board1_error_level_mcu_temperature
 
   levitation_board2:
@@ -1959,8 +1953,6 @@ rx_streams:
       error_level_magnet_current_left: levitation_board2_error_level_magnet_current_left
       error_level_magnet_current_right: levitation_board2_error_level_magnet_current_right
       error_level_input_current: levitation_board2_error_level_input_current
-      error_level_magnet_temperature_left: levitation_board2_error_level_magnet_temperature_left
-      error_level_magnet_temperature_right: levitation_board2_error_level_magnet_temperature_right
       error_level_mcu_temperature: levitation_board2_error_level_mcu_temperature
 
   levitation_board3:
@@ -1987,8 +1979,6 @@ rx_streams:
       error_level_magnet_current_left: levitation_board3_error_level_magnet_current_left
       error_level_magnet_current_right: levitation_board3_error_level_magnet_current_right
       error_level_input_current: levitation_board3_error_level_input_current
-      error_level_magnet_temperature_left: levitation_board3_error_level_magnet_temperature_left
-      error_level_magnet_temperature_right: levitation_board3_error_level_magnet_temperature_right
       error_level_mcu_temperature: levitation_board3_error_level_mcu_temperature
 
   power_board12:
