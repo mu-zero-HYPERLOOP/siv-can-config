@@ -38,7 +38,7 @@ object_dictionary:
     description: Amount of live clients. (i.e. Control-Panel or other utilities like canzero dump)
     access: readonly
   accepts_new_connections:
-    type: u1
+    type: bool_t
     description: Iff. true the server can accept additional new connections.
     access: readonly
 
@@ -47,10 +47,6 @@ object_dictionary:
     unit: kHz
     description: Frequency of the main loop.
     access: readonly
-
-  test:
-    type: u64
-
 
 tx_streams:
   state:
@@ -80,9 +76,4 @@ tx_streams:
     interval: 100ms
     mapping:
       - loop_frequency
-  
 
-  test:
-    interval: 1ms
-    mapping:
-      - test
