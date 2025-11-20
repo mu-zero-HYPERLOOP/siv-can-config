@@ -444,10 +444,12 @@ rx_streams:
   input_board:
     levitation_command:
       levitation_command : command
+
     levitation_config:
       target_airgap : target_airgap
       airgap_transition_duration: airgap_transition_duration
       airgap_transition_mode: airgap_transition_mode
+
     debug_settings:
       ignore_45v: ignore_45v
 

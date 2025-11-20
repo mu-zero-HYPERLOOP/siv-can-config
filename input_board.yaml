@@ -796,181 +796,6 @@ object_dictionary:
     description: Status configuration of the magnet temperature.
     access: extern
 
-  # Guidance front temperatures
-  guidance_front_magnet_temperature_left:
-    type: d8<-1..150>
-    unit: °C
-    description: Temperature of the front left magnet
-    access: readonly
-  error_guidance_front_magnet_temperature_left_invalid:
-    type: error_flag
-    description: Temperature of the front left magnet is invalid
-    friend: guidance_front_magnet_temperature_left
-    access: readonly
-  error_level_guidance_front_magnet_temperature_left:
-    type: error_level
-    description: Status of the front left magnet temperature.
-    friend: guidance_front_magnet_temperature_left
-    access: readonly
-
-  guidance_front_magnet_temperature_right:
-    type: d8<-1..150>
-    unit: °C
-    description: Temperature of the front right magnet
-    access: readonly
-  error_guidance_front_magnet_temperature_right_invalid:
-    type: error_flag
-    description: Temperature of the front right magnet is invalid
-    friend: guidance_front_magnet_temperature_right
-    access: readonly
-  error_level_guidance_front_magnet_temperature_right:
-    type: error_level
-    description: Status of the front right magnet temperature.
-    friend: guidance_front_magnet_temperature_right
-    access: readonly
-
-
-  # Guidance back temperatures
-  guidance_back_magnet_temperature_left:
-    type: d8<-1..150>
-    unit: °C
-    description: Temperature of the back left magnet
-    access: readonly
-  error_guidance_back_magnet_temperature_left_invalid:
-    type: error_flag
-    description: Temperature of the back left magnet is invalid
-    friend: guidance_back_magnet_temperature_left
-    access: readonly
-  error_level_guidance_back_magnet_temperature_left:
-    type: error_level
-    description: Status of the back left magnet temperature.
-    friend: guidance_back_magnet_temperature_left
-    access: readonly
-
-  guidance_back_magnet_temperature_right:
-    type: d8<-1..150>
-    unit: °C
-    description: Temperature of the back right magnet
-    access: readonly
-  error_guidance_back_magnet_temperature_right_invalid:
-    type: error_flag
-    description: Temperature of the back right magnet is invalid
-    friend: guidance_back_magnet_temperature_right
-    access: readonly
-  error_level_guidance_back_magnet_temperature_right:
-    type: error_level
-    description: Status of the back right magnet temperature.
-    friend: guidance_back_magnet_temperature_right
-    access: readonly
-
-
-  # Levitation front temperatures
-  levitation_front_magnet_temperature_left:
-    type: d8<-1..150>
-    unit: °C
-    description: Temperature of the front left magnet
-    access: readonly
-  error_levitation_front_magnet_temperature_left_invalid:
-    type: error_flag
-    description: Temperature of the front left magnet is invalid
-    friend: levitation_front_magnet_temperature_left
-    access: readonly
-  error_level_levitation_front_magnet_temperature_left:
-    type: error_level
-    description: Status of the front left magnet temperature.
-    friend: levitation_front_magnet_temperature_left
-    access: readonly
-
-  levitation_front_magnet_temperature_right:
-    type: d8<-1..150>
-    unit: °C
-    description: Temperature of the front right magnet
-    access: readonly
-  error_levitation_front_magnet_temperature_right_invalid:
-    type: error_flag
-    description: Temperature of the front right magnet is invalid
-    friend: levitation_front_magnet_temperature_right
-    access: readonly
-  error_level_levitation_front_magnet_temperature_right:
-    type: error_level
-    description: Status of the front right magnet temperature.
-    friend: levitation_front_magnet_temperature_right
-    access: readonly
-
-  # Levitation middle temperatures
-  levitation_middle_magnet_temperature_left:
-    type: d8<-1..150>
-    unit: °C
-    description: Temperature of the middle left magnet
-    access: readonly
-  error_levitation_middle_magnet_temperature_left_invalid:
-    type: error_flag
-    description: Temperature of the middle left magnet is invalid
-    friend: levitation_middle_magnet_temperature_left
-    access: readonly
-  error_level_levitation_middle_magnet_temperature_left:
-    type: error_level
-    description: Status of the middle left magnet temperature.
-    friend: levitation_middle_magnet_temperature_left
-    access: readonly
-
-  levitation_middle_magnet_temperature_right:
-    type: d8<-1..150>
-    unit: °C
-    description: Temperature of the middle right magnet
-    access: readonly
-  error_levitation_middle_magnet_temperature_right_invalid:
-    type: error_flag
-    description: Temperature of the middle right magnet is invalid
-    friend: levitation_middle_magnet_temperature_right
-    access: readonly
-  error_level_levitation_middle_magnet_temperature_right:
-    type: error_level
-    description: Status of the middle right magnet temperature.
-    friend: levitation_middle_magnet_temperature_right
-    access: readonly
-
-
-  # Levitation back temperatures
-  levitation_back_magnet_temperature_left:
-    type: d8<-1..150>
-    unit: °C
-    description: Temperature of the back left magnet
-    access: readonly
-  error_levitation_back_magnet_temperature_left_invalid:
-    type: error_flag
-    description: Temperature of the back left magnet is invalid
-    friend: levitation_back_magnet_temperature_left
-    access: readonly
-  error_level_levitation_back_magnet_temperature_left:
-    type: error_level
-    description: Status of the back left magnet temperature.
-    friend: levitation_back_magnet_temperature_left
-    access: readonly
-
-  levitation_back_magnet_temperature_right:
-    type: d8<-1..150>
-    unit: °C
-    description: Temperature of the back right magnet
-    access: readonly
-  error_levitation_back_magnet_temperature_right_invalid:
-    type: error_flag
-    description: Temperature of the back right magnet is invalid
-    friend: levitation_back_magnet_temperature_right
-    access: readonly
-  error_level_levitation_back_magnet_temperature_right:
-    type: error_level
-    description: Status of the back right magnet temperature.
-    friend: levitation_back_magnet_temperature_right
-    access: readonly
-
-  error_level_config_magnet_temperature:
-    type: error_level_config
-    description: Status configuration of the magnet temperature.
-    access: extern
-
-
-
   # ============================ Cooling =============================
 
   # Flow rate sensors
@@ -1201,7 +1026,6 @@ object_dictionary:
     type: error_level
 
 
-  # ========== LEVITATION BOARDS ==========
   # ========== LEVITATION BOARDS ==========
   levitation_command:
     type: levitation_command
@@ -1618,26 +1442,6 @@ tx_streams:
       - levitation_back_magnet_temperature_left
       - levitation_back_magnet_temperature_right
 
-  guidance_temperatures:
-    description: Collection of guidance magnet temperatures.
-    interval: 500ms
-    mapping:
-      - guidance_front_magnet_temperature_left
-      - guidance_front_magnet_temperature_right
-      - guidance_back_magnet_temperature_left
-      - guidance_back_magnet_temperature_right
-  
-  levitation_temperatures:
-    description: Collection of levitation magnet temperatures.
-    interval: 500ms
-    mapping:
-      - levitation_front_magnet_temperature_left
-      - levitation_front_magnet_temperature_right
-      - levitation_middle_magnet_temperature_left
-      - levitation_middle_magnet_temperature_right
-      - levitation_back_magnet_temperature_left
-      - levitation_back_magnet_temperature_right
-
   power_consumption:
     description: Power consumption data.
     interval: 500ms
@@ -1769,6 +1573,7 @@ tx_streams:
     interval: 1ms-500ms
     mapping:
       - levitation_command
+
   levitation_conifg:
     description: Target airgap and transition type.
     interval: 1ms-10s
