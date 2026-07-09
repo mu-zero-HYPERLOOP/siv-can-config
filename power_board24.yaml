@@ -86,6 +86,17 @@ object_dictionary:
     description: Channel status of the antenna channel.
     access: readonly
 
+  misc_channel_current:
+    type: d32<0..5>
+    description: Current of the misc channel.
+    unit: A
+    access: readonly
+  misc_channel_status:
+    type: pdu_channel_status
+    description: Channel status of the misc channel.
+    access: readonly
+
+
   error_any_short:
     type: error_flag
     description: Set if any of the channels detects a short circuit.
