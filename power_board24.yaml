@@ -76,6 +76,16 @@ object_dictionary:
     description: Channel status of the cooling fan channel.
     access: readonly
 
+  antenna_channel_current:
+    type: d8<0..5>
+    description: Current of the antenna channel.
+    unit: A
+    access: readonly
+  antenna_channel_status:
+    type: pdu_channel_status
+    description: Channel status of the antenna channel.
+    access: readonly
+
   error_any_short:
     type: error_flag
     description: Set if any of the channels detects a short circuit.
@@ -151,6 +161,7 @@ tx_streams:
       - sdc_board_power_channel_status
       - sdc_signal_channel_status
       - fan_channel_status
+      - antenna_channel_status
 
   channel_currents:
     description: Currents of the high and low power channels
@@ -160,6 +171,7 @@ tx_streams:
       - sdc_board_power_channel_current
       - sdc_signal_channel_current
       - fan_channel_current
+      - antenna_channel_current
 
   power_consumption:
     description: Power consumption of the channels.
@@ -179,5 +191,3 @@ rx_streams:
     pdu_24v_command:
       power_board24_command: command
       power_board24_cooling_pump_channel_ctrl: cooling_pump_channel_ctrl
-
-
