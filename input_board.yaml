@@ -302,46 +302,46 @@ object_dictionary:
 
 
   supercap_voltage:
-    type: d32<0..50>
+    type: d32<0..64>
     unit: V
-    description: Voltage of the 24V link
+    description: Voltage of the super capacitors.
     access: readonly
   supercap_voltage_calibration_mode:
     type: calibration_mode
-    description: Calibration mode of the 24V link voltage.
+    description: Calibration mode of the supercapacitors voltage.
     access: readwrite
   supercap_voltage_calibration_offset:
     type: d32<-10..10>
     unit: V
-    description: Calibration offset of the 24V link voltage.
+    description: Calibration offset of the supercapacitors voltage.
     access: readwrite
   supercap_voltage_calibration_target:
-    type: d32<0..50>
+    type: d32<0..64>
     unit: V
-    description: Expected voltage during calibration of the 24V link voltage.
+    description: Expected voltage during calibration of the supercapacitors voltage.
     access: extern
   error_supercap_voltage_invalid:
     type: error_flag
-    description: The voltage of the 24V link is not sensible. Check sensor connection.
+    description: The voltage of the supercapacitors is not sensible. Check sensor connection.
     friend: supercap_voltage
     access: readonly
   error_level_supercap_under_voltage:
     type: error_level
-    description: The voltage of the 24V link is to low.
+    description: The voltage of the supercapacitors is to low.
     friend: supercap_voltage
     access: readonly
   error_level_config_supercap_under_voltage:
     type: error_level_config
-    description: Status configuration of the link24 under voltage.
+    description: Status configuration of the supercapacitors under voltage.
     access: extern
   error_level_supercap_over_voltage:
     type: error_level
-    description: The voltage of the 24V link is to high.
+    description: The voltage of the supercapacitors is to high.
     friend: supercap_voltage
     access: readonly
   error_level_config_supercap_over_voltage:
     type: error_level_config
-    description: Status configuration of the link24 over voltage.
+    description: Status configuration of the supercapacitors over voltage.
     access: extern
 
   link24_current:
